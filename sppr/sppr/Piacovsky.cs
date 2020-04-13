@@ -9,7 +9,7 @@ namespace sppr
         public Piacovsky(Func<float, float> curFunction, float xBegin, float xEnd, int maxSteps) : base(curFunction, xBegin, xEnd, maxSteps)
         {
         }
-        protected override void step()
+        protected override void step(int stepId)
         {
         }
     }

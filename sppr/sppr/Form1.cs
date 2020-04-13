@@ -17,7 +17,7 @@ namespace sppr
         public Form1()
         {
             InitializeComponent();
-            float ca = 2;
+            float ca;
             Func<float, float> function = x => x * ca;
             method = new Brute(function, 0.0f, 0.5f, 10);
         }
