@@ -12,15 +12,51 @@ namespace sppr
 {
     public partial class Form1 : Form
     {
-
-        Method method;
+        FElem elem;
+        GraphProcessing gp;
+        Method.Report result;
         public Form1()
         {
             InitializeComponent();
-            float ca;
-            Func<float, float> function = x => x * ca;
-            method = new Brute(function, 0.0f, 0.5f, 10);
+            elem = new FElem();
+            gp = new GraphProcessing();
+            label1.Text = "";
         }
 
+        private void bwStatus_DoWork(object sender, DoWorkEventArgs e)
+        {
+            result = ((Method)e.Argument).solve(bwStatus);
+            if (bwStatus.CancellationPending != true) ;
+        }
+
+        private void bwStatus_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            pbSolve.Value = e.ProgressPercentage;
+        }
+
+        private void bwStatus_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (!e.Cancelled)
+            {
+            }
+            pbSolve.Value = 0;
+            gp.drawFunction(zedGraphControl1, elem);
+            gp.drawVerticalLine(zedGraphControl1, result.iterations);
+            foreach (var res in result.minimum)
+            {
+                label1.Text += "(" + res.Key.ToString() + "," + res.Value.ToString() + ")";
+            }
+            label1.Text += result.onStep.ToString() + "\\" + result.ofStep.ToString(); 
+        }
+
+        private void buttonTest_Click(object sender, EventArgs e)
+        {
+            double ca = 1.0f;
+            elem.function = x => -(2 * Math.Sin(x) + Math.Cos(10 * x));
+            elem.xLeft = 0.0f;
+            elem.xRight = 3.0f;
+            Method strong = new Strongin(elem.function, elem.xLeft, elem.xRight, 10000, 1e-5, 2);
+            bwStatus.RunWorkerAsync(strong);
+        }
     }
 }

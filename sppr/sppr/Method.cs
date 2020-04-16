@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.ComponentModel;
 using ZedGraph;
 
@@ -8,35 +10,52 @@ namespace sppr
 {
     abstract class Method
     {
+        public class Report
+        {
+            public SortedList<double, double> minimum;
+            public SortedList<int, double> iterations;
+            public int onStep;
+            public int ofStep;
+
+            public Report() { }
+            public Report(SortedList<double, double> _minimum, SortedList<int, double> _iterations, int _onStep, int _ofStep)
+            {
+                minimum = _minimum;
+                iterations = _iterations;
+                onStep = _onStep;
+                ofStep = _ofStep;
+            }
+        }
+        protected const double accurancy = 1e-20;
         /// <summary>
         /// input data
         /// </summary>
         /// 
         protected int _maxSteps { get; set; }
 
-        protected Func<float, float> _function = null;
+        protected Func<double, double> _function = null;
 
         /// <summary>
         /// output data
         /// </summary>
-        protected SortedList<float, float> _points = null; // (x,y) sorted by x for convenience
-        protected SortedList<int, float> _xId = null; // (id,x)
+        protected SortedList<double, double> _points = null; // (x,y) sorted by x for convenience
+        protected SortedList<int, double> _xId = null; // (id,x)
 
         protected List<int> _curMinId = null;
         int _steps;
-        protected Method (Func<float, float> curFunction, float xBegin, float xEnd, int maxSteps)
+        protected Method(Func<double, double> curFunction, double xBegin, double xEnd, int maxSteps)
         {
             _function = curFunction;
             _maxSteps = maxSteps;
             _steps = 1;
-            _points = new SortedList<float, float>();
-            _xId = new SortedList<int, float>();
+            _points = new SortedList<double, double>();
+            _xId = new SortedList<int, double>();
             _curMinId = new List<int>();
             addPoint(xBegin);
             addPoint(xEnd);
         }
 
-        protected void addPoint(float x)
+        protected void addPoint(double x)
         {
             if (_points.Count == 0)
             {
@@ -48,27 +67,39 @@ namespace sppr
 
             _points.Add(x, _function(x));
             _xId.Add(_xId.Count + 1, x);
-            if (Math.Abs(_points[x] - _points[_xId[_curMinId[0]]]) < 1e-5)
+            if (Math.Abs(_points[x] - _points[_xId[_curMinId[0]]]) < accurancy)
             {
                 _curMinId.Add(_xId.Count);
             }
-            else if (_points[_xId[_curMinId[0]]] < _points[x])
+            else if (_points[_xId[_curMinId[0]]] > _points[x])
             {
                 _curMinId.Clear();
                 _curMinId.Add(_xId.Count);
             }
 
         }
+        private Report getReport()
+        {
+            var minimum = new SortedList<double, double>();
+            for (var it = _curMinId.GetEnumerator(); ;)
+            {
+                if (!it.MoveNext()) break;
+                minimum.Add(_xId[it.Current], _points[_xId[it.Current]]);
+            }
 
-        public void solve(BackgroundWorker worker)
+            return new Report( minimum, _xId, _steps, _maxSteps);
+        }
+        public Report solve(BackgroundWorker worker)
         {
             for (; _steps < _maxSteps; _steps++)
             {
-                worker.ReportProgress((int)((float)_steps / _maxSteps * 100));
-                step(_steps);
+                worker.ReportProgress((int)((double)_steps / _maxSteps * 100));
+                if (!step(_steps)) break;
             }
+
+            return getReport();
         }
 
-        protected abstract void step(int stepId);
+        protected abstract bool step(int stepId);
     }
 }

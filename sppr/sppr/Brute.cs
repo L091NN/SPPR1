@@ -1,16 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace sppr
 {
     class Brute : Method
     {
-        public Brute (Func<float, float> curFunction, float xBegin, float xEnd, int maxSteps) : base(curFunction, xBegin, xEnd, maxSteps)
+        public Brute(Func<double, double> curFunction, double xBegin, double xEnd, int maxSteps) : base(curFunction, xBegin, xEnd, maxSteps)
         {
         }
-        protected override void step(int stepId)
+        protected override bool step(int stepId)
         {
+            return true;
         }
     }
 }
