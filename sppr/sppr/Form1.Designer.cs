@@ -47,7 +47,7 @@
             this.panelDown.Location = new System.Drawing.Point(0, 1005);
             this.panelDown.Name = "panelDown";
             this.panelDown.Size = new System.Drawing.Size(1745, 20);
-            this.panelDown.TabIndex = 0;
+            this.panelDown.TabIndex = 2;
             // 
             // pbSolve
             // 
@@ -55,7 +55,7 @@
             this.pbSolve.Location = new System.Drawing.Point(75, 0);
             this.pbSolve.Name = "pbSolve";
             this.pbSolve.Size = new System.Drawing.Size(1670, 20);
-            this.pbSolve.TabIndex = 2;
+            this.pbSolve.TabIndex = 0;
             // 
             // buttonTest
             // 
@@ -92,7 +92,7 @@
             this.panelHead.Location = new System.Drawing.Point(0, 0);
             this.panelHead.Name = "panelHead";
             this.panelHead.Size = new System.Drawing.Size(1745, 100);
-            this.panelHead.TabIndex = 2;
+            this.panelHead.TabIndex = 0;
             // 
             // label1
             // 

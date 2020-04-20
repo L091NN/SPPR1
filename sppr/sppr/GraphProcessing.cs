@@ -25,10 +25,9 @@ namespace sppr
 
             var step = (elem.xRight - elem.xLeft) / w;
 
-            for (int i = 0; i < w; i++)
+            for (double i = elem.xLeft; i < elem.xRight; i+= step)
             {
-                var curX = step * i;
-                ppList.Add(new PointPair(curX, elem.function(curX)));
+                ppList.Add(new PointPair(i, elem.function(i)));
             }
 
             pane.AddCurve("", ppList, Color.FromArgb(129, 57, 206), ZedGraph.SymbolType.None);
@@ -50,5 +49,6 @@ namespace sppr
 
             }
         }
+
     }
 }

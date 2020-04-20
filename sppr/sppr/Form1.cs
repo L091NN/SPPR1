@@ -26,7 +26,7 @@ namespace sppr
         private void bwStatus_DoWork(object sender, DoWorkEventArgs e)
         {
             result = ((Method)e.Argument).solve(bwStatus);
-            if (bwStatus.CancellationPending != true) ;
+            //if (bwStatus.CancellationPending != true);
         }
 
         private void bwStatus_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -52,10 +52,10 @@ namespace sppr
         private void buttonTest_Click(object sender, EventArgs e)
         {
             double ca = 1.0f;
-            elem.function = x => -(2 * Math.Sin(x) + Math.Cos(10 * x));
-            elem.xLeft = 0.0f;
+            elem.function = x => -(2 * Math.Sin(10 * x) + Math.Cos(x * x * x));
+            elem.xLeft = -3.0f;
             elem.xRight = 3.0f;
-            Method strong = new Strongin(elem.function, elem.xLeft, elem.xRight, 10000, 1e-5, 2);
+            Method strong = new Strongin(elem.function, elem.xLeft, elem.xRight, 10000, 1e-5, 5);
             bwStatus.RunWorkerAsync(strong);
         }
     }

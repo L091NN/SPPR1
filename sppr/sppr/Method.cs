@@ -26,7 +26,7 @@ namespace sppr
                 ofStep = _ofStep;
             }
         }
-        protected const double accurancy = 1e-20;
+        protected double accurancy = 1e-5;
         /// <summary>
         /// input data
         /// </summary>
@@ -67,11 +67,7 @@ namespace sppr
 
             _points.Add(x, _function(x));
             _xId.Add(_xId.Count + 1, x);
-            if (Math.Abs(_points[x] - _points[_xId[_curMinId[0]]]) < accurancy)
-            {
-                _curMinId.Add(_xId.Count);
-            }
-            else if (_points[_xId[_curMinId[0]]] > _points[x])
+            if (_points[_xId[_curMinId[0]]] > _points[x])
             {
                 _curMinId.Clear();
                 _curMinId.Add(_xId.Count);
