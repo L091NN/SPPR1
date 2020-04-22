@@ -90,6 +90,7 @@ namespace sppr
             for (; _steps < _maxSteps; _steps++)
             {
                 worker.ReportProgress((int)((double)_steps / _maxSteps * 100));
+                if (worker.CancellationPending) return null;
                 if (!step(_steps)) break;
             }
 

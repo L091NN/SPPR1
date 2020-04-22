@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using ZedGraph;
+using System.ComponentModel;
 
 namespace sppr
 {
@@ -16,7 +17,7 @@ namespace sppr
     }
     class GraphProcessing
     {
-        public void drawFunction(ZedGraphControl zgControl, FElem elem)
+        public void drawFunction(ZedGraphControl zgControl, FElem elem, Color lineColor, BackgroundWorker worker)
         {
             var pane = zgControl.GraphPane;
             var w = zgControl.Width * 100;
@@ -27,10 +28,12 @@ namespace sppr
 
             for (double i = elem.xLeft; i < elem.xRight; i+= step)
             {
+                worker.ReportProgress((int)((double)(i - elem.xLeft) / (elem.xRight - elem.xLeft) * 100));
+                if (worker.CancellationPending) return;
                 ppList.Add(new PointPair(i, elem.function(i)));
             }
 
-            pane.AddCurve("", ppList, Color.FromArgb(129, 57, 206), ZedGraph.SymbolType.None);
+            pane.AddCurve("", ppList, lineColor, ZedGraph.SymbolType.None);
             zgControl.AxisChange();
             zgControl.Invalidate();
         }

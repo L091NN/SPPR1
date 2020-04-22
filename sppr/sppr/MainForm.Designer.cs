@@ -29,14 +29,19 @@
         private void InitializeComponent()
         {
             this.panelHeader = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.panelButtom = new System.Windows.Forms.Panel();
+            this.panelStatus = new System.Windows.Forms.Panel();
             this.panelLeft = new System.Windows.Forms.Panel();
+            this.buttonChangePerspectiveLeft = new System.Windows.Forms.Button();
             this.panelRight = new System.Windows.Forms.Panel();
+            this.buttonChangePerspectiveRight = new System.Windows.Forms.Button();
             this.panelAction = new System.Windows.Forms.Panel();
+            this.labelStage = new System.Windows.Forms.Label();
+            this.zedGraphControlMain = new ZedGraph.ZedGraphControl();
             this.panelActionHideButtom = new System.Windows.Forms.Panel();
             this.buttonActionButtom = new System.Windows.Forms.Button();
             this.panelActionButtom = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.panelActionButtomParam = new System.Windows.Forms.Panel();
             this.panelActionButtomE = new System.Windows.Forms.Panel();
             this.labelGuidanceE = new System.Windows.Forms.Label();
@@ -61,6 +66,7 @@
             this.textBoxB = new System.Windows.Forms.TextBox();
             this.labelCosBegin = new System.Windows.Forms.Label();
             this.textBoxA = new System.Windows.Forms.TextBox();
+            this.labelFunc = new System.Windows.Forms.Label();
             this.panelFuncBegin = new System.Windows.Forms.Panel();
             this.panelActionRun = new System.Windows.Forms.Panel();
             this.buttonRun = new System.Windows.Forms.Button();
@@ -72,8 +78,12 @@
             this.panelRightAnimation = new System.ComponentModel.BackgroundWorker();
             this.panelActionButtomAnimation = new System.ComponentModel.BackgroundWorker();
             this.panelHeaderAnimation = new System.ComponentModel.BackgroundWorker();
-            this.label1 = new System.Windows.Forms.Label();
+            this.TextAnimation = new System.ComponentModel.BackgroundWorker();
+            this.panelCloser = new System.ComponentModel.BackgroundWorker();
+            this.runMethod = new System.ComponentModel.BackgroundWorker();
             this.panelButtom.SuspendLayout();
+            this.panelLeft.SuspendLayout();
+            this.panelRight.SuspendLayout();
             this.panelAction.SuspendLayout();
             this.panelActionHideButtom.SuspendLayout();
             this.panelActionButtom.SuspendLayout();
@@ -94,47 +104,83 @@
             this.panelHeader.Size = new System.Drawing.Size(1264, 50);
             this.panelHeader.TabIndex = 4;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(192, 7);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(91, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "TestAnimation";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // panelButtom
             // 
-            this.panelButtom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.panelButtom.Controls.Add(this.button1);
+            this.panelButtom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(0)))), ((int)(((byte)(30)))));
+            this.panelButtom.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelButtom.Controls.Add(this.panelStatus);
             this.panelButtom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelButtom.Location = new System.Drawing.Point(0, 651);
             this.panelButtom.Name = "panelButtom";
             this.panelButtom.Size = new System.Drawing.Size(1264, 30);
             this.panelButtom.TabIndex = 3;
             // 
+            // panelStatus
+            // 
+            this.panelStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelStatus.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelStatus.Location = new System.Drawing.Point(0, 0);
+            this.panelStatus.Name = "panelStatus";
+            this.panelStatus.Size = new System.Drawing.Size(0, 28);
+            this.panelStatus.TabIndex = 0;
+            // 
             // panelLeft
             // 
             this.panelLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(187)))), ((int)(((byte)(45)))));
+            this.panelLeft.Controls.Add(this.buttonChangePerspectiveLeft);
             this.panelLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelLeft.Location = new System.Drawing.Point(0, 50);
             this.panelLeft.Name = "panelLeft";
             this.panelLeft.Size = new System.Drawing.Size(70, 601);
             this.panelLeft.TabIndex = 2;
             // 
+            // buttonChangePerspectiveLeft
+            // 
+            this.buttonChangePerspectiveLeft.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonChangePerspectiveLeft.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonChangePerspectiveLeft.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonChangePerspectiveLeft.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonChangePerspectiveLeft.Location = new System.Drawing.Point(0, 0);
+            this.buttonChangePerspectiveLeft.Name = "buttonChangePerspectiveLeft";
+            this.buttonChangePerspectiveLeft.Size = new System.Drawing.Size(70, 601);
+            this.buttonChangePerspectiveLeft.TabIndex = 0;
+            this.buttonChangePerspectiveLeft.TabStop = false;
+            this.buttonChangePerspectiveLeft.Text = "◀";
+            this.buttonChangePerspectiveLeft.UseVisualStyleBackColor = true;
+            this.buttonChangePerspectiveLeft.Click += new System.EventHandler(this.buttonChangePerspectiveLeft_Click);
+            // 
             // panelRight
             // 
             this.panelRight.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(42)))), ((int)(((byte)(108)))));
+            this.panelRight.Controls.Add(this.buttonChangePerspectiveRight);
             this.panelRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.panelRight.Location = new System.Drawing.Point(1194, 50);
             this.panelRight.Name = "panelRight";
             this.panelRight.Size = new System.Drawing.Size(70, 601);
             this.panelRight.TabIndex = 1;
             // 
+            // buttonChangePerspectiveRight
+            // 
+            this.buttonChangePerspectiveRight.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonChangePerspectiveRight.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonChangePerspectiveRight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonChangePerspectiveRight.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonChangePerspectiveRight.Location = new System.Drawing.Point(0, 0);
+            this.buttonChangePerspectiveRight.Name = "buttonChangePerspectiveRight";
+            this.buttonChangePerspectiveRight.Size = new System.Drawing.Size(70, 601);
+            this.buttonChangePerspectiveRight.TabIndex = 0;
+            this.buttonChangePerspectiveRight.TabStop = false;
+            this.buttonChangePerspectiveRight.Text = "▶";
+            this.buttonChangePerspectiveRight.UseVisualStyleBackColor = true;
+            this.buttonChangePerspectiveRight.Click += new System.EventHandler(this.buttonChangePerspectiveRight_Click);
+            this.buttonChangePerspectiveRight.MouseLeave += new System.EventHandler(this.buttonChangePerspectiveRight_MouseLeave);
+            this.buttonChangePerspectiveRight.MouseMove += new System.Windows.Forms.MouseEventHandler(this.buttonChangePerspectiveRight_MouseMove);
+            // 
             // panelAction
             // 
             this.panelAction.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            this.panelAction.Controls.Add(this.labelStage);
+            this.panelAction.Controls.Add(this.zedGraphControlMain);
             this.panelAction.Controls.Add(this.panelActionHideButtom);
             this.panelAction.Controls.Add(this.panelActionButtom);
             this.panelAction.Controls.Add(this.labelRecomendation);
@@ -144,6 +190,30 @@
             this.panelAction.Name = "panelAction";
             this.panelAction.Size = new System.Drawing.Size(1124, 601);
             this.panelAction.TabIndex = 0;
+            // 
+            // labelStage
+            // 
+            this.labelStage.AutoSize = true;
+            this.labelStage.Dock = System.Windows.Forms.DockStyle.Top;
+            this.labelStage.Font = new System.Drawing.Font("Microsoft Sans Serif", 75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelStage.ForeColor = System.Drawing.SystemColors.Control;
+            this.labelStage.Location = new System.Drawing.Point(0, 339);
+            this.labelStage.Name = "labelStage";
+            this.labelStage.Size = new System.Drawing.Size(890, 113);
+            this.labelStage.TabIndex = 5;
+            this.labelStage.Text = "Please run method";
+            this.labelStage.Visible = false;
+            // 
+            // zedGraphControlMain
+            // 
+            this.zedGraphControlMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.zedGraphControlMain.IsShowPointValues = false;
+            this.zedGraphControlMain.Location = new System.Drawing.Point(0, 339);
+            this.zedGraphControlMain.Name = "zedGraphControlMain";
+            this.zedGraphControlMain.PointValueFormat = "G";
+            this.zedGraphControlMain.Size = new System.Drawing.Size(1124, 36);
+            this.zedGraphControlMain.TabIndex = 4;
+            this.zedGraphControlMain.Visible = false;
             // 
             // panelActionHideButtom
             // 
@@ -167,6 +237,7 @@
             this.buttonActionButtom.Name = "buttonActionButtom";
             this.buttonActionButtom.Size = new System.Drawing.Size(1124, 26);
             this.buttonActionButtom.TabIndex = 0;
+            this.buttonActionButtom.TabStop = false;
             this.buttonActionButtom.Text = "▼";
             this.buttonActionButtom.UseVisualStyleBackColor = true;
             this.buttonActionButtom.Click += new System.EventHandler(this.buttonActionButtom_Click);
@@ -181,6 +252,18 @@
             this.panelActionButtom.Size = new System.Drawing.Size(1124, 200);
             this.panelActionButtom.TabIndex = 1;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label1.Location = new System.Drawing.Point(250, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(51, 20);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "label1";
+            // 
             // panelActionButtomParam
             // 
             this.panelActionButtomParam.Controls.Add(this.panelActionButtomE);
@@ -191,7 +274,7 @@
             this.panelActionButtomParam.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelActionButtomParam.Location = new System.Drawing.Point(0, 0);
             this.panelActionButtomParam.Name = "panelActionButtomParam";
-            this.panelActionButtomParam.Size = new System.Drawing.Size(190, 200);
+            this.panelActionButtomParam.Size = new System.Drawing.Size(250, 200);
             this.panelActionButtomParam.TabIndex = 0;
             // 
             // panelActionButtomE
@@ -200,10 +283,10 @@
             this.panelActionButtomE.Controls.Add(this.labelGuidanceE);
             this.panelActionButtomE.Controls.Add(this.textBoxE);
             this.panelActionButtomE.Controls.Add(this.labelE);
-            this.panelActionButtomE.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelActionButtomE.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelActionButtomE.Location = new System.Drawing.Point(0, 120);
             this.panelActionButtomE.Name = "panelActionButtomE";
-            this.panelActionButtomE.Size = new System.Drawing.Size(190, 80);
+            this.panelActionButtomE.Size = new System.Drawing.Size(250, 30);
             this.panelActionButtomE.TabIndex = 4;
             this.panelActionButtomE.MouseLeave += new System.EventHandler(this.panelActionButtomE_MouseLeave);
             this.panelActionButtomE.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelActionButtomE_MouseMove);
@@ -232,6 +315,7 @@
             this.textBoxE.Size = new System.Drawing.Size(12, 17);
             this.textBoxE.TabIndex = 0;
             this.textBoxE.Text = "2";
+            this.textBoxE.TextChanged += new System.EventHandler(this.textBoxA_TextChanged);
             // 
             // labelE
             // 
@@ -254,7 +338,7 @@
             this.panelActionButtomR.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelActionButtomR.Location = new System.Drawing.Point(0, 90);
             this.panelActionButtomR.Name = "panelActionButtomR";
-            this.panelActionButtomR.Size = new System.Drawing.Size(190, 30);
+            this.panelActionButtomR.Size = new System.Drawing.Size(250, 30);
             this.panelActionButtomR.TabIndex = 0;
             this.panelActionButtomR.MouseLeave += new System.EventHandler(this.panelActionButtomR_MouseLeave);
             this.panelActionButtomR.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelActionButtomR_MouseMove);
@@ -283,6 +367,7 @@
             this.textBoxR.Size = new System.Drawing.Size(12, 17);
             this.textBoxR.TabIndex = 0;
             this.textBoxR.Text = "2";
+            this.textBoxR.TextChanged += new System.EventHandler(this.textBoxA_TextChanged);
             // 
             // labelR
             // 
@@ -307,7 +392,7 @@
             this.panelActionButtomRegion.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelActionButtomRegion.Location = new System.Drawing.Point(0, 60);
             this.panelActionButtomRegion.Name = "panelActionButtomRegion";
-            this.panelActionButtomRegion.Size = new System.Drawing.Size(190, 30);
+            this.panelActionButtomRegion.Size = new System.Drawing.Size(250, 30);
             this.panelActionButtomRegion.TabIndex = 1;
             // 
             // labelRegionEnd
@@ -332,8 +417,9 @@
             this.textBoxXEnd.Location = new System.Drawing.Point(60, 0);
             this.textBoxXEnd.Name = "textBoxXEnd";
             this.textBoxXEnd.Size = new System.Drawing.Size(12, 17);
-            this.textBoxXEnd.TabIndex = 1;
+            this.textBoxXEnd.TabIndex = 6;
             this.textBoxXEnd.Text = "2";
+            this.textBoxXEnd.TextChanged += new System.EventHandler(this.textBoxA_TextChanged);
             // 
             // labelZpt
             // 
@@ -357,8 +443,9 @@
             this.textBoxXBegin.Location = new System.Drawing.Point(36, 0);
             this.textBoxXBegin.Name = "textBoxXBegin";
             this.textBoxXBegin.Size = new System.Drawing.Size(12, 17);
-            this.textBoxXBegin.TabIndex = 3;
+            this.textBoxXBegin.TabIndex = 5;
             this.textBoxXBegin.Text = "2";
+            this.textBoxXBegin.TextChanged += new System.EventHandler(this.textBoxA_TextChanged);
             // 
             // labelRegionBegin
             // 
@@ -383,11 +470,12 @@
             this.panelActionButtomParamFunc.Controls.Add(this.textBoxB);
             this.panelActionButtomParamFunc.Controls.Add(this.labelCosBegin);
             this.panelActionButtomParamFunc.Controls.Add(this.textBoxA);
+            this.panelActionButtomParamFunc.Controls.Add(this.labelFunc);
             this.panelActionButtomParamFunc.Controls.Add(this.panelFuncBegin);
             this.panelActionButtomParamFunc.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelActionButtomParamFunc.Location = new System.Drawing.Point(0, 30);
             this.panelActionButtomParamFunc.Name = "panelActionButtomParamFunc";
-            this.panelActionButtomParamFunc.Size = new System.Drawing.Size(190, 30);
+            this.panelActionButtomParamFunc.Size = new System.Drawing.Size(250, 30);
             this.panelActionButtomParamFunc.TabIndex = 2;
             // 
             // labelSinEnd
@@ -396,7 +484,7 @@
             this.labelSinEnd.Dock = System.Windows.Forms.DockStyle.Left;
             this.labelSinEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelSinEnd.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.labelSinEnd.Location = new System.Drawing.Point(147, 0);
+            this.labelSinEnd.Location = new System.Drawing.Point(190, 0);
             this.labelSinEnd.Name = "labelSinEnd";
             this.labelSinEnd.Size = new System.Drawing.Size(20, 18);
             this.labelSinEnd.TabIndex = 0;
@@ -409,11 +497,12 @@
             this.textBoxD.Dock = System.Windows.Forms.DockStyle.Left;
             this.textBoxD.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxD.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBoxD.Location = new System.Drawing.Point(137, 0);
+            this.textBoxD.Location = new System.Drawing.Point(180, 0);
             this.textBoxD.Name = "textBoxD";
             this.textBoxD.Size = new System.Drawing.Size(10, 17);
-            this.textBoxD.TabIndex = 1;
+            this.textBoxD.TabIndex = 4;
             this.textBoxD.Text = "5";
+            this.textBoxD.TextChanged += new System.EventHandler(this.textBoxA_TextChanged);
             // 
             // labelSinBegin
             // 
@@ -421,7 +510,7 @@
             this.labelSinBegin.Dock = System.Windows.Forms.DockStyle.Left;
             this.labelSinBegin.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelSinBegin.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.labelSinBegin.Location = new System.Drawing.Point(105, 0);
+            this.labelSinBegin.Location = new System.Drawing.Point(148, 0);
             this.labelSinBegin.Name = "labelSinBegin";
             this.labelSinBegin.Size = new System.Drawing.Size(32, 18);
             this.labelSinBegin.TabIndex = 2;
@@ -434,11 +523,12 @@
             this.textBoxC.Dock = System.Windows.Forms.DockStyle.Left;
             this.textBoxC.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxC.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBoxC.Location = new System.Drawing.Point(95, 0);
+            this.textBoxC.Location = new System.Drawing.Point(138, 0);
             this.textBoxC.Name = "textBoxC";
             this.textBoxC.Size = new System.Drawing.Size(10, 17);
             this.textBoxC.TabIndex = 3;
             this.textBoxC.Text = "3";
+            this.textBoxC.TextChanged += new System.EventHandler(this.textBoxA_TextChanged);
             // 
             // labelCosEnd
             // 
@@ -446,7 +536,7 @@
             this.labelCosEnd.Dock = System.Windows.Forms.DockStyle.Left;
             this.labelCosEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelCosEnd.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.labelCosEnd.Location = new System.Drawing.Point(66, 0);
+            this.labelCosEnd.Location = new System.Drawing.Point(109, 0);
             this.labelCosEnd.Name = "labelCosEnd";
             this.labelCosEnd.Size = new System.Drawing.Size(29, 18);
             this.labelCosEnd.TabIndex = 4;
@@ -459,11 +549,12 @@
             this.textBoxB.Dock = System.Windows.Forms.DockStyle.Left;
             this.textBoxB.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxB.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBoxB.Location = new System.Drawing.Point(55, 0);
+            this.textBoxB.Location = new System.Drawing.Point(98, 0);
             this.textBoxB.Name = "textBoxB";
             this.textBoxB.Size = new System.Drawing.Size(11, 17);
-            this.textBoxB.TabIndex = 5;
+            this.textBoxB.TabIndex = 2;
             this.textBoxB.Text = "3";
+            this.textBoxB.TextChanged += new System.EventHandler(this.textBoxA_TextChanged);
             // 
             // labelCosBegin
             // 
@@ -471,7 +562,7 @@
             this.labelCosBegin.Dock = System.Windows.Forms.DockStyle.Left;
             this.labelCosBegin.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelCosBegin.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.labelCosBegin.Location = new System.Drawing.Point(17, 0);
+            this.labelCosBegin.Location = new System.Drawing.Point(60, 0);
             this.labelCosBegin.Name = "labelCosBegin";
             this.labelCosBegin.Size = new System.Drawing.Size(38, 18);
             this.labelCosBegin.TabIndex = 6;
@@ -479,16 +570,29 @@
             // 
             // textBoxA
             // 
-            this.textBoxA.BackColor = System.Drawing.SystemColors.MenuText;
+            this.textBoxA.BackColor = System.Drawing.Color.Red;
             this.textBoxA.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxA.Dock = System.Windows.Forms.DockStyle.Left;
             this.textBoxA.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxA.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBoxA.Location = new System.Drawing.Point(5, 0);
+            this.textBoxA.Location = new System.Drawing.Point(48, 0);
             this.textBoxA.Name = "textBoxA";
             this.textBoxA.Size = new System.Drawing.Size(12, 17);
-            this.textBoxA.TabIndex = 7;
+            this.textBoxA.TabIndex = 1;
             this.textBoxA.Text = "2";
+            this.textBoxA.TextChanged += new System.EventHandler(this.textBoxA_TextChanged);
+            // 
+            // labelFunc
+            // 
+            this.labelFunc.AutoSize = true;
+            this.labelFunc.Dock = System.Windows.Forms.DockStyle.Left;
+            this.labelFunc.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelFunc.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.labelFunc.Location = new System.Drawing.Point(5, 0);
+            this.labelFunc.Name = "labelFunc";
+            this.labelFunc.Size = new System.Drawing.Size(43, 18);
+            this.labelFunc.TabIndex = 9;
+            this.labelFunc.Text = "F(x)=";
             // 
             // panelFuncBegin
             // 
@@ -506,18 +610,21 @@
             this.panelActionRun.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelActionRun.Location = new System.Drawing.Point(0, 0);
             this.panelActionRun.Name = "panelActionRun";
-            this.panelActionRun.Size = new System.Drawing.Size(190, 30);
+            this.panelActionRun.Size = new System.Drawing.Size(250, 30);
             this.panelActionRun.TabIndex = 5;
             // 
             // buttonRun
             // 
             this.buttonRun.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonRun.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonRun.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonRun.Location = new System.Drawing.Point(120, 0);
             this.buttonRun.Name = "buttonRun";
-            this.buttonRun.Size = new System.Drawing.Size(68, 28);
-            this.buttonRun.TabIndex = 4;
+            this.buttonRun.Size = new System.Drawing.Size(128, 28);
+            this.buttonRun.TabIndex = 1;
             this.buttonRun.Text = "RUN";
             this.buttonRun.UseVisualStyleBackColor = true;
+            this.buttonRun.Click += new System.EventHandler(this.buttonRun_Click);
             // 
             // labelNameMethod
             // 
@@ -529,7 +636,7 @@
             this.labelNameMethod.Location = new System.Drawing.Point(0, 0);
             this.labelNameMethod.Name = "labelNameMethod";
             this.labelNameMethod.Size = new System.Drawing.Size(120, 27);
-            this.labelNameMethod.TabIndex = 3;
+            this.labelNameMethod.TabIndex = 0;
             this.labelNameMethod.Text = "BruteForce";
             // 
             // labelRecomendation
@@ -590,16 +697,27 @@
             this.panelHeaderAnimation.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.panelHeaderAnimation_ProgressChanged);
             this.panelHeaderAnimation.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.panelHeaderAnimation_RunWorkerCompleted);
             // 
-            // label1
+            // TextAnimation
             // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(190, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "label1";
+            this.TextAnimation.WorkerReportsProgress = true;
+            this.TextAnimation.DoWork += new System.ComponentModel.DoWorkEventHandler(this.TextAnimation_DoWork);
+            this.TextAnimation.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.TextAnimation_ProgressChanged);
+            this.TextAnimation.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.TextAnimation_RunWorkerCompleted);
+            // 
+            // panelCloser
+            // 
+            this.panelCloser.WorkerReportsProgress = true;
+            this.panelCloser.DoWork += new System.ComponentModel.DoWorkEventHandler(this.panelCloser_DoWork);
+            this.panelCloser.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.panelCloser_ProgressChanged);
+            this.panelCloser.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.panelCloser_RunWorkerCompleted);
+            // 
+            // runMethod
+            // 
+            this.runMethod.WorkerReportsProgress = true;
+            this.runMethod.WorkerSupportsCancellation = true;
+            this.runMethod.DoWork += new System.ComponentModel.DoWorkEventHandler(this.runMethod_DoWork);
+            this.runMethod.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.runMethod_ProgressChanged);
+            this.runMethod.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.runMethod_RunWorkerCompleted);
             // 
             // MainForm
             // 
@@ -616,6 +734,8 @@
             this.Text = "Decision making system";
             this.Resize += new System.EventHandler(this.MainForm_Resize);
             this.panelButtom.ResumeLayout(false);
+            this.panelLeft.ResumeLayout(false);
+            this.panelRight.ResumeLayout(false);
             this.panelAction.ResumeLayout(false);
             this.panelAction.PerformLayout();
             this.panelActionHideButtom.ResumeLayout(false);
@@ -644,7 +764,6 @@
         private System.Windows.Forms.Panel panelRight;
         private System.Windows.Forms.Panel panelAction;
         private System.ComponentModel.BackgroundWorker panelButtomAnimation;
-        private System.Windows.Forms.Button button1;
         private System.ComponentModel.BackgroundWorker panelLeftAnimation;
         private System.ComponentModel.BackgroundWorker panelRightAnimation;
         private System.ComponentModel.BackgroundWorker panelActionButtomAnimation;
@@ -683,5 +802,14 @@
         private System.Windows.Forms.Panel panelActionRun;
         private System.Windows.Forms.Button buttonRun;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button buttonChangePerspectiveLeft;
+        private System.Windows.Forms.Button buttonChangePerspectiveRight;
+        private System.Windows.Forms.Panel panelStatus;
+        private System.ComponentModel.BackgroundWorker TextAnimation;
+        private System.ComponentModel.BackgroundWorker panelCloser;
+        private System.ComponentModel.BackgroundWorker runMethod;
+        private System.Windows.Forms.Label labelFunc;
+        private ZedGraph.ZedGraphControl zedGraphControlMain;
+        private System.Windows.Forms.Label labelStage;
     }
 }
