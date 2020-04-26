@@ -16,6 +16,11 @@ namespace sppr
             return 255 << 24 | (r << 16) | (g << 8) | (b << 0);
         }
 
+        public Color invert(Color c)
+        {
+            return Color.FromArgb(255 - c.R, 255 - c.G, 255 - c.B);
+        }
+
         private void changeColor(List<Color> colors, BackgroundWorker worker, int sleep = 5)
         {
             var color = colors.GetEnumerator();
@@ -69,7 +74,7 @@ namespace sppr
 
         private void panelHeaderAnimation_DoWork(object sender, DoWorkEventArgs e)
         {
-            changeColor((List<Color>)e.Argument, panelHeaderAnimation, 15);
+            changeColor((List<Color>)e.Argument, panelHeaderAnimation, 11);
         }
 
         private void panelHeaderAnimation_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -98,7 +103,7 @@ namespace sppr
 
         private void panelLeftAnimation_DoWork(object sender, DoWorkEventArgs e)
         {
-            changeColor((List<Color>)e.Argument, panelLeftAnimation, 15);
+            changeColor((List<Color>)e.Argument, panelLeftAnimation, 11);
         }
 
         private void panelLeftAnimation_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -113,7 +118,7 @@ namespace sppr
 
         private void panelRightAnimation_DoWork(object sender, DoWorkEventArgs e)
         {
-            changeColor((List<Color>)e.Argument, panelRightAnimation, 15);
+            changeColor((List<Color>)e.Argument, panelRightAnimation, 11);
         }
 
         private void panelRightAnimation_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -128,7 +133,7 @@ namespace sppr
 
         private void panelActionButtomAnimation_DoWork(object sender, DoWorkEventArgs e)
         {
-            changeColor((List<Color>)e.Argument, panelActionButtomAnimation, 15);
+            changeColor((List<Color>)e.Argument, panelActionButtomAnimation, 11);
         }
 
         private void panelActionButtomAnimation_ProgressChanged(object sender, ProgressChangedEventArgs e)

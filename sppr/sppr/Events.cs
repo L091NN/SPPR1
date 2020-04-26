@@ -14,6 +14,7 @@ namespace sppr
     {
         public Method.Report report;
         public ZedGraph.ZedGraphControl graphControl;
+
     }
 
     enum Perspective
@@ -29,6 +30,7 @@ namespace sppr
         public Color colorPanel;
         public Color colorText;
         public Color colorPane;
+        public Color colorLine;
         public bool withE;
         public bool withR;
         public bool withPoint;
@@ -41,17 +43,20 @@ namespace sppr
         public double b;
         public double c;
         public double d;
+        public int maxStepCount;
         public MethodInfo methodInfo;
-        public Func<double, double> func;
+        public FElem funcInfo;
 
-        public PerspectiveInfo(string _name, Color _colorBack, Color _colorPanel, Color _colorText, Color _colorPane, bool _withE, bool _withR, bool _withPoint, bool _withLine,
-            double _e, double _r, double _xLeft, double _xRight, double _a, double _b, double _c, double _d)
+        public PerspectiveInfo(string _name, Color _colorBack, Color _colorPanel, Color _colorText,
+        Color _colorPane, Color _colorLine, bool _withE, bool _withR, bool _withPoint, bool _withLine,
+        double _e, double _r, double _xLeft, double _xRight, double _a, double _b, double _c, double _d, int _maxStepCount)
         {
             name = _name;
             colorBack = _colorBack;
             colorPanel = _colorPanel;
             colorText = _colorText;
             colorPane = _colorPane;
+            colorLine = _colorLine;
             withE = _withE;
             withR = _withR;
             withPoint = _withPoint;
@@ -64,6 +69,7 @@ namespace sppr
             b = _b;
             c = _c;
             d = _d;
+            maxStepCount = _maxStepCount;
             methodInfo = new MethodInfo();
             methodInfo.graphControl = new ZedGraph.ZedGraphControl();
             changePane();
@@ -100,6 +106,11 @@ namespace sppr
 
             pane.XAxis.TitleFontSpec.FontColor = colorPane;
             pane.YAxis.TitleFontSpec.FontColor = colorPane;
+
+            pane.XAxis.IsShowGrid = false;
+            pane.YAxis.IsShowGrid = false;
+
+            //pane.XAxis.IsShowMinorGrid = true;
         }
     }
     partial class MainForm
@@ -112,15 +123,16 @@ namespace sppr
         double status;
         string stage;
         double remainder;
+        PointF oldPointGraph;
 
         protected void initPerspectives()
         {
-            bruteForce = new PerspectiveInfo("Bruteforce", style.colors["black.vs"], style.colors["red.king yna"], style.colors["white.argon"], style.colors["white.argon"],
-                false, false, false, false, -1, -1, -2, 2, 2, 3, 3, 5);
-            piacovsky = new PerspectiveInfo("Piyakovsky method", style.colors["black.vs"], style.colors["blue.king yna"], style.colors["white.argon"], style.colors["white.argon"],
-                true, true, false, false, 0.001, 3, -2, 2, 2, 3, 3, 5);
-            strongin = new PerspectiveInfo("Strongin method", style.colors["black.vs"], style.colors["yellow.king yna"], style.colors["black.argon"], style.colors["white.argon"],
-                true, true, false, false, 0.001, 3, -2, 2, 2, 3, 3, 5);
+            bruteForce = new PerspectiveInfo("Bruteforce", style.colors["black.vs"], style.colors["red.king yna"], style.colors["white.argon"],
+            style.colors["white.argon"], style.colors["red.king yna"], false, false, false, false, -1, -1, -2, 2, 2, 3, 3, 5, 100);
+            piacovsky = new PerspectiveInfo("Piyavsky method", style.colors["black.vs"], style.colors["blue.king yna"], style.colors["white.argon"],
+            style.colors["white.argon"], style.colors["blue.vs"], true, true, false, false, 0.001, 3, -2, 2, 2, 3, 3, 5, 100);
+            strongin = new PerspectiveInfo("Strongin method", style.colors["black.vs"], style.colors["yellow.king yna"], style.colors["black.argon"],
+            style.colors["white.argon"], style.colors["yellow.king yna"], true, true, false, false, 0.001, 3, -2, 2, 2, 3, 3, 5, 100);
             perspective = bruteForce;
         }
 
@@ -141,6 +153,7 @@ namespace sppr
             {
                 if (zedGraphControlMain.Visible) zedGraphControlMain.Visible = false;
                 showNoData();
+                panelGraphConrtol.Visible = false;
             }
             else
             {
@@ -148,14 +161,12 @@ namespace sppr
                 if (labelNoData.Visible || labelRecomendation.Visible) hideNoData();
                 zedGraphControlMain.GraphPane = perspective.methodInfo.graphControl.GraphPane;
                 zedGraphControlMain.Visible = true;
+                resultProccessing();
+                panelGraphConrtol.Visible = true;
             }
             panelActionButtomParam.Visible = false;
             paramProccessing();
             panelActionButtomParam.Visible = true;
-            
-
-
-
         }
 
         protected void showNoData()
@@ -193,7 +204,7 @@ namespace sppr
             textBoxA.Text = perspective.a.ToString();
             textBoxA.BackColor = perspective.colorPanel;
             textBoxA.ForeColor = perspective.colorText;
-            textBoxA.Width = textBoxA.Text.Length * 8;
+            //textBoxA.Width = textBoxA.Text.Length * 10;
 
             // b
             textBoxB.Text = perspective.b.ToString();
@@ -229,6 +240,13 @@ namespace sppr
             labelZpt.ForeColor = perspective.colorText;
             labelRegionEnd.ForeColor = perspective.colorText;
 
+            // max step count
+            textBoxMaxStepCount.Text = perspective.xRight.ToString();
+            textBoxMaxStepCount.BackColor = perspective.colorPanel;
+            textBoxMaxStepCount.ForeColor = perspective.colorText;
+
+            labelMaxStepCount.ForeColor = perspective.colorText;
+
             // e
             if (perspective.withE)
             {
@@ -260,6 +278,69 @@ namespace sppr
             {
                 panelActionButtomR.Visible = false;
             }
+        }
+
+        void resultProccessing()
+        {
+            // Points and Line buttons
+            buttonWithPoints.ForeColor = perspective.withPoint ? invert(perspective.colorText) : perspective.colorText;
+            buttonWithPoints.BackColor = perspective.withPoint ? invert(perspective.colorPanel) : perspective.colorPanel;
+            buttonWithLine.ForeColor = perspective.withLine ? invert(perspective.colorText) : perspective.colorText;
+            buttonWithLine.BackColor = perspective.withLine ? invert(perspective.colorPanel) : perspective.colorPanel;
+
+            // xZoomLeft
+            textBoxZoomXBegin.Text = perspective.funcInfo.xMin.ToString();
+            textBoxZoomXBegin.BackColor = perspective.colorPanel;
+            textBoxZoomXBegin.ForeColor = perspective.colorText;
+
+            // xZoomRight
+            textBoxZoomXEnd.Text = perspective.funcInfo.xMax.ToString();
+            textBoxZoomXEnd.BackColor = perspective.colorPanel;
+            textBoxZoomXEnd.ForeColor = perspective.colorText;
+
+            labelZoomXBegin.ForeColor = perspective.colorText;
+            labelZoomXMid.ForeColor = perspective.colorText;
+            labelZoomXEnd.ForeColor = perspective.colorText;
+
+            // yZoomLeft
+            textBoxZoomXBegin.Text = perspective.funcInfo.yMin.ToString();
+            textBoxZoomYBegin.BackColor = perspective.colorPanel;
+            textBoxZoomYBegin.ForeColor = perspective.colorText;
+
+            // yZoomRight
+            textBoxZoomXEnd.Text = perspective.funcInfo.yMax.ToString();
+            textBoxZoomYEnd.BackColor = perspective.colorPanel;
+            textBoxZoomYEnd.ForeColor = perspective.colorText;
+
+            labelZoomYBegin.ForeColor = perspective.colorText;
+            labelZoomYMid.ForeColor = perspective.colorText;
+            labelZoomYEnd.ForeColor = perspective.colorText;
+
+            buttonZoomApply.ForeColor = perspective.colorText;
+
+            buttonDefaultZoom.ForeColor = perspective.colorText;
+
+            labelStepCount.ForeColor = perspective.colorText;
+            labelStepCount.Text = perspective.methodInfo.report.onStep.ToString();
+            labelOfStep.ForeColor = perspective.colorText;
+            labelMaxStepCountResult.ForeColor = perspective.colorText;
+            labelMaxStepCountResult.Text = perspective.methodInfo.report.ofStep.ToString();
+
+            // xMin
+            var en = perspective.methodInfo.report.minimum.GetEnumerator();
+            en.MoveNext();
+            textBoxXMin.Text = en.Current.Key.ToString();
+            textBoxXMin.BackColor = perspective.colorPanel;
+            textBoxXMin.ForeColor = perspective.colorText;
+
+            // yMin
+            textBoxYMin.Text = en.Current.Value.ToString();
+            textBoxYMin.BackColor = perspective.colorPanel;
+            textBoxYMin.ForeColor = perspective.colorText;
+
+            labelMinBegin.ForeColor = perspective.colorText;
+            labelMinMid.ForeColor = perspective.colorText;
+            labelMinEnd.ForeColor = perspective.colorText;
         }
 
         protected void runCurMethod()
@@ -299,7 +380,7 @@ namespace sppr
             //System.Threading.Thread.Sleep(2000);
             var xLeft = Double.Parse(textBoxXBegin.Text);
             var xRight = Double.Parse(textBoxXEnd.Text);
-            var maxSteps = 10;
+            var maxSteps = int.Parse(textBoxMaxStepCount.Text);
             if (perspective == bruteForce) method = new Brute(func, xLeft, xRight, maxSteps);
             else
             {
@@ -322,7 +403,7 @@ namespace sppr
                 elem.xRight = perspective.xRight;
                 GraphProcessing gp = new GraphProcessing();
                 perspective.methodInfo.graphControl.GraphPane.CurveList.Clear();
-                gp.drawFunction(perspective.methodInfo.graphControl, elem, perspective.colorPanel, runMethod);
+                gp.drawFunction(perspective.methodInfo.graphControl, elem, perspective.colorLine, runMethod);
             }
 
             if (!runMethod.CancellationPending)
@@ -370,9 +451,43 @@ namespace sppr
             labelStage.Visible = false;
             if (!runMethod.CancellationPending)
             {
-                zedGraphControlMain.GraphPane = perspective.methodInfo.graphControl.GraphPane;
+                refreshActionPanel();
                 zedGraphControlMain.Visible = true;
+                zedGraphControlMain.GraphPane = perspective.methodInfo.graphControl.GraphPane;
+                zedGraphControlMain.AxisChange();
+                zedGraphControlMain.Dock = DockStyle.Fill;
+                //zedGraphControlMain.Refresh();
             }
+        }
+
+        private void moveScales(PointF oldPoint, PointF newPoint)
+        {
+            var pane = zedGraphControlMain.GraphPane;
+
+            var changeX = newPoint.X - oldPoint.X;
+            var changeY = newPoint.Y - oldPoint.Y;
+
+            pane.XAxis.Min -= changeX * 0.5;
+            pane.XAxis.Max -= changeX * 0.5;
+
+            pane.YAxis.Min -= changeY * 0.5;
+            pane.YAxis.Max -= changeY * 0.5;
+        }
+
+        private void zoomScales(int delta, PointF curPoint)
+        {
+            var pane = zedGraphControlMain.GraphPane;
+            delta = delta > 1000 ? 1000 : delta;
+
+            var rX = (pane.XAxis.Max - pane.XAxis.Min) / 4;
+            var rY = (pane.YAxis.Max - pane.YAxis.Min) / 4;
+
+            pane.XAxis.Min += (curPoint.X - pane.XAxis.Min) * (delta * 0.001) / rX;
+            pane.XAxis.Max -= (pane.XAxis.Max - curPoint.X) * (delta * 0.001) / rX;
+
+            pane.YAxis.Min += (curPoint.Y - pane.YAxis.Min) * (delta * 0.001) / rY;
+            pane.YAxis.Max -= (pane.YAxis.Max - curPoint.Y) * (delta * 0.001) / rY;
+            zedGraphControlMain.AxisChange();
         }
     }
 }

@@ -14,13 +14,18 @@ namespace sppr
         public Func<double, double> function;
         public double xLeft;
         public double xRight;
+        public double xMin;
+        public double yMin;
+        public double xMax;
+        public double yMax;
     }
     class GraphProcessing
     {
+        
         public void drawFunction(ZedGraphControl zgControl, FElem elem, Color lineColor, BackgroundWorker worker)
         {
             var pane = zgControl.GraphPane;
-            var w = zgControl.Width * 100;
+            var w = zgControl.Width;
             var h = zgControl.Height;
             PointPairList ppList = new PointPairList();
 
@@ -34,6 +39,7 @@ namespace sppr
             }
 
             pane.AddCurve("", ppList, lineColor, ZedGraph.SymbolType.None);
+
             zgControl.AxisChange();
             zgControl.Invalidate();
         }
