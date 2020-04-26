@@ -254,7 +254,7 @@
             this.labelStage.Dock = System.Windows.Forms.DockStyle.Top;
             this.labelStage.Font = new System.Drawing.Font("Microsoft Sans Serif", 75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelStage.ForeColor = System.Drawing.SystemColors.Control;
-            this.labelStage.Location = new System.Drawing.Point(0, 130);
+            this.labelStage.Location = new System.Drawing.Point(0, 339);
             this.labelStage.Name = "labelStage";
             this.labelStage.Size = new System.Drawing.Size(409, 113);
             this.labelStage.TabIndex = 5;
@@ -265,10 +265,10 @@
             // 
             this.zedGraphControlMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.zedGraphControlMain.IsShowPointValues = false;
-            this.zedGraphControlMain.Location = new System.Drawing.Point(0, 130);
+            this.zedGraphControlMain.Location = new System.Drawing.Point(0, 339);
             this.zedGraphControlMain.Name = "zedGraphControlMain";
             this.zedGraphControlMain.PointValueFormat = "G";
-            this.zedGraphControlMain.Size = new System.Drawing.Size(1124, 219);
+            this.zedGraphControlMain.Size = new System.Drawing.Size(1124, 10);
             this.zedGraphControlMain.TabIndex = 4;
             this.zedGraphControlMain.Visible = false;
             this.zedGraphControlMain.MouseDown += new System.Windows.Forms.MouseEventHandler(this.zedGraphControlMain_MouseDown);
@@ -847,7 +847,7 @@
             this.textBoxMaxStepCount.Name = "textBoxMaxStepCount";
             this.textBoxMaxStepCount.Size = new System.Drawing.Size(14, 22);
             this.textBoxMaxStepCount.TabIndex = 0;
-            this.textBoxMaxStepCount.Text = "2";
+            this.textBoxMaxStepCount.Text = "200";
             this.textBoxMaxStepCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxMaxStepCount.TextChanged += new System.EventHandler(this.textBoxA_TextChanged);
             // 
@@ -1134,7 +1134,7 @@
             this.labelRecomendation.Dock = System.Windows.Forms.DockStyle.Top;
             this.labelRecomendation.Font = new System.Drawing.Font("Microsoft Sans Serif", 75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelRecomendation.ForeColor = System.Drawing.SystemColors.Control;
-            this.labelRecomendation.Location = new System.Drawing.Point(0, 17);
+            this.labelRecomendation.Location = new System.Drawing.Point(0, 226);
             this.labelRecomendation.Name = "labelRecomendation";
             this.labelRecomendation.Size = new System.Drawing.Size(890, 113);
             this.labelRecomendation.TabIndex = 2;
@@ -1144,11 +1144,11 @@
             // 
             this.labelNoData.AutoSize = true;
             this.labelNoData.Dock = System.Windows.Forms.DockStyle.Top;
-            this.labelNoData.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelNoData.Font = new System.Drawing.Font("Microsoft Sans Serif", 150F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelNoData.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.labelNoData.Location = new System.Drawing.Point(0, 0);
             this.labelNoData.Name = "labelNoData";
-            this.labelNoData.Size = new System.Drawing.Size(60, 17);
+            this.labelNoData.Size = new System.Drawing.Size(825, 226);
             this.labelNoData.TabIndex = 3;
             this.labelNoData.Text = "No Data";
             // 

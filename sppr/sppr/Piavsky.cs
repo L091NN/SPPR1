@@ -4,11 +4,11 @@ using System.Linq;
 
 namespace sppr
 {
-    class Strongin : Method
+    class Piavsky : Method
     {
         protected double _r { get; set; }
 
-        public Strongin(Func<double, double> curFunction, double xBegin, double xEnd, int maxSteps, double e, double r) : base(curFunction, xBegin, xEnd, maxSteps, e)
+        public Piavsky(Func<double, double> curFunction, double xBegin, double xEnd, int maxSteps, double e, double r) : base(curFunction, xBegin, xEnd, maxSteps, e)
         {
             _r = r;
         }
@@ -22,20 +22,17 @@ namespace sppr
             for (; e.MoveNext();)
             {
                 var curPoint = e.Current;
-                double curM = Math.Abs((curPoint.Value - prevPoint.Value) / (curPoint.Key - prevPoint.Key));
+                double curM = Math.Abs((curPoint.Value - prevPoint.Value)) / (curPoint.Key - prevPoint.Key);
                 if (M - curM < accurancy) M = curM;
                 prevPoint = curPoint;
             }
 
-            return M > accurancy ? (_r * M) : 1.0;
+            return M > accurancy ? _r * M : 1.0;
         }
 
         protected double calculateR(KeyValuePair<double, double> left, KeyValuePair<double, double> right, double m)
         {
-            var p1 = m * (right.Key - left.Key);
-            var p2 = ((right.Value - left.Value) * (right.Value - left.Value)) / (m * (right.Key - left.Key));
-            var p3 = 2 * (right.Value + left.Value);
-            return p1 + p2 - p3;
+            return m * (right.Key - left.Key) / 2 - (right.Value + left.Value) / 2;
         }
 
         protected double calculateNextX(KeyValuePair<double, double> left, KeyValuePair<double, double> right, double m)

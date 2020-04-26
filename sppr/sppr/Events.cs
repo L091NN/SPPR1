@@ -25,30 +25,29 @@ namespace sppr
     }
     class PerspectiveInfo
     {
-        public string name;
-        public Color colorBack;
-        public Color colorPanel;
-        public Color colorText;
-        public Color colorPane;
-        public Color colorLine;
-        public bool withE;
-        public bool withR;
-        public bool withPoint;
-        public bool withLine;
-        public double e;
-        public double r;
-        public double xLeft;
-        public double xRight;
-        public double a;
-        public double b;
-        public double c;
-        public double d;
-        public int maxStepCount;
-        public MethodInfo methodInfo;
-        public FElem funcInfo;
+        public string name { get; }
+        public Color colorBack { get; }
+        public Color colorPanel { get; }
+        public Color colorText { get; }
+        public Color colorPane { get; }
+        public Color colorLine { get; }
+        public bool withR { get; }
+        public bool withPoint { get; set; }
+        public bool withLine { get; set; }
+        public double e { get; set; }
+        public double r { get; set; }
+        public double xLeft { get; set; }
+        public double xRight { get; set; }
+        public double a { get; set; }
+        public double b { get; set; }
+        public double c { get; set; }
+        public double d { get; set; }
+        public int maxStepCount { get; set; }
+        public MethodInfo methodInfo { get; set; }
+        public FElem funcInfo { get; set; } // It need for correct work graph, TO DO
 
         public PerspectiveInfo(string _name, Color _colorBack, Color _colorPanel, Color _colorText,
-        Color _colorPane, Color _colorLine, bool _withE, bool _withR, bool _withPoint, bool _withLine,
+        Color _colorPane, Color _colorLine, bool _withR, bool _withPoint, bool _withLine,
         double _e, double _r, double _xLeft, double _xRight, double _a, double _b, double _c, double _d, int _maxStepCount)
         {
             name = _name;
@@ -57,7 +56,6 @@ namespace sppr
             colorText = _colorText;
             colorPane = _colorPane;
             colorLine = _colorLine;
-            withE = _withE;
             withR = _withR;
             withPoint = _withPoint;
             withLine = _withLine;
@@ -128,11 +126,11 @@ namespace sppr
         protected void initPerspectives()
         {
             bruteForce = new PerspectiveInfo("Bruteforce", style.colors["black.vs"], style.colors["red.king yna"], style.colors["white.argon"],
-            style.colors["white.argon"], style.colors["red.king yna"], false, false, false, false, -1, -1, -2, 2, 2, 3, 3, 5, 100);
+            style.colors["white.argon"], style.colors["red.king yna"], false, false, false, 0.001, -1, -2, 2, 2, 3, 3, 5, 100);
             piacovsky = new PerspectiveInfo("Piyavsky method", style.colors["black.vs"], style.colors["blue.king yna"], style.colors["white.argon"],
-            style.colors["white.argon"], style.colors["blue.vs"], true, true, false, false, 0.001, 3, -2, 2, 2, 3, 3, 5, 100);
+            style.colors["white.argon"], style.colors["blue.vs"], true, false, false, 0.001, 3, -2, 2, 2, 3, 3, 5, 100);
             strongin = new PerspectiveInfo("Strongin method", style.colors["black.vs"], style.colors["yellow.king yna"], style.colors["black.argon"],
-            style.colors["white.argon"], style.colors["yellow.king yna"], true, true, false, false, 0.001, 3, -2, 2, 2, 3, 3, 5, 100);
+            style.colors["white.argon"], style.colors["yellow.king yna"], true, false, false, 0.001, 3, -2, 2, 2, 3, 3, 5, 100);
             perspective = bruteForce;
         }
 
@@ -248,20 +246,12 @@ namespace sppr
             labelMaxStepCount.ForeColor = perspective.colorText;
 
             // e
-            if (perspective.withE)
-            {
-                panelActionButtomE.Visible = true;
                 textBoxE.Text = perspective.e.ToString();
                 textBoxE.BackColor = perspective.colorPanel;
                 textBoxE.ForeColor = perspective.colorText;
 
                 labelE.ForeColor = perspective.colorText;
                 labelGuidanceE.ForeColor = perspective.colorText;
-            }
-            else
-            {
-                panelActionButtomE.Visible = false;
-            }
 
             // r
             if (perspective.withR)
@@ -381,17 +371,17 @@ namespace sppr
             var xLeft = Double.Parse(textBoxXBegin.Text);
             var xRight = Double.Parse(textBoxXEnd.Text);
             var maxSteps = int.Parse(textBoxMaxStepCount.Text);
-            if (perspective == bruteForce) method = new Brute(func, xLeft, xRight, maxSteps);
+            var _e = Double.Parse(textBoxE.Text);
+            if (perspective == bruteForce) method = new Brute(func, xLeft, xRight, maxSteps, _e);
             else
             {
                 var r = Double.Parse(textBoxR.Text);
-                var _e = Double.Parse(textBoxE.Text);
-                if (perspective == piacovsky) method = new Piacovsky(func, xLeft, xRight, maxSteps);
+                if (perspective == piacovsky) method = new Piavsky(func, xLeft, xRight, maxSteps, _e, r);
                 if (perspective == strongin) method = new Strongin(func, xLeft, xRight, maxSteps, _e, r);
             }
             runMethod.ReportProgress((int)status + 10);
             //System.Threading.Thread.Sleep(2000);
-            Method.Report report = method.solve(runMethod);
+            var report = method.solve(runMethod);
             status = 60;
             //System.Threading.Thread.Sleep(2000);
 
@@ -409,6 +399,16 @@ namespace sppr
             if (!runMethod.CancellationPending)
             {
                 perspective.methodInfo.report = report;
+                perspective.a = Double.Parse(textBoxA.Text);
+                perspective.b = Double.Parse(textBoxB.Text);
+                perspective.c = Double.Parse(textBoxC.Text);
+                perspective.d = Double.Parse(textBoxD.Text);
+                perspective.xLeft = xLeft;
+                perspective.xRight = xRight;
+                perspective.maxStepCount = maxSteps;
+                perspective.e = _e;
+                if (perspective.withR) perspective.r = Double.Parse(textBoxR.Text);
+
             }
         }
 

@@ -12,17 +12,19 @@ namespace sppr
         bool pressed;
         protected bool tryFillParam()
         {
-            if (!Double.TryParse(textBoxA.Text, out perspective.a)) return false;
-            if (!Double.TryParse(textBoxB.Text, out perspective.b)) return false;
-            if (!Double.TryParse(textBoxC.Text, out perspective.c)) return false;
-            if (!Double.TryParse(textBoxD.Text, out perspective.d)) return false;
-            if (!Double.TryParse(textBoxXBegin.Text, out perspective.xLeft)) return false;
-            if (!Double.TryParse(textBoxXEnd.Text, out perspective.xRight)) return false;
-            if (!int.TryParse(textBoxMaxStepCount.Text, out perspective.maxStepCount)) return false;
+            double test;
+            int iTest;
+            if (!Double.TryParse(textBoxA.Text, out test)) return false;
+            if (!Double.TryParse(textBoxB.Text, out test)) return false;
+            if (!Double.TryParse(textBoxC.Text, out test)) return false;
+            if (!Double.TryParse(textBoxD.Text, out test)) return false;
+            if (!Double.TryParse(textBoxXBegin.Text, out test)) return false;
+            if (!Double.TryParse(textBoxXEnd.Text, out test)) return false;
+            if (!int.TryParse(textBoxMaxStepCount.Text, out iTest)) return false;
+            if (!Double.TryParse(textBoxE.Text, out test)) return false;
             if (perspective.name != "Bruteforce")
             {
-                if (!Double.TryParse(textBoxA.Text, out perspective.a)) return false;
-                if (!Double.TryParse(textBoxA.Text, out perspective.a)) return false;
+                if (!Double.TryParse(textBoxR.Text, out test)) return false;
             }
 
             return true;

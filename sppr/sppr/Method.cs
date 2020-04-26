@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.ComponentModel;
-using ZedGraph;
 
 namespace sppr
 {
@@ -30,9 +26,8 @@ namespace sppr
         /// <summary>
         /// input data
         /// </summary>
-        /// 
         protected int _maxSteps { get; set; }
-
+        protected double _e { get; set; }
         protected Func<double, double> _function = null;
 
         /// <summary>
@@ -43,10 +38,12 @@ namespace sppr
 
         protected List<int> _curMinId = null;
         int _steps;
-        protected Method(Func<double, double> curFunction, double xBegin, double xEnd, int maxSteps)
+
+        protected Method(Func<double, double> curFunction, double xBegin, double xEnd, int maxSteps, double e)
         {
             _function = curFunction;
             _maxSteps = maxSteps;
+            _e = e;
             _steps = 1;
             _points = new SortedList<double, double>();
             _xId = new SortedList<int, double>();
@@ -83,7 +80,7 @@ namespace sppr
                 minimum.Add(_xId[it.Current], _points[_xId[it.Current]]);
             }
 
-            return new Report( minimum, _xId, _steps, _maxSteps);
+            return new Report(minimum, _xId, _steps, _maxSteps);
         }
         public Report solve(BackgroundWorker worker)
         {
