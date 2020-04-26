@@ -4,11 +4,11 @@ using System.Linq;
 
 namespace sppr
 {
-    class Strongin : Method
+    class Piavsky : Method
     {
         protected double _r { get; set; }
 
-        public Strongin(Func<double, double> curFunction, double xBegin, double xEnd, int maxSteps, double e, double r) : base(curFunction, xBegin, xEnd, maxSteps, e)
+        public Piavsky(Func<double, double> curFunction, double xBegin, double xEnd, int maxSteps, double e, double r) : base(curFunction, xBegin, xEnd, maxSteps, e)
         {
             _r = r;
         }
@@ -32,9 +32,7 @@ namespace sppr
 
         protected double calculateR(KeyValuePair<double, double> left, KeyValuePair<double, double> right, double m)
         {
-            return m * (right.Key - left.Key)
-                + ((right.Value - left.Value) * (right.Value - left.Value)) / (m * (right.Key - left.Key))
-                - 2 * (right.Value + left.Value);
+            return m * (right.Key - left.Key) / 2 - (right.Value + left.Value) / 2;
         }
 
         protected double calculateNextX(KeyValuePair<double, double> left, KeyValuePair<double, double> right, double m)

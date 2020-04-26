@@ -58,7 +58,7 @@
     </Compile>
     <Compile Include="GraphProcessing.cs" />
     <Compile Include="Method.cs" />
-    <Compile Include="Piacovsky.cs" />
+    <Compile Include="Piavsky.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Strongin.cs" />
