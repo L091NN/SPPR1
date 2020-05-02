@@ -22,19 +22,20 @@ namespace sppr
             for (; e.MoveNext();)
             {
                 var curPoint = e.Current;
-                double curM = Math.Abs((curPoint.Value - prevPoint.Value)) / (curPoint.Key - prevPoint.Key);
+                double curM = Math.Abs((curPoint.Value - prevPoint.Value) / (curPoint.Key - prevPoint.Key));
                 if (M - curM < accurancy) M = curM;
                 prevPoint = curPoint;
             }
 
-            return M > accurancy ? _r * M : 1.0;
+            return M > accurancy ? (_r * M) : 1.0;
         }
 
         protected double calculateR(KeyValuePair<double, double> left, KeyValuePair<double, double> right, double m)
         {
-            return m * (right.Key - left.Key)
-                + ((right.Value - left.Value) * (right.Value - left.Value)) / (m * (right.Key - left.Key))
-                - 2 * (right.Value + left.Value);
+            var p1 = m * (right.Key - left.Key);
+            var p2 = ((right.Value - left.Value) * (right.Value - left.Value)) / (m * (right.Key - left.Key));
+            var p3 = 2 * (right.Value + left.Value);
+            return p1 + p2 - p3;
         }
 
         protected double calculateNextX(KeyValuePair<double, double> left, KeyValuePair<double, double> right, double m)
