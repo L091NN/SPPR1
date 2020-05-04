@@ -44,15 +44,17 @@ namespace sppr
             zgControl.Invalidate();
         }
 
-        public void drawVerticalLine(ZedGraphControl zgControl, SortedList<int, double> x)
+        //public void drawVerticalLine(ZedGraphControl zgControl, SortedList<int, double> x, FElem elem)
+        public void drawVerticalLine(ZedGraphControl zgControl, SortedList<int, double> x, Func<double, double> func)
         {
             var pane = zgControl.GraphPane;
             foreach (var it in x)
             {
                 PointPairList ppList = new PointPairList();
-                ppList.Add(new PointPair(it.Value, 1));
-                ppList.Add(new PointPair(it.Value, -3));
-                pane.AddCurve("", ppList, Color.FromArgb(0, 0, 0), ZedGraph.SymbolType.None);
+                ppList.Add(new PointPair(it.Value, 0));
+                //ppList.Add(new PointPair(it.Value, elem.function(it.Value)));
+                ppList.Add(new PointPair(it.Value, func(it.Value)));
+                pane.AddCurve("", ppList, Color.FromArgb(136, 209, 132), ZedGraph.SymbolType.None);
                 zgControl.AxisChange();
                 zgControl.Invalidate();
 

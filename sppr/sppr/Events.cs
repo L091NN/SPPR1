@@ -14,7 +14,6 @@ namespace sppr
     {
         public Method.Report report;
         public ZedGraph.ZedGraphControl graphControl;
-
     }
 
     enum Perspective
@@ -122,6 +121,7 @@ namespace sppr
         string stage;
         double remainder;
         PointF oldPointGraph;
+        Func<double, double> curFunc;
 
         protected void initPerspectives()
         {
@@ -152,6 +152,7 @@ namespace sppr
                 if (zedGraphControlMain.Visible) zedGraphControlMain.Visible = false;
                 showNoData();
                 panelGraphConrtol.Visible = false;
+                tableLayoutPanel.Visible = false;
             }
             else
             {
@@ -161,6 +162,7 @@ namespace sppr
                 zedGraphControlMain.Visible = true;
                 resultProccessing();
                 panelGraphConrtol.Visible = true;
+                tableLayoutPanel.Visible = true;
             }
             panelActionButtomParam.Visible = false;
             paramProccessing();
@@ -348,6 +350,11 @@ namespace sppr
                 labelStage.Visible = true;
                 remainder = 0;
                 status = 0;
+                tableLayoutPanel.Controls.Clear();
+                tableLayoutPanel.ColumnStyles.Clear();
+                tableLayoutPanel.ColumnCount = 1;
+                //tableLayoutPanel.Clear();
+                tableLayoutPanel.Visible = false;
                 runMethod.RunWorkerAsync();
             }
 
@@ -394,6 +401,9 @@ namespace sppr
                 GraphProcessing gp = new GraphProcessing();
                 perspective.methodInfo.graphControl.GraphPane.CurveList.Clear();
                 gp.drawFunction(perspective.methodInfo.graphControl, elem, perspective.colorLine, runMethod);
+
+                //perspective.funcInfo.function = func;
+                curFunc = func;
             }
 
             if (!runMethod.CancellationPending)
@@ -408,7 +418,7 @@ namespace sppr
                 perspective.maxStepCount = maxSteps;
                 perspective.e = _e;
                 if (perspective.withR) perspective.r = Double.Parse(textBoxR.Text);
-
+                returnTablePanel(func, report.iterations);
             }
         }
 
@@ -459,7 +469,7 @@ namespace sppr
                 //zedGraphControlMain.Refresh();
             }
         }
-
+        
         private void moveScales(PointF oldPoint, PointF newPoint)
         {
             var pane = zedGraphControlMain.GraphPane;
@@ -488,6 +498,30 @@ namespace sppr
             pane.YAxis.Min += (curPoint.Y - pane.YAxis.Min) * (delta * 0.001) / rY;
             pane.YAxis.Max -= (pane.YAxis.Max - curPoint.Y) * (delta * 0.001) / rY;
             zedGraphControlMain.AxisChange();
+        }
+
+        private void returnTablePanel(Func<double, double> func, SortedList<int, double> iterations)
+        {
+            tableLayoutPanel.ColumnCount = iterations.Count + 1;
+
+            tableLayoutPanel.Controls.Add(new Button() { Text = "Iteration" }, 0, 0);
+            tableLayoutPanel.Controls.Add(new Button() { Text = "X" }, 0, 1);
+            tableLayoutPanel.Controls.Add(new Button() { Text = "Y" }, 0, 2);
+
+            int i = 1;
+            foreach (KeyValuePair<int, double> kv in iterations)
+            {
+                tableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));
+                tableLayoutPanel.Controls.Add(new Button() { Text = kv.Key.ToString() }, i, 0);
+                tableLayoutPanel.Controls.Add(new Button() { Text = kv.Value.ToString() }, i, 1);
+                tableLayoutPanel.Controls.Add(new Button() { Text = func(kv.Value).ToString() }, i, 2);
+                i++;
+            }
+
+            foreach (System.Windows.Forms.Control c in this.tableLayoutPanel.Controls)
+            {
+                c.MouseClick += new System.Windows.Forms.MouseEventHandler(ClickOnTableLayoutPanel);
+            }
         }
     }
 }

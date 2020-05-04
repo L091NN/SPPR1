@@ -18,6 +18,7 @@ namespace sppr
             style = new Style();
             labelGuidanceR.Visible = false;
             labelGuidanceE.Visible = false;
+            tableLayoutPanel.Visible = false;
             initPerspectives();
             refreshActionPanel();
             //panelButtom.BackColor = style.colors["red.king yna"];
@@ -62,7 +63,7 @@ namespace sppr
         {
             if (buttonRun.Text == "RUN")
             {
-                if (!tryFillParam()) ; //label1.Text = "ERROR: Incorrect input";
+                if (!tryFillParam()); //label1.Text = "ERROR: Incorrect input";
                 else
                 {
                     runCurMethod();
@@ -72,9 +73,6 @@ namespace sppr
             {
                 cancelCurMethod();
             }
-            
-
-            
         }
 
         private void buttonChangePerspectiveLeft_Click(object sender, EventArgs e)
@@ -247,6 +245,39 @@ namespace sppr
         {
             perspective.withLine = perspective.withLine ? false : true;
             resultProccessing();
+        }
+
+        public void ClickOnTableLayoutPanel(object sender, MouseEventArgs e)
+        {
+            SortedList<int, double> point = new SortedList<int, double>();
+
+            int column = tableLayoutPanel.GetColumn((Control)sender);
+
+            if (column != 0)
+            {
+                Control controlWithIteration = tableLayoutPanel.GetControlFromPosition(column, 0);
+                Control controlWithX = tableLayoutPanel.GetControlFromPosition(column, 1);
+
+                if (!int.TryParse(controlWithIteration.Text, out int iteration))
+                {
+                    iteration = -1;
+                }
+
+                if (!double.TryParse(controlWithX.Text, out double X))
+                {
+                    X = 0;
+                }
+                point.Add(iteration, X);
+                GraphProcessing gp = new GraphProcessing();
+                //gp.drawVerticalLine(zedGraphControlMain, point, perspective.funcInfo);
+                gp.drawVerticalLine(zedGraphControlMain, point, curFunc);
+
+            }
+            else
+            {
+                int row = tableLayoutPanel.GetRow((Control)sender);
+                // to do
+            }
         }
     }
 }
