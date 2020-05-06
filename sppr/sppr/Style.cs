@@ -17,7 +17,9 @@ namespace sppr
             colors.Add("black.vs", Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28))))));
             colors.Add("red.vs", Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(49)))), ((int)(((byte)(33))))));
             colors.Add("green.vs", Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(209)))), ((int)(((byte)(132))))));
+            colors.Add("dark green.vs", Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(26))))));
             colors.Add("blue.vs", Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204))))));
+            colors.Add("green.my", Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128))))));
             colors.Add("pink.my", Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(122)))), ((int)(((byte)(204))))));
             colors.Add("red.man of steel", Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(2)))), ((int)(((byte)(6))))));
             colors.Add("blue.man of steel", Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(17)))), ((int)(((byte)(97))))));

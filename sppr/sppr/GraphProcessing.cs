@@ -22,7 +22,7 @@ namespace sppr
     class GraphProcessing
     {
         
-        public void drawFunction(ZedGraphControl zgControl, FElem elem, Color lineColor, BackgroundWorker worker)
+        public void drawFunction(ZedGraphControl zgControl,ref FElem elem, Color lineColor, BackgroundWorker worker)
         {
             var pane = zgControl.GraphPane;
             var w = zgControl.Width;
@@ -31,34 +31,108 @@ namespace sppr
 
             var step = (elem.xRight - elem.xLeft) / w;
 
+            var yLeft = elem.function(elem.xLeft);
+            var yRight = elem.function(elem.xRight);
+
+            elem.yMin = yLeft > yRight ? yRight : yLeft;
+            elem.yMax = yLeft > yRight ? yLeft : yRight;
+
             for (double i = elem.xLeft; i < elem.xRight; i+= step)
             {
-                worker.ReportProgress((int)((double)(i - elem.xLeft) / (elem.xRight - elem.xLeft) * 100));
+                var progress = (int)((i - elem.xLeft) / (elem.xRight - elem.xLeft) * 100);
+                worker.ReportProgress(progress);
                 if (worker.CancellationPending) return;
-                ppList.Add(new PointPair(i, elem.function(i)));
+                var curY = elem.function(i);
+                if (curY < elem.yMin) elem.yMin = curY;
+                if (curY > elem.yMax) elem.yMax = curY;
+                ppList.Add(new PointPair(i, curY));
             }
 
-            pane.AddCurve("", ppList, lineColor, ZedGraph.SymbolType.None);
+            var curve = pane.AddCurve("", ppList, lineColor, ZedGraph.SymbolType.None);
+
+            curve.Line.Width = 4.0f;
+
+            var rX = elem.xRight - elem.xLeft;
+            var rY = elem.yMax - elem.yMin;
+            elem.xMin = elem.xLeft;
+            elem.xMax = elem.xRight;
+
+            pane.XAxis.Min = elem.xMin - rX * 0.1;
+            pane.XAxis.Max = elem.xMax + rX * 0.1;
+            pane.YAxis.Min = elem.yMin - rY * 0.1;
+            pane.YAxis.Max = elem.yMax + rY * 0.1;
 
             zgControl.AxisChange();
             zgControl.Invalidate();
         }
 
-        //public void drawVerticalLine(ZedGraphControl zgControl, SortedList<int, double> x, FElem elem)
-        public void drawVerticalLine(ZedGraphControl zgControl, SortedList<int, double> x, Func<double, double> func)
+        public void refreshGraph(PerspectiveInfo perspective)
         {
-            var pane = zgControl.GraphPane;
-            foreach (var it in x)
-            {
-                PointPairList ppList = new PointPairList();
-                ppList.Add(new PointPair(it.Value, 0));
-                //ppList.Add(new PointPair(it.Value, elem.function(it.Value)));
-                ppList.Add(new PointPair(it.Value, func(it.Value)));
-                pane.AddCurve("", ppList, Color.FromArgb(136, 209, 132), ZedGraph.SymbolType.None);
-                zgControl.AxisChange();
-                zgControl.Invalidate();
+            var pane = perspective.methodInfo.graphControl.GraphPane;
+            pane.CurveList.Clear();
+            var w = perspective.methodInfo.graphControl.Width;
+            var h = perspective.methodInfo.graphControl.Height;
+            var elem = perspective.funcInfo;
+            PointPairList ppList = new PointPairList();
 
+            var step = (elem.xMax - elem.xMin) / w;
+
+            for (double i = elem.xMin; i < elem.xMax; i += step)
+            {
+                var curY = perspective.funcInfo.function(i);
+                if (curY < elem.yMin) elem.yMin = curY;
+                if (curY > elem.yMax) elem.yMax = curY;
+                ppList.Add(new PointPair(i, curY));
             }
+
+            var curve = pane.AddCurve("", ppList, perspective.colorLine, ZedGraph.SymbolType.None);
+            curve.Line.Width = 4.0f;
+
+            if (perspective.withPoint)
+            {
+                foreach (var point in perspective.methodInfo.report.iterations)
+                {
+                    if (point.Value > elem.xMin && point.Value < elem.xMax)
+                    {
+                        var line = new PointPairList();
+                        line.Add(new PointPair(point.Value, 0));
+                        line.Add(new PointPair(point.Value, perspective.funcInfo.function(point.Value)));
+                        curve = pane.AddCurve("", line, perspective.colorPoint, ZedGraph.SymbolType.None);
+                        curve.Line.Width = 0.5f;
+                    }
+                }
+            }
+
+            if (perspective.withLine && perspective.withMainLine)
+            {
+                drawVerticalLine(perspective, true);
+            }
+
+            perspective.methodInfo.graphControl.AxisChange();
+            perspective.methodInfo.graphControl.Invalidate();
+        }
+
+        //public void drawVerticalLine(ZedGraphControl zgControl, SortedList<int, double> x, FElem elem)
+        public void drawVerticalLine(PerspectiveInfo perspective, bool isMainLine)
+        {
+            var pane = perspective.methodInfo.graphControl.GraphPane;
+
+            var line = new PointPairList();
+            if (isMainLine)
+            {
+                line.Add(new PointPair(perspective.mainLineX, 2 * perspective.funcInfo.yMin - perspective.funcInfo.yMax));
+                line.Add(new PointPair(perspective.mainLineX, 2 * perspective.funcInfo.yMax - perspective.funcInfo.yMin));
+                var curve = pane.AddCurve("", line, perspective.colorMainLine, ZedGraph.SymbolType.None);
+                curve.Line.Width = 2f;
+            }
+            else
+            {
+                line.Add(new PointPair(perspective.curLineX, 2 * perspective.funcInfo.yMin - perspective.funcInfo.yMax));
+                line.Add(new PointPair(perspective.curLineX, 2 * perspective.funcInfo.yMax - perspective.funcInfo.yMin));
+                var curve = pane.AddCurve("", line, perspective.colorMainLine, ZedGraph.SymbolType.None);
+                curve.Line.Width = 0.5f;
+            }
+
         }
 
     }

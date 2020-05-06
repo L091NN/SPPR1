@@ -92,7 +92,7 @@ namespace sppr
 
         private void panelButtomAnimation_DoWork(object sender, DoWorkEventArgs e)
         {
-            while (true)
+            while (!panelButtomAnimation.CancellationPending)
                 changeColor((List<Color>)e.Argument, panelButtomAnimation);
         }
 

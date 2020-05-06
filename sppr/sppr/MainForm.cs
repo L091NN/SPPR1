@@ -63,10 +63,22 @@ namespace sppr
         {
             if (buttonRun.Text == "RUN")
             {
-                if (!tryFillParam()); //label1.Text = "ERROR: Incorrect input";
+                var errorString = tryFillParam();
+                if (errorString == "")
+                {
+                    labelErrorList.Visible = false;
+                    runCurMethod(); //label1.Text = "ERROR: Incorrect input";
+                }
                 else
                 {
-                    runCurMethod();
+                    var errors = errorString.Split(',');
+                    labelErrorList.Text = "";
+                    foreach (var error in errors)
+                    {
+                        labelErrorList.Text += error + '\n';
+                    }
+                    hideNoData();
+                    labelErrorList.Visible = true;
                 }
             }
             else if (buttonRun.Text == "CANCEL")
@@ -80,11 +92,12 @@ namespace sppr
             if (!panelRightAnimation.IsBusy && !panelActionButtomAnimation.IsBusy && !panelLeftAnimation.IsBusy && !panelHeaderAnimation.IsBusy && !runMethod.IsBusy)
             {
                 perspective = perspective == bruteForce ? strongin : perspective == piacovsky ? bruteForce : piacovsky;
-                //panelRightAnimation.RunWorkerAsync(new List<Color> { panelRight.BackColor, panelActionButtom.BackColor });
-                //panelActionButtomAnimation.RunWorkerAsync(new List<Color> { panelActionButtom.BackColor, panelLeft.BackColor });
-                //panelLeftAnimation.RunWorkerAsync(new List<Color> { panelLeft.BackColor, panelRight.BackColor });
+                panelRightAnimation.RunWorkerAsync(new List<Color> { panelRight.BackColor, panelActionButtom.BackColor });
+                panelActionButtomAnimation.RunWorkerAsync(new List<Color> { panelActionButtom.BackColor, panelLeft.BackColor });
+                panelLeftAnimation.RunWorkerAsync(new List<Color> { panelLeft.BackColor, panelRight.BackColor });
                 //panelHeaderAnimation.RunWorkerAsync(new List<Color> { panelHeader.BackColor, panelRight.BackColor });
                 refreshActionPanel();
+                zedGraphControlMain.Refresh();
             }
         }
 
@@ -93,11 +106,12 @@ namespace sppr
             if (!panelRightAnimation.IsBusy && !panelActionButtomAnimation.IsBusy && !panelLeftAnimation.IsBusy && !panelHeaderAnimation.IsBusy && !runMethod.IsBusy)
             {
                 perspective = perspective == bruteForce ? piacovsky : perspective == piacovsky ? strongin : bruteForce;
-                //panelRightAnimation.RunWorkerAsync(new List<Color> { panelRight.BackColor, panelLeft.BackColor });
-                //panelActionButtomAnimation.RunWorkerAsync(new List<Color> { panelActionButtom.BackColor, panelRight.BackColor });
-                //panelLeftAnimation.RunWorkerAsync(new List<Color> { panelLeft.BackColor, panelActionButtom.BackColor });
+                panelRightAnimation.RunWorkerAsync(new List<Color> { panelRight.BackColor, panelLeft.BackColor });
+                panelActionButtomAnimation.RunWorkerAsync(new List<Color> { panelActionButtom.BackColor, panelRight.BackColor });
+                panelLeftAnimation.RunWorkerAsync(new List<Color> { panelLeft.BackColor, panelActionButtom.BackColor });
                 //panelHeaderAnimation.RunWorkerAsync(new List<Color> { panelHeader.BackColor, panelLeft.BackColor });
                 refreshActionPanel();
+                zedGraphControlMain.Refresh();
             }
         }
 
@@ -109,6 +123,7 @@ namespace sppr
             var widthOfCurFunc = widthOfFunc();
             if (widthOfCurFunc > panelActionButtomParam.Width)
                 panelActionButtomParam.Width = widthOfCurFunc;
+            panelPostProcessing.Width = widthOfResult();
         }
 
         private void buttonChangePerspectiveRight_MouseMove(object sender, MouseEventArgs e)
@@ -163,6 +178,7 @@ namespace sppr
 
         private void zedGraphControlMain_MouseDown(object sender, MouseEventArgs e)
         {
+
             var pane = zedGraphControlMain.GraphPane;
 
             Point eventPoint = new Point(e.X, e.Y);
@@ -232,18 +248,69 @@ namespace sppr
                 zedGraphControlMain.Refresh();
                 oldPointGraph = newPoint;
             }
+            else if (perspective.withLine)
+            {
+                var pane = zedGraphControlMain.GraphPane;
+
+                Point eventPoint = new Point(e.X, e.Y);
+
+                double x, y, z;
+                pane.ReverseTransform(new PointF(e.X, e.Y), out x, out y, out z);
+                var xList = perspective.methodInfo.report.iterations.Values.GetEnumerator();
+                xList.MoveNext();
+                var rX = Math.Abs(xList.Current - x);
+                var rXMin = xList.Current;
+                for (;xList.MoveNext();)
+                {
+                    if (Math.Abs(xList.Current - x) < rX)
+                    {
+                        rX = Math.Abs(xList.Current - x);
+                        rXMin = xList.Current;
+                    }
+                }
+                if (perspective.withCurLine)
+                pane.CurveList.Remove(pane.CurveList.Count - 1);
+
+                perspective.curLineX = rXMin;
+                var gp = new GraphProcessing();
+                gp.drawVerticalLine(perspective, false);
+                perspective.withCurLine = true;
+
+                zedGraphControlMain.AxisChange();
+                zedGraphControlMain.Invalidate();
+            }
 
         }
 
         private void buttonWithPoints_Click(object sender, EventArgs e)
         {
             perspective.withPoint = perspective.withPoint ? false : true;
+            new GraphProcessing().refreshGraph(perspective);
+
+            zedGraphControlMain.AxisChange();
+            zedGraphControlMain.Invalidate();
             resultProccessing();
         }
 
         private void buttonWithLine_Click(object sender, EventArgs e)
         {
             perspective.withLine = perspective.withLine ? false : true;
+            var pane = zedGraphControlMain.GraphPane;
+            if (perspective.withCurLine)
+            {
+                pane.CurveList.Remove(pane.CurveList.Count - 1);
+                perspective.withCurLine = false;
+            }
+
+            if (perspective.withMainLine)
+            {
+                pane.CurveList.Remove(pane.CurveList.Count - 1);
+                perspective.withMainLine = false;
+            }
+
+            zedGraphControlMain.AxisChange();
+            zedGraphControlMain.Invalidate();
+
             resultProccessing();
         }
 
@@ -270,13 +337,117 @@ namespace sppr
                 point.Add(iteration, X);
                 GraphProcessing gp = new GraphProcessing();
                 //gp.drawVerticalLine(zedGraphControlMain, point, perspective.funcInfo);
-                gp.drawVerticalLine(zedGraphControlMain, point, curFunc);
+                //gp.drawVerticalLine(perspective);
 
             }
             else
             {
                 int row = tableLayoutPanel.GetRow((Control)sender);
                 // to do
+            }
+        }
+
+        private void zedGraphControlMain_DoubleClick(object sender, EventArgs e)
+        {
+            if (perspective.withLine)
+            {
+                var pane = zedGraphControlMain.GraphPane;
+
+                perspective.mainLineX = perspective.curLineX;
+
+                if (perspective.withCurLine)
+                {
+                    pane.CurveList.Remove(pane.CurveList.Count - 1);
+                    perspective.withCurLine = false;
+                }
+
+                if (perspective.withMainLine)
+                {
+                    pane.CurveList.Remove(pane.CurveList.Count - 1);
+                    perspective.withMainLine = false;
+                }
+
+                var gp = new GraphProcessing();
+                gp.drawVerticalLine(perspective, true);
+
+                perspective.withMainLine = true;
+
+                zedGraphControlMain.AxisChange();
+                zedGraphControlMain.Invalidate();
+            }
+        }
+
+        private void zedGraphControlMain_MouseLeave(object sender, EventArgs e)
+        {
+            if (perspective.withCurLine)
+            {
+                var pane = zedGraphControlMain.GraphPane;
+                pane.CurveList.Remove(pane.CurveList.Count - 1);
+                perspective.withCurLine = false;
+
+                zedGraphControlMain.AxisChange();
+                zedGraphControlMain.Invalidate();
+            }
+
+        }
+
+        private void buttonDefaultZoom_Click(object sender, EventArgs e)
+        {
+            var pane = zedGraphControlMain.GraphPane;
+            var elem = perspective.funcInfo;
+
+            var rX = elem.xRight - elem.xLeft;
+            var rY = elem.yMax - elem.yMin;
+
+            pane.XAxis.Min = elem.xMin - rX * 0.1;
+            pane.XAxis.Max = elem.xMax + rX * 0.1;
+            pane.YAxis.Min = elem.yMin - rY * 0.1;
+            pane.YAxis.Max = elem.yMax + rY * 0.1;
+
+            zedGraphControlMain.AxisChange();
+            zedGraphControlMain.Invalidate();
+        }
+
+        private void buttonZoomApply_Click(object sender, EventArgs e)
+        {
+            var errorString = tryZoom();
+            if (errorString == "")
+            {
+                labelErrorList.Visible = false;
+                perspective.curZoomBorder.xMin = double.Parse(textBoxZoomXBegin.Text);
+                perspective.curZoomBorder.xMax = double.Parse(textBoxZoomXEnd.Text);
+                perspective.curZoomBorder.yMin = double.Parse(textBoxZoomYBegin.Text);
+                perspective.curZoomBorder.yMax = double.Parse(textBoxZoomYEnd.Text);
+
+                //if (perspective.curZoomBorder.xMax - perspective.curZoomBorder.xMin > (perspective.funcInfo.xMax - perspective.funcInfo.xMin))
+                var pane = zedGraphControlMain.GraphPane;
+
+                pane.XAxis.Min = perspective.curZoomBorder.xMin;
+                pane.XAxis.Max = perspective.curZoomBorder.xMax;
+                pane.YAxis.Min = perspective.curZoomBorder.yMin;
+                pane.YAxis.Max = perspective.curZoomBorder.yMax;
+
+                zedGraphControlMain.AxisChange();
+                zedGraphControlMain.Invalidate();
+            }
+            else
+            {
+                var errors = errorString.Split(',');
+                labelErrorList.Text = "";
+                foreach (var error in errors)
+                {
+                    labelErrorList.Text += error + '\n';
+                }
+                labelErrorList.Visible = true;
+            }
+        }
+
+        private void labelErrorList_Click(object sender, EventArgs e)
+        {
+            labelErrorList.Visible = false;
+            if (perspective.methodInfo.report == null)
+            {
+                showNoData();
             }
         }
     }

@@ -32,22 +32,22 @@
             this.panelHeader = new System.Windows.Forms.Panel();
             this.labelMousePosition = new System.Windows.Forms.Label();
             this.panelButtom = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.panelStatus = new System.Windows.Forms.Panel();
             this.panelLeft = new System.Windows.Forms.Panel();
             this.buttonChangePerspectiveLeft = new System.Windows.Forms.Button();
             this.panelRight = new System.Windows.Forms.Panel();
             this.buttonChangePerspectiveRight = new System.Windows.Forms.Button();
             this.panelAction = new System.Windows.Forms.Panel();
+            this.labelErrorList = new System.Windows.Forms.Label();
             this.labelStage = new System.Windows.Forms.Label();
             this.zedGraphControlMain = new ZedGraph.ZedGraphControl();
             this.panelActionHideButtom = new System.Windows.Forms.Panel();
             this.buttonActionButtom = new System.Windows.Forms.Button();
             this.panelActionButtom = new System.Windows.Forms.Panel();
             this.panelGraphConrtol = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.labelTable = new System.Windows.Forms.Label();
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.panelSortedBy = new System.Windows.Forms.Panel();
+            this.labelSortedBy = new System.Windows.Forms.Label();
             this.panelPostProcessing = new System.Windows.Forms.Panel();
             this.panelMinimum = new System.Windows.Forms.Panel();
             this.labelMinEnd = new System.Windows.Forms.Label();
@@ -128,7 +128,7 @@
             this.panelActionHideButtom.SuspendLayout();
             this.panelActionButtom.SuspendLayout();
             this.panelGraphConrtol.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.panelSortedBy.SuspendLayout();
             this.panelPostProcessing.SuspendLayout();
             this.panelMinimum.SuspendLayout();
             this.panelStepCount.SuspendLayout();
@@ -152,9 +152,8 @@
             this.panelHeader.Controls.Add(this.labelMousePosition);
             this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelHeader.Location = new System.Drawing.Point(0, 0);
-            this.panelHeader.Margin = new System.Windows.Forms.Padding(4);
             this.panelHeader.Name = "panelHeader";
-            this.panelHeader.Size = new System.Drawing.Size(1685, 62);
+            this.panelHeader.Size = new System.Drawing.Size(1264, 50);
             this.panelHeader.TabIndex = 4;
             // 
             // labelMousePosition
@@ -162,9 +161,8 @@
             this.labelMousePosition.AutoSize = true;
             this.labelMousePosition.Dock = System.Windows.Forms.DockStyle.Left;
             this.labelMousePosition.Location = new System.Drawing.Point(0, 0);
-            this.labelMousePosition.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelMousePosition.Name = "labelMousePosition";
-            this.labelMousePosition.Size = new System.Drawing.Size(19, 17);
+            this.labelMousePosition.Size = new System.Drawing.Size(16, 13);
             this.labelMousePosition.TabIndex = 0;
             this.labelMousePosition.Text = "M";
             // 
@@ -172,30 +170,20 @@
             // 
             this.panelButtom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(0)))), ((int)(((byte)(30)))));
             this.panelButtom.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelButtom.Controls.Add(this.panel3);
             this.panelButtom.Controls.Add(this.panelStatus);
             this.panelButtom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelButtom.Location = new System.Drawing.Point(0, 802);
-            this.panelButtom.Margin = new System.Windows.Forms.Padding(4);
+            this.panelButtom.Location = new System.Drawing.Point(0, 651);
             this.panelButtom.Name = "panelButtom";
-            this.panelButtom.Size = new System.Drawing.Size(1685, 36);
+            this.panelButtom.Size = new System.Drawing.Size(1264, 30);
             this.panelButtom.TabIndex = 3;
-            // 
-            // panel3
-            // 
-            this.panel3.Location = new System.Drawing.Point(692, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(898, 276);
-            this.panel3.TabIndex = 1;
             // 
             // panelStatus
             // 
             this.panelStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelStatus.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelStatus.Location = new System.Drawing.Point(0, 0);
-            this.panelStatus.Margin = new System.Windows.Forms.Padding(4);
             this.panelStatus.Name = "panelStatus";
-            this.panelStatus.Size = new System.Drawing.Size(0, 34);
+            this.panelStatus.Size = new System.Drawing.Size(0, 28);
             this.panelStatus.TabIndex = 0;
             // 
             // panelLeft
@@ -203,10 +191,9 @@
             this.panelLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(187)))), ((int)(((byte)(45)))));
             this.panelLeft.Controls.Add(this.buttonChangePerspectiveLeft);
             this.panelLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelLeft.Location = new System.Drawing.Point(0, 62);
-            this.panelLeft.Margin = new System.Windows.Forms.Padding(4);
+            this.panelLeft.Location = new System.Drawing.Point(0, 50);
             this.panelLeft.Name = "panelLeft";
-            this.panelLeft.Size = new System.Drawing.Size(93, 740);
+            this.panelLeft.Size = new System.Drawing.Size(70, 601);
             this.panelLeft.TabIndex = 2;
             // 
             // buttonChangePerspectiveLeft
@@ -216,9 +203,8 @@
             this.buttonChangePerspectiveLeft.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonChangePerspectiveLeft.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonChangePerspectiveLeft.Location = new System.Drawing.Point(0, 0);
-            this.buttonChangePerspectiveLeft.Margin = new System.Windows.Forms.Padding(4);
             this.buttonChangePerspectiveLeft.Name = "buttonChangePerspectiveLeft";
-            this.buttonChangePerspectiveLeft.Size = new System.Drawing.Size(93, 740);
+            this.buttonChangePerspectiveLeft.Size = new System.Drawing.Size(70, 601);
             this.buttonChangePerspectiveLeft.TabIndex = 0;
             this.buttonChangePerspectiveLeft.TabStop = false;
             this.buttonChangePerspectiveLeft.Text = "◀";
@@ -232,10 +218,9 @@
             this.panelRight.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(42)))), ((int)(((byte)(108)))));
             this.panelRight.Controls.Add(this.buttonChangePerspectiveRight);
             this.panelRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelRight.Location = new System.Drawing.Point(1592, 62);
-            this.panelRight.Margin = new System.Windows.Forms.Padding(4);
+            this.panelRight.Location = new System.Drawing.Point(1194, 50);
             this.panelRight.Name = "panelRight";
-            this.panelRight.Size = new System.Drawing.Size(93, 740);
+            this.panelRight.Size = new System.Drawing.Size(70, 601);
             this.panelRight.TabIndex = 1;
             // 
             // buttonChangePerspectiveRight
@@ -245,9 +230,8 @@
             this.buttonChangePerspectiveRight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonChangePerspectiveRight.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonChangePerspectiveRight.Location = new System.Drawing.Point(0, 0);
-            this.buttonChangePerspectiveRight.Margin = new System.Windows.Forms.Padding(4);
             this.buttonChangePerspectiveRight.Name = "buttonChangePerspectiveRight";
-            this.buttonChangePerspectiveRight.Size = new System.Drawing.Size(93, 740);
+            this.buttonChangePerspectiveRight.Size = new System.Drawing.Size(70, 601);
             this.buttonChangePerspectiveRight.TabIndex = 0;
             this.buttonChangePerspectiveRight.TabStop = false;
             this.buttonChangePerspectiveRight.Text = "▶";
@@ -259,6 +243,7 @@
             // panelAction
             // 
             this.panelAction.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            this.panelAction.Controls.Add(this.labelErrorList);
             this.panelAction.Controls.Add(this.labelStage);
             this.panelAction.Controls.Add(this.zedGraphControlMain);
             this.panelAction.Controls.Add(this.panelActionHideButtom);
@@ -266,11 +251,24 @@
             this.panelAction.Controls.Add(this.labelRecomendation);
             this.panelAction.Controls.Add(this.labelNoData);
             this.panelAction.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelAction.Location = new System.Drawing.Point(93, 62);
-            this.panelAction.Margin = new System.Windows.Forms.Padding(4);
+            this.panelAction.Location = new System.Drawing.Point(70, 50);
             this.panelAction.Name = "panelAction";
-            this.panelAction.Size = new System.Drawing.Size(1499, 740);
+            this.panelAction.Size = new System.Drawing.Size(1124, 601);
             this.panelAction.TabIndex = 0;
+            // 
+            // labelErrorList
+            // 
+            this.labelErrorList.AutoSize = true;
+            this.labelErrorList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelErrorList.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelErrorList.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.labelErrorList.Location = new System.Drawing.Point(0, 452);
+            this.labelErrorList.Name = "labelErrorList";
+            this.labelErrorList.Size = new System.Drawing.Size(60, 24);
+            this.labelErrorList.TabIndex = 2;
+            this.labelErrorList.Text = "label1";
+            this.labelErrorList.Visible = false;
+            this.labelErrorList.Click += new System.EventHandler(this.labelErrorList_Click);
             // 
             // labelStage
             // 
@@ -278,10 +276,9 @@
             this.labelStage.Dock = System.Windows.Forms.DockStyle.Top;
             this.labelStage.Font = new System.Drawing.Font("Microsoft Sans Serif", 75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelStage.ForeColor = System.Drawing.SystemColors.Control;
-            this.labelStage.Location = new System.Drawing.Point(0, 425);
-            this.labelStage.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelStage.Location = new System.Drawing.Point(0, 339);
             this.labelStage.Name = "labelStage";
-            this.labelStage.Size = new System.Drawing.Size(510, 142);
+            this.labelStage.Size = new System.Drawing.Size(409, 113);
             this.labelStage.TabIndex = 5;
             this.labelStage.Text = "ERROR";
             this.labelStage.Visible = false;
@@ -290,14 +287,15 @@
             // 
             this.zedGraphControlMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.zedGraphControlMain.IsShowPointValues = false;
-            this.zedGraphControlMain.Location = new System.Drawing.Point(0, 425);
-            this.zedGraphControlMain.Margin = new System.Windows.Forms.Padding(4);
+            this.zedGraphControlMain.Location = new System.Drawing.Point(0, 339);
             this.zedGraphControlMain.Name = "zedGraphControlMain";
             this.zedGraphControlMain.PointValueFormat = "G";
-            this.zedGraphControlMain.Size = new System.Drawing.Size(1499, 5);
+            this.zedGraphControlMain.Size = new System.Drawing.Size(1124, 10);
             this.zedGraphControlMain.TabIndex = 4;
             this.zedGraphControlMain.Visible = false;
+            this.zedGraphControlMain.DoubleClick += new System.EventHandler(this.zedGraphControlMain_DoubleClick);
             this.zedGraphControlMain.MouseDown += new System.Windows.Forms.MouseEventHandler(this.zedGraphControlMain_MouseDown);
+            this.zedGraphControlMain.MouseLeave += new System.EventHandler(this.zedGraphControlMain_MouseLeave);
             this.zedGraphControlMain.MouseMove += new System.Windows.Forms.MouseEventHandler(this.zedGraphControlMain_MouseMove);
             this.zedGraphControlMain.MouseUp += new System.Windows.Forms.MouseEventHandler(this.zedGraphControlMain_MouseUp);
             this.zedGraphControlMain.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.zedGraphControlMain_MouseWheel);
@@ -306,10 +304,9 @@
             // 
             this.panelActionHideButtom.Controls.Add(this.buttonActionButtom);
             this.panelActionHideButtom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelActionHideButtom.Location = new System.Drawing.Point(0, 430);
-            this.panelActionHideButtom.Margin = new System.Windows.Forms.Padding(4);
+            this.panelActionHideButtom.Location = new System.Drawing.Point(0, 349);
             this.panelActionHideButtom.Name = "panelActionHideButtom";
-            this.panelActionHideButtom.Size = new System.Drawing.Size(1499, 32);
+            this.panelActionHideButtom.Size = new System.Drawing.Size(1124, 26);
             this.panelActionHideButtom.TabIndex = 0;
             // 
             // buttonActionButtom
@@ -322,9 +319,8 @@
             this.buttonActionButtom.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.buttonActionButtom.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonActionButtom.Location = new System.Drawing.Point(0, 0);
-            this.buttonActionButtom.Margin = new System.Windows.Forms.Padding(4);
             this.buttonActionButtom.Name = "buttonActionButtom";
-            this.buttonActionButtom.Size = new System.Drawing.Size(1499, 32);
+            this.buttonActionButtom.Size = new System.Drawing.Size(1124, 26);
             this.buttonActionButtom.TabIndex = 0;
             this.buttonActionButtom.TabStop = false;
             this.buttonActionButtom.Text = "▼";
@@ -336,47 +332,23 @@
             this.panelActionButtom.Controls.Add(this.panelGraphConrtol);
             this.panelActionButtom.Controls.Add(this.panelActionButtomParam);
             this.panelActionButtom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelActionButtom.Location = new System.Drawing.Point(0, 462);
-            this.panelActionButtom.Margin = new System.Windows.Forms.Padding(4);
+            this.panelActionButtom.Location = new System.Drawing.Point(0, 375);
             this.panelActionButtom.Name = "panelActionButtom";
-            this.panelActionButtom.Size = new System.Drawing.Size(1499, 278);
+            this.panelActionButtom.Size = new System.Drawing.Size(1124, 226);
             this.panelActionButtom.TabIndex = 1;
             // 
             // panelGraphConrtol
             // 
             this.panelGraphConrtol.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelGraphConrtol.Controls.Add(this.panel2);
             this.panelGraphConrtol.Controls.Add(this.tableLayoutPanel);
+            this.panelGraphConrtol.Controls.Add(this.panelSortedBy);
             this.panelGraphConrtol.Controls.Add(this.panelPostProcessing);
             this.panelGraphConrtol.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelGraphConrtol.Location = new System.Drawing.Point(333, 0);
-            this.panelGraphConrtol.Margin = new System.Windows.Forms.Padding(4);
+            this.panelGraphConrtol.Location = new System.Drawing.Point(250, 0);
             this.panelGraphConrtol.Name = "panelGraphConrtol";
-            this.panelGraphConrtol.Size = new System.Drawing.Size(1166, 278);
+            this.panelGraphConrtol.Size = new System.Drawing.Size(874, 226);
             this.panelGraphConrtol.TabIndex = 1;
             this.panelGraphConrtol.Visible = false;
-            // 
-            // panel2
-            // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.labelTable);
-            this.panel2.Location = new System.Drawing.Point(266, -1);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(898, 36);
-            this.panel2.TabIndex = 3;
-            // 
-            // labelTable
-            // 
-            this.labelTable.AutoSize = true;
-            this.labelTable.Enabled = false;
-            this.labelTable.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.labelTable.ForeColor = System.Drawing.SystemColors.Control;
-            this.labelTable.Location = new System.Drawing.Point(428, 8);
-            this.labelTable.Name = "labelTable";
-            this.labelTable.Size = new System.Drawing.Size(50, 20);
-            this.labelTable.TabIndex = 2;
-            this.labelTable.Text = "Table";
-            this.labelTable.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanel
             // 
@@ -384,15 +356,38 @@
             this.tableLayoutPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
             this.tableLayoutPanel.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.tableLayoutPanel.Location = new System.Drawing.Point(266, 72);
+            this.tableLayoutPanel.Location = new System.Drawing.Point(200, 30);
+            this.tableLayoutPanel.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel.Name = "tableLayoutPanel";
             this.tableLayoutPanel.RowCount = 3;
-            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
-            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
-            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
-            this.tableLayoutPanel.Size = new System.Drawing.Size(892, 128);
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel.Size = new System.Drawing.Size(672, 104);
             this.tableLayoutPanel.TabIndex = 1;
+            // 
+            // panelSortedBy
+            // 
+            this.panelSortedBy.Controls.Add(this.labelSortedBy);
+            this.panelSortedBy.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelSortedBy.Location = new System.Drawing.Point(200, 0);
+            this.panelSortedBy.Name = "panelSortedBy";
+            this.panelSortedBy.Size = new System.Drawing.Size(672, 30);
+            this.panelSortedBy.TabIndex = 2;
+            // 
+            // labelSortedBy
+            // 
+            this.labelSortedBy.AutoSize = true;
+            this.labelSortedBy.Dock = System.Windows.Forms.DockStyle.Left;
+            this.labelSortedBy.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelSortedBy.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.labelSortedBy.Location = new System.Drawing.Point(0, 0);
+            this.labelSortedBy.Name = "labelSortedBy";
+            this.labelSortedBy.Size = new System.Drawing.Size(90, 24);
+            this.labelSortedBy.TabIndex = 0;
+            this.labelSortedBy.Text = "Sorted by";
             // 
             // panelPostProcessing
             // 
@@ -405,9 +400,8 @@
             this.panelPostProcessing.Controls.Add(this.panelLinesAndPoints);
             this.panelPostProcessing.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelPostProcessing.Location = new System.Drawing.Point(0, 0);
-            this.panelPostProcessing.Margin = new System.Windows.Forms.Padding(4);
             this.panelPostProcessing.Name = "panelPostProcessing";
-            this.panelPostProcessing.Size = new System.Drawing.Size(266, 276);
+            this.panelPostProcessing.Size = new System.Drawing.Size(200, 224);
             this.panelPostProcessing.TabIndex = 0;
             // 
             // panelMinimum
@@ -419,10 +413,9 @@
             this.panelMinimum.Controls.Add(this.textBoxXMin);
             this.panelMinimum.Controls.Add(this.labelMinBegin);
             this.panelMinimum.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelMinimum.Location = new System.Drawing.Point(0, 178);
-            this.panelMinimum.Margin = new System.Windows.Forms.Padding(4);
+            this.panelMinimum.Location = new System.Drawing.Point(0, 148);
             this.panelMinimum.Name = "panelMinimum";
-            this.panelMinimum.Size = new System.Drawing.Size(264, 36);
+            this.panelMinimum.Size = new System.Drawing.Size(198, 30);
             this.panelMinimum.TabIndex = 5;
             // 
             // labelMinEnd
@@ -431,10 +424,9 @@
             this.labelMinEnd.Dock = System.Windows.Forms.DockStyle.Left;
             this.labelMinEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelMinEnd.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.labelMinEnd.Location = new System.Drawing.Point(143, 0);
-            this.labelMinEnd.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelMinEnd.Location = new System.Drawing.Point(111, 0);
             this.labelMinEnd.Name = "labelMinEnd";
-            this.labelMinEnd.Size = new System.Drawing.Size(21, 29);
+            this.labelMinEnd.Size = new System.Drawing.Size(16, 24);
             this.labelMinEnd.TabIndex = 9;
             this.labelMinEnd.Text = ")";
             // 
@@ -445,11 +437,10 @@
             this.textBoxYMin.Dock = System.Windows.Forms.DockStyle.Left;
             this.textBoxYMin.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxYMin.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBoxYMin.Location = new System.Drawing.Point(124, 0);
-            this.textBoxYMin.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxYMin.Location = new System.Drawing.Point(97, 0);
             this.textBoxYMin.Name = "textBoxYMin";
             this.textBoxYMin.ReadOnly = true;
-            this.textBoxYMin.Size = new System.Drawing.Size(19, 27);
+            this.textBoxYMin.Size = new System.Drawing.Size(14, 22);
             this.textBoxYMin.TabIndex = 8;
             this.textBoxYMin.Text = "2";
             this.textBoxYMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -461,10 +452,9 @@
             this.labelMinMid.Dock = System.Windows.Forms.DockStyle.Left;
             this.labelMinMid.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelMinMid.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.labelMinMid.Location = new System.Drawing.Point(105, 0);
-            this.labelMinMid.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelMinMid.Location = new System.Drawing.Point(82, 0);
             this.labelMinMid.Name = "labelMinMid";
-            this.labelMinMid.Size = new System.Drawing.Size(19, 29);
+            this.labelMinMid.Size = new System.Drawing.Size(15, 24);
             this.labelMinMid.TabIndex = 7;
             this.labelMinMid.Text = ",";
             // 
@@ -476,11 +466,10 @@
             this.textBoxXMin.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxXMin.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.textBoxXMin.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.textBoxXMin.Location = new System.Drawing.Point(86, 0);
-            this.textBoxXMin.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxXMin.Location = new System.Drawing.Point(68, 0);
             this.textBoxXMin.Name = "textBoxXMin";
             this.textBoxXMin.ReadOnly = true;
-            this.textBoxXMin.Size = new System.Drawing.Size(19, 27);
+            this.textBoxXMin.Size = new System.Drawing.Size(14, 22);
             this.textBoxXMin.TabIndex = 6;
             this.textBoxXMin.Text = "2";
             this.textBoxXMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -493,9 +482,8 @@
             this.labelMinBegin.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelMinBegin.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.labelMinBegin.Location = new System.Drawing.Point(0, 0);
-            this.labelMinBegin.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelMinBegin.Name = "labelMinBegin";
-            this.labelMinBegin.Size = new System.Drawing.Size(86, 29);
+            this.labelMinBegin.Size = new System.Drawing.Size(68, 24);
             this.labelMinBegin.TabIndex = 0;
             this.labelMinBegin.Text = "Min = (";
             // 
@@ -506,10 +494,9 @@
             this.panelStepCount.Controls.Add(this.labelOfStep);
             this.panelStepCount.Controls.Add(this.labelStepCount);
             this.panelStepCount.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelStepCount.Location = new System.Drawing.Point(0, 142);
-            this.panelStepCount.Margin = new System.Windows.Forms.Padding(4);
+            this.panelStepCount.Location = new System.Drawing.Point(0, 118);
             this.panelStepCount.Name = "panelStepCount";
-            this.panelStepCount.Size = new System.Drawing.Size(264, 36);
+            this.panelStepCount.Size = new System.Drawing.Size(198, 30);
             this.panelStepCount.TabIndex = 3;
             // 
             // labelMaxStepCountResult
@@ -518,10 +505,9 @@
             this.labelMaxStepCountResult.Dock = System.Windows.Forms.DockStyle.Left;
             this.labelMaxStepCountResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelMaxStepCountResult.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.labelMaxStepCountResult.Location = new System.Drawing.Point(175, 0);
-            this.labelMaxStepCountResult.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelMaxStepCountResult.Location = new System.Drawing.Point(135, 0);
             this.labelMaxStepCountResult.Name = "labelMaxStepCountResult";
-            this.labelMaxStepCountResult.Size = new System.Drawing.Size(39, 29);
+            this.labelMaxStepCountResult.Size = new System.Drawing.Size(30, 24);
             this.labelMaxStepCountResult.TabIndex = 5;
             this.labelMaxStepCountResult.Text = "10";
             // 
@@ -531,10 +517,9 @@
             this.labelOfStep.Dock = System.Windows.Forms.DockStyle.Left;
             this.labelOfStep.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelOfStep.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.labelOfStep.Location = new System.Drawing.Point(39, 0);
-            this.labelOfStep.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelOfStep.Location = new System.Drawing.Point(30, 0);
             this.labelOfStep.Name = "labelOfStep";
-            this.labelOfStep.Size = new System.Drawing.Size(136, 29);
+            this.labelOfStep.Size = new System.Drawing.Size(105, 24);
             this.labelOfStep.TabIndex = 4;
             this.labelOfStep.Text = "steps out of";
             // 
@@ -545,9 +530,8 @@
             this.labelStepCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelStepCount.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.labelStepCount.Location = new System.Drawing.Point(0, 0);
-            this.labelStepCount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelStepCount.Name = "labelStepCount";
-            this.labelStepCount.Size = new System.Drawing.Size(39, 29);
+            this.labelStepCount.Size = new System.Drawing.Size(30, 24);
             this.labelStepCount.TabIndex = 3;
             this.labelStepCount.Text = "10";
             // 
@@ -557,10 +541,9 @@
             this.panelDefaultZoom.Controls.Add(this.buttonZoomApply);
             this.panelDefaultZoom.Controls.Add(this.buttonDefaultZoom);
             this.panelDefaultZoom.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelDefaultZoom.Location = new System.Drawing.Point(0, 106);
-            this.panelDefaultZoom.Margin = new System.Windows.Forms.Padding(4);
+            this.panelDefaultZoom.Location = new System.Drawing.Point(0, 88);
             this.panelDefaultZoom.Name = "panelDefaultZoom";
-            this.panelDefaultZoom.Size = new System.Drawing.Size(264, 36);
+            this.panelDefaultZoom.Size = new System.Drawing.Size(198, 30);
             this.panelDefaultZoom.TabIndex = 2;
             // 
             // buttonZoomApply
@@ -570,12 +553,12 @@
             this.buttonZoomApply.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonZoomApply.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.buttonZoomApply.Location = new System.Drawing.Point(0, 0);
-            this.buttonZoomApply.Margin = new System.Windows.Forms.Padding(4);
             this.buttonZoomApply.Name = "buttonZoomApply";
-            this.buttonZoomApply.Size = new System.Drawing.Size(133, 34);
+            this.buttonZoomApply.Size = new System.Drawing.Size(100, 28);
             this.buttonZoomApply.TabIndex = 1;
             this.buttonZoomApply.Text = "Apply";
             this.buttonZoomApply.UseVisualStyleBackColor = true;
+            this.buttonZoomApply.Click += new System.EventHandler(this.buttonZoomApply_Click);
             // 
             // buttonDefaultZoom
             // 
@@ -583,13 +566,13 @@
             this.buttonDefaultZoom.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonDefaultZoom.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonDefaultZoom.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonDefaultZoom.Location = new System.Drawing.Point(129, 0);
-            this.buttonDefaultZoom.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonDefaultZoom.Location = new System.Drawing.Point(96, 0);
             this.buttonDefaultZoom.Name = "buttonDefaultZoom";
-            this.buttonDefaultZoom.Size = new System.Drawing.Size(133, 34);
+            this.buttonDefaultZoom.Size = new System.Drawing.Size(100, 28);
             this.buttonDefaultZoom.TabIndex = 0;
             this.buttonDefaultZoom.Text = "Default Zoom";
             this.buttonDefaultZoom.UseVisualStyleBackColor = true;
+            this.buttonDefaultZoom.Click += new System.EventHandler(this.buttonDefaultZoom_Click);
             // 
             // panel1
             // 
@@ -600,10 +583,9 @@
             this.panel1.Controls.Add(this.textBoxZoomYBegin);
             this.panel1.Controls.Add(this.labelZoomYBegin);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 70);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel1.Location = new System.Drawing.Point(0, 58);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(264, 36);
+            this.panel1.Size = new System.Drawing.Size(198, 30);
             this.panel1.TabIndex = 1;
             // 
             // labelZoomYEnd
@@ -612,10 +594,9 @@
             this.labelZoomYEnd.Dock = System.Windows.Forms.DockStyle.Left;
             this.labelZoomYEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelZoomYEnd.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.labelZoomYEnd.Location = new System.Drawing.Point(182, 0);
-            this.labelZoomYEnd.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelZoomYEnd.Location = new System.Drawing.Point(143, 0);
             this.labelZoomYEnd.Name = "labelZoomYEnd";
-            this.labelZoomYEnd.Size = new System.Drawing.Size(20, 29);
+            this.labelZoomYEnd.Size = new System.Drawing.Size(15, 24);
             this.labelZoomYEnd.TabIndex = 7;
             this.labelZoomYEnd.Text = "]";
             // 
@@ -626,10 +607,9 @@
             this.textBoxZoomYEnd.Dock = System.Windows.Forms.DockStyle.Left;
             this.textBoxZoomYEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxZoomYEnd.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBoxZoomYEnd.Location = new System.Drawing.Point(163, 0);
-            this.textBoxZoomYEnd.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxZoomYEnd.Location = new System.Drawing.Point(129, 0);
             this.textBoxZoomYEnd.Name = "textBoxZoomYEnd";
-            this.textBoxZoomYEnd.Size = new System.Drawing.Size(19, 27);
+            this.textBoxZoomYEnd.Size = new System.Drawing.Size(14, 22);
             this.textBoxZoomYEnd.TabIndex = 10;
             this.textBoxZoomYEnd.Text = "2";
             this.textBoxZoomYEnd.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -641,10 +621,9 @@
             this.labelZoomYMid.Dock = System.Windows.Forms.DockStyle.Left;
             this.labelZoomYMid.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelZoomYMid.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.labelZoomYMid.Location = new System.Drawing.Point(144, 0);
-            this.labelZoomYMid.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelZoomYMid.Location = new System.Drawing.Point(114, 0);
             this.labelZoomYMid.Name = "labelZoomYMid";
-            this.labelZoomYMid.Size = new System.Drawing.Size(19, 29);
+            this.labelZoomYMid.Size = new System.Drawing.Size(15, 24);
             this.labelZoomYMid.TabIndex = 8;
             this.labelZoomYMid.Text = ",";
             // 
@@ -655,10 +634,9 @@
             this.textBoxZoomYBegin.Dock = System.Windows.Forms.DockStyle.Left;
             this.textBoxZoomYBegin.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxZoomYBegin.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBoxZoomYBegin.Location = new System.Drawing.Point(125, 0);
-            this.textBoxZoomYBegin.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxZoomYBegin.Location = new System.Drawing.Point(100, 0);
             this.textBoxZoomYBegin.Name = "textBoxZoomYBegin";
-            this.textBoxZoomYBegin.Size = new System.Drawing.Size(19, 27);
+            this.textBoxZoomYBegin.Size = new System.Drawing.Size(14, 22);
             this.textBoxZoomYBegin.TabIndex = 9;
             this.textBoxZoomYBegin.Text = "2";
             this.textBoxZoomYBegin.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -671,9 +649,8 @@
             this.labelZoomYBegin.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelZoomYBegin.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.labelZoomYBegin.Location = new System.Drawing.Point(0, 0);
-            this.labelZoomYBegin.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelZoomYBegin.Name = "labelZoomYBegin";
-            this.labelZoomYBegin.Size = new System.Drawing.Size(125, 29);
+            this.labelZoomYBegin.Size = new System.Drawing.Size(100, 24);
             this.labelZoomYBegin.TabIndex = 5;
             this.labelZoomYBegin.Text = "Zoom y ∈ [";
             // 
@@ -686,10 +663,9 @@
             this.panelZoomX.Controls.Add(this.textBoxZoomXBegin);
             this.panelZoomX.Controls.Add(this.labelZoomXBegin);
             this.panelZoomX.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelZoomX.Location = new System.Drawing.Point(0, 34);
-            this.panelZoomX.Margin = new System.Windows.Forms.Padding(4);
+            this.panelZoomX.Location = new System.Drawing.Point(0, 28);
             this.panelZoomX.Name = "panelZoomX";
-            this.panelZoomX.Size = new System.Drawing.Size(264, 36);
+            this.panelZoomX.Size = new System.Drawing.Size(198, 30);
             this.panelZoomX.TabIndex = 0;
             // 
             // labelZoomXEnd
@@ -698,10 +674,9 @@
             this.labelZoomXEnd.Dock = System.Windows.Forms.DockStyle.Left;
             this.labelZoomXEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelZoomXEnd.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.labelZoomXEnd.Location = new System.Drawing.Point(182, 0);
-            this.labelZoomXEnd.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelZoomXEnd.Location = new System.Drawing.Point(144, 0);
             this.labelZoomXEnd.Name = "labelZoomXEnd";
-            this.labelZoomXEnd.Size = new System.Drawing.Size(20, 29);
+            this.labelZoomXEnd.Size = new System.Drawing.Size(15, 24);
             this.labelZoomXEnd.TabIndex = 7;
             this.labelZoomXEnd.Text = "]";
             // 
@@ -712,10 +687,9 @@
             this.textBoxZoomXEnd.Dock = System.Windows.Forms.DockStyle.Left;
             this.textBoxZoomXEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxZoomXEnd.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBoxZoomXEnd.Location = new System.Drawing.Point(163, 0);
-            this.textBoxZoomXEnd.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxZoomXEnd.Location = new System.Drawing.Point(130, 0);
             this.textBoxZoomXEnd.Name = "textBoxZoomXEnd";
-            this.textBoxZoomXEnd.Size = new System.Drawing.Size(19, 27);
+            this.textBoxZoomXEnd.Size = new System.Drawing.Size(14, 22);
             this.textBoxZoomXEnd.TabIndex = 10;
             this.textBoxZoomXEnd.Text = "2";
             this.textBoxZoomXEnd.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -727,10 +701,9 @@
             this.labelZoomXMid.Dock = System.Windows.Forms.DockStyle.Left;
             this.labelZoomXMid.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelZoomXMid.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.labelZoomXMid.Location = new System.Drawing.Point(144, 0);
-            this.labelZoomXMid.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelZoomXMid.Location = new System.Drawing.Point(115, 0);
             this.labelZoomXMid.Name = "labelZoomXMid";
-            this.labelZoomXMid.Size = new System.Drawing.Size(19, 29);
+            this.labelZoomXMid.Size = new System.Drawing.Size(15, 24);
             this.labelZoomXMid.TabIndex = 8;
             this.labelZoomXMid.Text = ",";
             // 
@@ -741,10 +714,9 @@
             this.textBoxZoomXBegin.Dock = System.Windows.Forms.DockStyle.Left;
             this.textBoxZoomXBegin.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxZoomXBegin.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBoxZoomXBegin.Location = new System.Drawing.Point(125, 0);
-            this.textBoxZoomXBegin.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxZoomXBegin.Location = new System.Drawing.Point(101, 0);
             this.textBoxZoomXBegin.Name = "textBoxZoomXBegin";
-            this.textBoxZoomXBegin.Size = new System.Drawing.Size(19, 27);
+            this.textBoxZoomXBegin.Size = new System.Drawing.Size(14, 22);
             this.textBoxZoomXBegin.TabIndex = 9;
             this.textBoxZoomXBegin.Text = "2";
             this.textBoxZoomXBegin.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -757,9 +729,8 @@
             this.labelZoomXBegin.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelZoomXBegin.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.labelZoomXBegin.Location = new System.Drawing.Point(0, 0);
-            this.labelZoomXBegin.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelZoomXBegin.Name = "labelZoomXBegin";
-            this.labelZoomXBegin.Size = new System.Drawing.Size(125, 29);
+            this.labelZoomXBegin.Size = new System.Drawing.Size(101, 24);
             this.labelZoomXBegin.TabIndex = 5;
             this.labelZoomXBegin.Text = "Zoom x ∈ [";
             // 
@@ -769,9 +740,8 @@
             this.panelLinesAndPoints.Controls.Add(this.buttonWithPoints);
             this.panelLinesAndPoints.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelLinesAndPoints.Location = new System.Drawing.Point(0, 0);
-            this.panelLinesAndPoints.Margin = new System.Windows.Forms.Padding(4);
             this.panelLinesAndPoints.Name = "panelLinesAndPoints";
-            this.panelLinesAndPoints.Size = new System.Drawing.Size(264, 34);
+            this.panelLinesAndPoints.Size = new System.Drawing.Size(198, 28);
             this.panelLinesAndPoints.TabIndex = 4;
             // 
             // buttonWithLine
@@ -780,10 +750,9 @@
             this.buttonWithLine.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonWithLine.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonWithLine.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonWithLine.Location = new System.Drawing.Point(131, 0);
-            this.buttonWithLine.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonWithLine.Location = new System.Drawing.Point(98, 0);
             this.buttonWithLine.Name = "buttonWithLine";
-            this.buttonWithLine.Size = new System.Drawing.Size(133, 34);
+            this.buttonWithLine.Size = new System.Drawing.Size(100, 28);
             this.buttonWithLine.TabIndex = 1;
             this.buttonWithLine.Text = "Line";
             this.buttonWithLine.UseVisualStyleBackColor = true;
@@ -796,9 +765,8 @@
             this.buttonWithPoints.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonWithPoints.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.buttonWithPoints.Location = new System.Drawing.Point(0, 0);
-            this.buttonWithPoints.Margin = new System.Windows.Forms.Padding(4);
             this.buttonWithPoints.Name = "buttonWithPoints";
-            this.buttonWithPoints.Size = new System.Drawing.Size(133, 34);
+            this.buttonWithPoints.Size = new System.Drawing.Size(100, 28);
             this.buttonWithPoints.TabIndex = 0;
             this.buttonWithPoints.Text = "Points";
             this.buttonWithPoints.UseVisualStyleBackColor = true;
@@ -814,9 +782,8 @@
             this.panelActionButtomParam.Controls.Add(this.panelActionRun);
             this.panelActionButtomParam.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelActionButtomParam.Location = new System.Drawing.Point(0, 0);
-            this.panelActionButtomParam.Margin = new System.Windows.Forms.Padding(4);
             this.panelActionButtomParam.Name = "panelActionButtomParam";
-            this.panelActionButtomParam.Size = new System.Drawing.Size(333, 278);
+            this.panelActionButtomParam.Size = new System.Drawing.Size(250, 226);
             this.panelActionButtomParam.TabIndex = 0;
             // 
             // panelActionButtomE
@@ -826,10 +793,9 @@
             this.panelActionButtomE.Controls.Add(this.textBoxE);
             this.panelActionButtomE.Controls.Add(this.labelE);
             this.panelActionButtomE.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelActionButtomE.Location = new System.Drawing.Point(0, 180);
-            this.panelActionButtomE.Margin = new System.Windows.Forms.Padding(4);
+            this.panelActionButtomE.Location = new System.Drawing.Point(0, 150);
             this.panelActionButtomE.Name = "panelActionButtomE";
-            this.panelActionButtomE.Size = new System.Drawing.Size(333, 36);
+            this.panelActionButtomE.Size = new System.Drawing.Size(250, 30);
             this.panelActionButtomE.TabIndex = 4;
             this.panelActionButtomE.MouseLeave += new System.EventHandler(this.panelActionButtomE_MouseLeave);
             this.panelActionButtomE.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelActionButtomE_MouseMove);
@@ -840,10 +806,9 @@
             this.labelGuidanceE.Dock = System.Windows.Forms.DockStyle.Right;
             this.labelGuidanceE.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelGuidanceE.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.labelGuidanceE.Location = new System.Drawing.Point(179, 0);
-            this.labelGuidanceE.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelGuidanceE.Location = new System.Drawing.Point(129, 0);
             this.labelGuidanceE.Name = "labelGuidanceE";
-            this.labelGuidanceE.Size = new System.Drawing.Size(152, 29);
+            this.labelGuidanceE.Size = new System.Drawing.Size(119, 24);
             this.labelGuidanceE.TabIndex = 2;
             this.labelGuidanceE.Text = "Method error";
             // 
@@ -854,10 +819,9 @@
             this.textBoxE.Dock = System.Windows.Forms.DockStyle.Left;
             this.textBoxE.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxE.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBoxE.Location = new System.Drawing.Point(53, 0);
-            this.textBoxE.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxE.Location = new System.Drawing.Point(42, 0);
             this.textBoxE.Name = "textBoxE";
-            this.textBoxE.Size = new System.Drawing.Size(19, 27);
+            this.textBoxE.Size = new System.Drawing.Size(14, 22);
             this.textBoxE.TabIndex = 0;
             this.textBoxE.Text = "2";
             this.textBoxE.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -870,9 +834,8 @@
             this.labelE.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelE.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.labelE.Location = new System.Drawing.Point(0, 0);
-            this.labelE.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelE.Name = "labelE";
-            this.labelE.Size = new System.Drawing.Size(53, 29);
+            this.labelE.Size = new System.Drawing.Size(42, 24);
             this.labelE.TabIndex = 1;
             this.labelE.Text = "e = ";
             // 
@@ -883,10 +846,9 @@
             this.panelActionButtomR.Controls.Add(this.textBoxR);
             this.panelActionButtomR.Controls.Add(this.labelR);
             this.panelActionButtomR.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelActionButtomR.Location = new System.Drawing.Point(0, 144);
-            this.panelActionButtomR.Margin = new System.Windows.Forms.Padding(4);
+            this.panelActionButtomR.Location = new System.Drawing.Point(0, 120);
             this.panelActionButtomR.Name = "panelActionButtomR";
-            this.panelActionButtomR.Size = new System.Drawing.Size(333, 36);
+            this.panelActionButtomR.Size = new System.Drawing.Size(250, 30);
             this.panelActionButtomR.TabIndex = 0;
             this.panelActionButtomR.MouseLeave += new System.EventHandler(this.panelActionButtomR_MouseLeave);
             this.panelActionButtomR.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelActionButtomR_MouseMove);
@@ -897,10 +859,9 @@
             this.labelGuidanceR.Dock = System.Windows.Forms.DockStyle.Right;
             this.labelGuidanceR.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelGuidanceR.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.labelGuidanceR.Location = new System.Drawing.Point(93, 0);
-            this.labelGuidanceR.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelGuidanceR.Location = new System.Drawing.Point(63, 0);
             this.labelGuidanceR.Name = "labelGuidanceR";
-            this.labelGuidanceR.Size = new System.Drawing.Size(238, 29);
+            this.labelGuidanceR.Size = new System.Drawing.Size(185, 24);
             this.labelGuidanceR.TabIndex = 2;
             this.labelGuidanceR.Text = "Parameter of method";
             // 
@@ -911,10 +872,9 @@
             this.textBoxR.Dock = System.Windows.Forms.DockStyle.Left;
             this.textBoxR.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxR.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBoxR.Location = new System.Drawing.Point(47, 0);
-            this.textBoxR.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxR.Location = new System.Drawing.Point(37, 0);
             this.textBoxR.Name = "textBoxR";
-            this.textBoxR.Size = new System.Drawing.Size(19, 27);
+            this.textBoxR.Size = new System.Drawing.Size(14, 22);
             this.textBoxR.TabIndex = 0;
             this.textBoxR.Text = "2";
             this.textBoxR.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -927,9 +887,8 @@
             this.labelR.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelR.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.labelR.Location = new System.Drawing.Point(0, 0);
-            this.labelR.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelR.Name = "labelR";
-            this.labelR.Size = new System.Drawing.Size(47, 29);
+            this.labelR.Size = new System.Drawing.Size(37, 24);
             this.labelR.TabIndex = 1;
             this.labelR.Text = "r = ";
             // 
@@ -939,10 +898,9 @@
             this.panelMaxSteps.Controls.Add(this.textBoxMaxStepCount);
             this.panelMaxSteps.Controls.Add(this.labelMaxStepCount);
             this.panelMaxSteps.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelMaxSteps.Location = new System.Drawing.Point(0, 108);
-            this.panelMaxSteps.Margin = new System.Windows.Forms.Padding(4);
+            this.panelMaxSteps.Location = new System.Drawing.Point(0, 90);
             this.panelMaxSteps.Name = "panelMaxSteps";
-            this.panelMaxSteps.Size = new System.Drawing.Size(333, 36);
+            this.panelMaxSteps.Size = new System.Drawing.Size(250, 30);
             this.panelMaxSteps.TabIndex = 6;
             // 
             // textBoxMaxStepCount
@@ -952,10 +910,9 @@
             this.textBoxMaxStepCount.Dock = System.Windows.Forms.DockStyle.Left;
             this.textBoxMaxStepCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxMaxStepCount.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBoxMaxStepCount.Location = new System.Drawing.Point(199, 0);
-            this.textBoxMaxStepCount.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxMaxStepCount.Location = new System.Drawing.Point(159, 0);
             this.textBoxMaxStepCount.Name = "textBoxMaxStepCount";
-            this.textBoxMaxStepCount.Size = new System.Drawing.Size(19, 27);
+            this.textBoxMaxStepCount.Size = new System.Drawing.Size(14, 22);
             this.textBoxMaxStepCount.TabIndex = 0;
             this.textBoxMaxStepCount.Text = "200";
             this.textBoxMaxStepCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -968,9 +925,8 @@
             this.labelMaxStepCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelMaxStepCount.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.labelMaxStepCount.Location = new System.Drawing.Point(0, 0);
-            this.labelMaxStepCount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelMaxStepCount.Name = "labelMaxStepCount";
-            this.labelMaxStepCount.Size = new System.Drawing.Size(199, 29);
+            this.labelMaxStepCount.Size = new System.Drawing.Size(159, 24);
             this.labelMaxStepCount.TabIndex = 1;
             this.labelMaxStepCount.Text = "Max step count = ";
             // 
@@ -983,10 +939,9 @@
             this.panelActionButtomRegion.Controls.Add(this.textBoxXBegin);
             this.panelActionButtomRegion.Controls.Add(this.labelRegionBegin);
             this.panelActionButtomRegion.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelActionButtomRegion.Location = new System.Drawing.Point(0, 72);
-            this.panelActionButtomRegion.Margin = new System.Windows.Forms.Padding(4);
+            this.panelActionButtomRegion.Location = new System.Drawing.Point(0, 60);
             this.panelActionButtomRegion.Name = "panelActionButtomRegion";
-            this.panelActionButtomRegion.Size = new System.Drawing.Size(333, 36);
+            this.panelActionButtomRegion.Size = new System.Drawing.Size(250, 30);
             this.panelActionButtomRegion.TabIndex = 1;
             // 
             // labelRegionEnd
@@ -995,10 +950,9 @@
             this.labelRegionEnd.Dock = System.Windows.Forms.DockStyle.Left;
             this.labelRegionEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelRegionEnd.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.labelRegionEnd.Location = new System.Drawing.Point(114, 0);
-            this.labelRegionEnd.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelRegionEnd.Location = new System.Drawing.Point(89, 0);
             this.labelRegionEnd.Name = "labelRegionEnd";
-            this.labelRegionEnd.Size = new System.Drawing.Size(20, 29);
+            this.labelRegionEnd.Size = new System.Drawing.Size(15, 24);
             this.labelRegionEnd.TabIndex = 0;
             this.labelRegionEnd.Text = "]";
             // 
@@ -1009,10 +963,9 @@
             this.textBoxXEnd.Dock = System.Windows.Forms.DockStyle.Left;
             this.textBoxXEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxXEnd.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBoxXEnd.Location = new System.Drawing.Point(95, 0);
-            this.textBoxXEnd.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxXEnd.Location = new System.Drawing.Point(75, 0);
             this.textBoxXEnd.Name = "textBoxXEnd";
-            this.textBoxXEnd.Size = new System.Drawing.Size(19, 27);
+            this.textBoxXEnd.Size = new System.Drawing.Size(14, 22);
             this.textBoxXEnd.TabIndex = 6;
             this.textBoxXEnd.Text = "2";
             this.textBoxXEnd.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -1024,10 +977,9 @@
             this.labelZpt.Dock = System.Windows.Forms.DockStyle.Left;
             this.labelZpt.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelZpt.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.labelZpt.Location = new System.Drawing.Point(76, 0);
-            this.labelZpt.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelZpt.Location = new System.Drawing.Point(60, 0);
             this.labelZpt.Name = "labelZpt";
-            this.labelZpt.Size = new System.Drawing.Size(19, 29);
+            this.labelZpt.Size = new System.Drawing.Size(15, 24);
             this.labelZpt.TabIndex = 2;
             this.labelZpt.Text = ",";
             // 
@@ -1038,10 +990,9 @@
             this.textBoxXBegin.Dock = System.Windows.Forms.DockStyle.Left;
             this.textBoxXBegin.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxXBegin.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBoxXBegin.Location = new System.Drawing.Point(57, 0);
-            this.textBoxXBegin.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxXBegin.Location = new System.Drawing.Point(46, 0);
             this.textBoxXBegin.Name = "textBoxXBegin";
-            this.textBoxXBegin.Size = new System.Drawing.Size(19, 27);
+            this.textBoxXBegin.Size = new System.Drawing.Size(14, 22);
             this.textBoxXBegin.TabIndex = 5;
             this.textBoxXBegin.Text = "2";
             this.textBoxXBegin.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -1054,9 +1005,8 @@
             this.labelRegionBegin.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelRegionBegin.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.labelRegionBegin.Location = new System.Drawing.Point(0, 0);
-            this.labelRegionBegin.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelRegionBegin.Name = "labelRegionBegin";
-            this.labelRegionBegin.Size = new System.Drawing.Size(57, 29);
+            this.labelRegionBegin.Size = new System.Drawing.Size(46, 24);
             this.labelRegionBegin.TabIndex = 4;
             this.labelRegionBegin.Text = "x ∈ [";
             // 
@@ -1074,10 +1024,9 @@
             this.panelActionButtomParamFunc.Controls.Add(this.labelFunc);
             this.panelActionButtomParamFunc.Controls.Add(this.panelFuncBegin);
             this.panelActionButtomParamFunc.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelActionButtomParamFunc.Location = new System.Drawing.Point(0, 36);
-            this.panelActionButtomParamFunc.Margin = new System.Windows.Forms.Padding(4);
+            this.panelActionButtomParamFunc.Location = new System.Drawing.Point(0, 30);
             this.panelActionButtomParamFunc.Name = "panelActionButtomParamFunc";
-            this.panelActionButtomParamFunc.Size = new System.Drawing.Size(333, 36);
+            this.panelActionButtomParamFunc.Size = new System.Drawing.Size(250, 30);
             this.panelActionButtomParamFunc.TabIndex = 2;
             // 
             // labelSinEnd
@@ -1086,10 +1035,9 @@
             this.labelSinEnd.Dock = System.Windows.Forms.DockStyle.Left;
             this.labelSinEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelSinEnd.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.labelSinEnd.Location = new System.Drawing.Point(309, 0);
-            this.labelSinEnd.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelSinEnd.Location = new System.Drawing.Point(239, 0);
             this.labelSinEnd.Name = "labelSinEnd";
-            this.labelSinEnd.Size = new System.Drawing.Size(32, 29);
+            this.labelSinEnd.Size = new System.Drawing.Size(26, 24);
             this.labelSinEnd.TabIndex = 0;
             this.labelSinEnd.Text = "x)";
             // 
@@ -1100,10 +1048,9 @@
             this.textBoxD.Dock = System.Windows.Forms.DockStyle.Left;
             this.textBoxD.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxD.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBoxD.Location = new System.Drawing.Point(290, 0);
-            this.textBoxD.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxD.Location = new System.Drawing.Point(225, 0);
             this.textBoxD.Name = "textBoxD";
-            this.textBoxD.Size = new System.Drawing.Size(19, 27);
+            this.textBoxD.Size = new System.Drawing.Size(14, 22);
             this.textBoxD.TabIndex = 4;
             this.textBoxD.Text = "5";
             this.textBoxD.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -1115,10 +1062,9 @@
             this.labelSinBegin.Dock = System.Windows.Forms.DockStyle.Left;
             this.labelSinBegin.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelSinBegin.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.labelSinBegin.Location = new System.Drawing.Point(238, 0);
-            this.labelSinBegin.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelSinBegin.Location = new System.Drawing.Point(185, 0);
             this.labelSinBegin.Name = "labelSinBegin";
-            this.labelSinBegin.Size = new System.Drawing.Size(52, 29);
+            this.labelSinBegin.Size = new System.Drawing.Size(40, 24);
             this.labelSinBegin.TabIndex = 2;
             this.labelSinBegin.Text = "sin(";
             // 
@@ -1129,10 +1075,9 @@
             this.textBoxC.Dock = System.Windows.Forms.DockStyle.Left;
             this.textBoxC.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxC.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBoxC.Location = new System.Drawing.Point(219, 0);
-            this.textBoxC.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxC.Location = new System.Drawing.Point(171, 0);
             this.textBoxC.Name = "textBoxC";
-            this.textBoxC.Size = new System.Drawing.Size(19, 27);
+            this.textBoxC.Size = new System.Drawing.Size(14, 22);
             this.textBoxC.TabIndex = 3;
             this.textBoxC.Text = "3";
             this.textBoxC.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -1144,10 +1089,9 @@
             this.labelCosEnd.Dock = System.Windows.Forms.DockStyle.Left;
             this.labelCosEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelCosEnd.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.labelCosEnd.Location = new System.Drawing.Point(173, 0);
-            this.labelCosEnd.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelCosEnd.Location = new System.Drawing.Point(134, 0);
             this.labelCosEnd.Name = "labelCosEnd";
-            this.labelCosEnd.Size = new System.Drawing.Size(46, 29);
+            this.labelCosEnd.Size = new System.Drawing.Size(37, 24);
             this.labelCosEnd.TabIndex = 4;
             this.labelCosEnd.Text = "x)+";
             // 
@@ -1158,10 +1102,9 @@
             this.textBoxB.Dock = System.Windows.Forms.DockStyle.Left;
             this.textBoxB.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxB.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBoxB.Location = new System.Drawing.Point(154, 0);
-            this.textBoxB.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxB.Location = new System.Drawing.Point(120, 0);
             this.textBoxB.Name = "textBoxB";
-            this.textBoxB.Size = new System.Drawing.Size(19, 27);
+            this.textBoxB.Size = new System.Drawing.Size(14, 22);
             this.textBoxB.TabIndex = 2;
             this.textBoxB.Text = "3";
             this.textBoxB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -1173,10 +1116,9 @@
             this.labelCosBegin.Dock = System.Windows.Forms.DockStyle.Left;
             this.labelCosBegin.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelCosBegin.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.labelCosBegin.Location = new System.Drawing.Point(95, 0);
-            this.labelCosBegin.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelCosBegin.Location = new System.Drawing.Point(74, 0);
             this.labelCosBegin.Name = "labelCosBegin";
-            this.labelCosBegin.Size = new System.Drawing.Size(59, 29);
+            this.labelCosBegin.Size = new System.Drawing.Size(46, 24);
             this.labelCosBegin.TabIndex = 6;
             this.labelCosBegin.Text = "cos(";
             // 
@@ -1187,10 +1129,9 @@
             this.textBoxA.Dock = System.Windows.Forms.DockStyle.Left;
             this.textBoxA.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxA.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBoxA.Location = new System.Drawing.Point(76, 0);
-            this.textBoxA.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxA.Location = new System.Drawing.Point(60, 0);
             this.textBoxA.Name = "textBoxA";
-            this.textBoxA.Size = new System.Drawing.Size(19, 27);
+            this.textBoxA.Size = new System.Drawing.Size(14, 22);
             this.textBoxA.TabIndex = 1;
             this.textBoxA.Text = "2";
             this.textBoxA.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -1202,10 +1143,9 @@
             this.labelFunc.Dock = System.Windows.Forms.DockStyle.Left;
             this.labelFunc.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelFunc.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.labelFunc.Location = new System.Drawing.Point(7, 0);
-            this.labelFunc.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelFunc.Location = new System.Drawing.Point(5, 0);
             this.labelFunc.Name = "labelFunc";
-            this.labelFunc.Size = new System.Drawing.Size(69, 29);
+            this.labelFunc.Size = new System.Drawing.Size(55, 24);
             this.labelFunc.TabIndex = 9;
             this.labelFunc.Text = "F(x)=";
             // 
@@ -1213,9 +1153,8 @@
             // 
             this.panelFuncBegin.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelFuncBegin.Location = new System.Drawing.Point(0, 0);
-            this.panelFuncBegin.Margin = new System.Windows.Forms.Padding(4);
             this.panelFuncBegin.Name = "panelFuncBegin";
-            this.panelFuncBegin.Size = new System.Drawing.Size(7, 34);
+            this.panelFuncBegin.Size = new System.Drawing.Size(5, 28);
             this.panelFuncBegin.TabIndex = 8;
             // 
             // panelActionRun
@@ -1225,9 +1164,8 @@
             this.panelActionRun.Controls.Add(this.labelNameMethod);
             this.panelActionRun.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelActionRun.Location = new System.Drawing.Point(0, 0);
-            this.panelActionRun.Margin = new System.Windows.Forms.Padding(4);
             this.panelActionRun.Name = "panelActionRun";
-            this.panelActionRun.Size = new System.Drawing.Size(333, 36);
+            this.panelActionRun.Size = new System.Drawing.Size(250, 30);
             this.panelActionRun.TabIndex = 5;
             // 
             // buttonRun
@@ -1236,10 +1174,9 @@
             this.buttonRun.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonRun.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonRun.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonRun.Location = new System.Drawing.Point(151, 0);
-            this.buttonRun.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonRun.Location = new System.Drawing.Point(120, 0);
             this.buttonRun.Name = "buttonRun";
-            this.buttonRun.Size = new System.Drawing.Size(180, 34);
+            this.buttonRun.Size = new System.Drawing.Size(128, 28);
             this.buttonRun.TabIndex = 1;
             this.buttonRun.Text = "RUN";
             this.buttonRun.UseVisualStyleBackColor = true;
@@ -1253,9 +1190,8 @@
             this.labelNameMethod.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelNameMethod.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.labelNameMethod.Location = new System.Drawing.Point(0, 0);
-            this.labelNameMethod.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelNameMethod.Name = "labelNameMethod";
-            this.labelNameMethod.Size = new System.Drawing.Size(151, 33);
+            this.labelNameMethod.Size = new System.Drawing.Size(120, 27);
             this.labelNameMethod.TabIndex = 0;
             this.labelNameMethod.Text = "BruteForce";
             // 
@@ -1265,10 +1201,9 @@
             this.labelRecomendation.Dock = System.Windows.Forms.DockStyle.Top;
             this.labelRecomendation.Font = new System.Drawing.Font("Microsoft Sans Serif", 75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelRecomendation.ForeColor = System.Drawing.SystemColors.Control;
-            this.labelRecomendation.Location = new System.Drawing.Point(0, 283);
-            this.labelRecomendation.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelRecomendation.Location = new System.Drawing.Point(0, 226);
             this.labelRecomendation.Name = "labelRecomendation";
-            this.labelRecomendation.Size = new System.Drawing.Size(1111, 142);
+            this.labelRecomendation.Size = new System.Drawing.Size(890, 113);
             this.labelRecomendation.TabIndex = 2;
             this.labelRecomendation.Text = "Please run method";
             // 
@@ -1279,15 +1214,15 @@
             this.labelNoData.Font = new System.Drawing.Font("Microsoft Sans Serif", 150F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelNoData.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.labelNoData.Location = new System.Drawing.Point(0, 0);
-            this.labelNoData.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelNoData.Name = "labelNoData";
-            this.labelNoData.Size = new System.Drawing.Size(1033, 283);
+            this.labelNoData.Size = new System.Drawing.Size(825, 226);
             this.labelNoData.TabIndex = 3;
             this.labelNoData.Text = "No Data";
             // 
             // panelButtomAnimation
             // 
             this.panelButtomAnimation.WorkerReportsProgress = true;
+            this.panelButtomAnimation.WorkerSupportsCancellation = true;
             this.panelButtomAnimation.DoWork += new System.ComponentModel.DoWorkEventHandler(this.panelButtomAnimation_DoWork);
             this.panelButtomAnimation.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.panelButtomAnimation_ProgressChanged);
             // 
@@ -1348,16 +1283,14 @@
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1685, 838);
+            this.ClientSize = new System.Drawing.Size(1264, 681);
             this.Controls.Add(this.panelAction);
             this.Controls.Add(this.panelRight);
             this.Controls.Add(this.panelLeft);
             this.Controls.Add(this.panelButtom);
             this.Controls.Add(this.panelHeader);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
             this.Text = "Decision making system";
             this.Resize += new System.EventHandler(this.MainForm_Resize);
@@ -1371,8 +1304,8 @@
             this.panelActionHideButtom.ResumeLayout(false);
             this.panelActionButtom.ResumeLayout(false);
             this.panelGraphConrtol.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.panelSortedBy.ResumeLayout(false);
+            this.panelSortedBy.PerformLayout();
             this.panelPostProcessing.ResumeLayout(false);
             this.panelMinimum.ResumeLayout(false);
             this.panelMinimum.PerformLayout();
@@ -1491,9 +1424,9 @@
         private System.Windows.Forms.TextBox textBoxXMin;
         private System.Windows.Forms.Label labelMinBegin;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel;
-        private System.Windows.Forms.Label labelTable;
         private System.IO.FileSystemWatcher fileSystemWatcher1;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panelSortedBy;
+        private System.Windows.Forms.Label labelSortedBy;
+        private System.Windows.Forms.Label labelErrorList;
     }
 }

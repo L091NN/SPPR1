@@ -54,6 +54,7 @@
     </Compile>
     <Compile Include="Brute.cs" />
     <Compile Include="Events.cs" />
+    <Compile Include="Felberg.cs" />
     <Compile Include="GraphProcessing.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
