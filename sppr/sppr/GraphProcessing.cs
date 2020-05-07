@@ -62,6 +62,20 @@ namespace sppr
             pane.YAxis.Min = elem.yMin - rY * 0.1;
             pane.YAxis.Max = elem.yMax + rY * 0.1;
 
+            //var line = new PointPairList();
+            //line.Add(new PointPair(elem.xMin, 2 * elem.yMin - elem.yMax));
+            //line.Add(new PointPair(elem.xMin, 2 * elem.yMax - elem.yMin));
+            //curve = pane.AddCurve("", line, Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(239)))), ((int)(((byte)(249))))), ZedGraph.SymbolType.None);
+            //curve.Line.Style = System.Drawing.Drawing2D.DashStyle.Dash;
+            //curve.Line.Width = 0.01f;
+            //
+            //line.Clear();
+            //line.Add(new PointPair(elem.xMax, 2 * elem.yMin - elem.yMax));
+            //line.Add(new PointPair(elem.xMax, 2 * elem.yMax - elem.yMin));
+            //curve = pane.AddCurve("", line, Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(239)))), ((int)(((byte)(249))))), ZedGraph.SymbolType.None);
+            //curve.Line.Style = System.Drawing.Drawing2D.DashStyle.Dash;
+            //curve.Line.Width = 0.01f;
+
             zgControl.AxisChange();
             zgControl.Invalidate();
         }
@@ -77,7 +91,7 @@ namespace sppr
 
             var step = (elem.xMax - elem.xMin) / w;
 
-            for (double i = elem.xMin; i < elem.xMax; i += step)
+            for (double i = elem.xMin; i <= elem.xMax; i += step)
             {
                 var curY = perspective.funcInfo.function(i);
                 if (curY < elem.yMin) elem.yMin = curY;
@@ -92,11 +106,11 @@ namespace sppr
             {
                 foreach (var point in perspective.methodInfo.report.iterations)
                 {
-                    if (point.Value > elem.xMin && point.Value < elem.xMax)
+                    if (point.x >= elem.xMin && point.x <= elem.xMax)
                     {
                         var line = new PointPairList();
-                        line.Add(new PointPair(point.Value, 0));
-                        line.Add(new PointPair(point.Value, perspective.funcInfo.function(point.Value)));
+                        line.Add(new PointPair(point.x, 0));
+                        line.Add(new PointPair(point.x, perspective.funcInfo.function(point.x)));
                         curve = pane.AddCurve("", line, perspective.colorPoint, ZedGraph.SymbolType.None);
                         curve.Line.Width = 0.5f;
                     }
@@ -132,8 +146,6 @@ namespace sppr
                 var curve = pane.AddCurve("", line, perspective.colorMainLine, ZedGraph.SymbolType.None);
                 curve.Line.Width = 0.5f;
             }
-
         }
-
     }
 }

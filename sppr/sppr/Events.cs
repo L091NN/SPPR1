@@ -52,6 +52,9 @@ namespace sppr
         public MethodInfo methodInfo { get; set; }
         public FElem funcInfo; // It need for correct work graph, TO DO
         public curZoom curZoomBorder;
+        public string sortBy;
+        public string sortDir;
+        public int sortTop;
 
         public PerspectiveInfo(string _name, Color _colorBack, Color _colorPanel, Color _colorText,
         Color _colorPane, Color _colorLine, bool _withR, bool _withPoint, bool _withLine,
@@ -80,6 +83,9 @@ namespace sppr
             maxStepCount = _maxStepCount;
             methodInfo = new MethodInfo();
             methodInfo.graphControl = new ZedGraph.ZedGraphControl();
+            sortBy = "y";
+            sortDir = "BottomUp";
+            sortTop = 15;
             changePane();
         }
 
@@ -150,8 +156,8 @@ namespace sppr
 
         protected void refreshActionPanel()
         {
-            panelActionButtom.BackColor = perspective.colorPanel;
-            buttonActionButtom.BackColor = perspective.colorPanel;
+            panelActionBottom.BackColor = perspective.colorPanel;
+            buttonActionBottom.BackColor = perspective.colorPanel;
             labelErrorList.Visible = false;
             if (perspective.methodInfo.report == null)
             {
@@ -159,20 +165,24 @@ namespace sppr
                 showNoData();
                 panelGraphConrtol.Visible = false;
                 tableLayoutPanel.Visible = false;
+                buttonRun.Text = "RUN";
             }
             else
             {
+                buttonRun.Text = "CLEAR";
                 if (zedGraphControlMain.Visible) zedGraphControlMain.Visible = false;
                 if (labelNoData.Visible || labelRecomendation.Visible) hideNoData();
                 zedGraphControlMain.GraphPane = perspective.methodInfo.graphControl.GraphPane;
+                zedGraphControlMain.Width = zedGraphControlMain.Width - 1;
                 zedGraphControlMain.Visible = true;
                 resultProccessing();
+                tableProcessing();
                 panelGraphConrtol.Visible = true;
                 tableLayoutPanel.Visible = true;
             }
-            panelActionButtomParam.Visible = false;
+            panelActionBottomParam.Visible = false;
             paramProccessing();
-            panelActionButtomParam.Visible = true;
+            panelActionBottomParam.Visible = true;
         }
 
         protected void showNoData()
@@ -187,11 +197,11 @@ namespace sppr
             labelRecomendation.Visible = false;
         }
 
-        protected void showHideActionButtomPanel()
+        protected void showHideActionBottomPanel()
         {
-            panelActionButtom.Visible = panelActionButtom.Visible ? false : true;
-            if (panelActionButtom.Visible) buttonActionButtom.Text = "▼";
-            else buttonActionButtom.Text = "▲";
+            panelActionBottom.Visible = panelActionBottom.Visible ? false : true;
+            if (panelActionBottom.Visible) buttonActionBottom.Text = "▼";
+            else buttonActionBottom.Text = "▲";
         }
 
         void paramProccessing()
@@ -202,7 +212,7 @@ namespace sppr
 
             buttonRun.ForeColor = perspective.colorText;
 
-            panelActionButtomParam.Width = labelNameMethod.Width + 100 > widthOfFunc() ? labelNameMethod.Width + 100 : widthOfFunc();
+            panelActionBottomParam.Width = labelNameMethod.Width + 100 > widthOfFunc() ? labelNameMethod.Width + 100 : widthOfFunc();
 
             labelFunc.ForeColor = perspective.colorText;
 
@@ -264,7 +274,7 @@ namespace sppr
             // r
             if (perspective.withR)
             {
-                panelActionButtomR.Visible = true;
+                panelActionBottomR.Visible = true;
                 textBoxR.Text = perspective.r.ToString();
                 textBoxR.BackColor = perspective.colorPanel;
                 textBoxR.ForeColor = perspective.colorText;
@@ -274,7 +284,7 @@ namespace sppr
             }
             else
             {
-                panelActionButtomR.Visible = false;
+                panelActionBottomR.Visible = false;
             }
         }
 
@@ -325,24 +335,51 @@ namespace sppr
             labelMaxStepCountResult.Text = perspective.methodInfo.report.ofStep.ToString();
 
             // xMin
-            var en = perspective.methodInfo.report.minimum.GetEnumerator();
-            en.MoveNext();
-            textBoxXMin.Text = en.Current.Key.ToString();
+            textBoxXMin.Text = perspective.methodInfo.report.minimum.x.ToString();
             textBoxXMin.BackColor = perspective.colorPanel;
             textBoxXMin.ForeColor = perspective.colorText;
 
             // yMin
-            textBoxYMin.Text = en.Current.Value.ToString();
+            textBoxYMin.Text = perspective.methodInfo.report.minimum.y.ToString();
             textBoxYMin.BackColor = perspective.colorPanel;
             textBoxYMin.ForeColor = perspective.colorText;
 
             labelMinBegin.ForeColor = perspective.colorText;
             labelMinMid.ForeColor = perspective.colorText;
             labelMinEnd.ForeColor = perspective.colorText;
+        }
 
+        void tableProcessing()
+        {
             tableLayoutPanel.BackColor = perspective.colorPanel;
 
             labelSortedBy.ForeColor = perspective.colorText;
+            labelSortingDirection.ForeColor = perspective.colorText;
+            labelTopCount.ForeColor = perspective.colorText;
+
+            buttonSortI.ForeColor = perspective.sortBy == "i" ? invert(perspective.colorText) : perspective.colorText;
+            buttonSortI.BackColor = perspective.sortBy == "i" ? invert(perspective.colorPanel) : perspective.colorPanel;
+
+            buttonSortX.ForeColor = perspective.sortBy == "x" ? invert(perspective.colorText) : perspective.colorText;
+            buttonSortX.BackColor = perspective.sortBy == "x" ? invert(perspective.colorPanel) : perspective.colorPanel;
+
+            buttonSortY.ForeColor = perspective.sortBy == "y" ? invert(perspective.colorText) : perspective.colorText;
+            buttonSortY.BackColor = perspective.sortBy == "y" ? invert(perspective.colorPanel) : perspective.colorPanel;
+
+            buttonBottomUp.ForeColor = perspective.sortDir == "BottomUp" ? invert(perspective.colorText) : perspective.colorText;
+            buttonBottomUp.BackColor = perspective.sortDir == "BottomUp" ? invert(perspective.colorPanel) : perspective.colorPanel;
+
+            buttonTopDown.ForeColor = perspective.sortDir == "TopDown" ? invert(perspective.colorText) : perspective.colorText;
+            buttonTopDown.BackColor = perspective.sortDir == "TopDown" ? invert(perspective.colorPanel) : perspective.colorPanel;
+
+            buttonTop5.ForeColor = perspective.sortTop == 5 ? invert(perspective.colorText) : perspective.colorText;
+            buttonTop5.BackColor = perspective.sortTop == 5 ? invert(perspective.colorPanel) : perspective.colorPanel;
+
+            buttonTop10.ForeColor = perspective.sortTop == 10 ? invert(perspective.colorText) : perspective.colorText;
+            buttonTop10.BackColor = perspective.sortTop == 10 ? invert(perspective.colorPanel) : perspective.colorPanel;
+
+            buttonTop15.ForeColor = perspective.sortTop == 15 ? invert(perspective.colorText) : perspective.colorText;
+            buttonTop15.BackColor = perspective.sortTop == 15 ? invert(perspective.colorPanel) : perspective.colorPanel;
         }
 
         protected void runCurMethod()
@@ -360,9 +397,7 @@ namespace sppr
                 labelStage.Visible = true;
                 remainder = 0;
                 status = 0;
-                tableLayoutPanel.Visible = true;
-                //tableLayoutPanel.ColumnCount = 1;
-                if (!panelButtomAnimation.IsBusy) panelButtomAnimation.RunWorkerAsync(new List<Color> { style.colors["red.king yna"], style.colors["yellow.king yna"], 
+                if (!panelBottomAnimation.IsBusy) panelBottomAnimation.RunWorkerAsync(new List<Color> { style.colors["red.king yna"], style.colors["yellow.king yna"], 
                 style.colors["green.vs"], style.colors["blue.king yna"], style.colors["red.king yna"] });
                 runMethod.RunWorkerAsync();
             }
@@ -373,6 +408,44 @@ namespace sppr
         {
             buttonRun.Text = "RUN";
             runMethod.CancelAsync();
+        }
+
+        protected void clearCurMethod()
+        {
+            buttonRun.Text = "RUN";
+            double testD;
+            int testI;
+            if (perspective.name == "Bruteforce")
+            {
+                bruteForce = new PerspectiveInfo("Bruteforce", style.colors["black.vs"], style.colors["red.king yna"], style.colors["white.argon"],
+                    style.colors["white.argon"], style.colors["red.king yna"], false, false, true, 0, -1, -2, 2, 2, 3, 3, 5, 100);
+                perspective = bruteForce;
+            }
+            if (perspective.name == "Piyavsky method")
+            {
+                piacovsky = new PerspectiveInfo("Piyavsky method", style.colors["black.vs"], style.colors["blue.king yna"], style.colors["white.argon"],
+                    style.colors["white.argon"], style.colors["blue.vs"], true, false, true, 0.001, 3, -2, 2, 2, 3, 3, 5, 100);
+                perspective = piacovsky;
+                if (double.TryParse(textBoxR.Text, out testD)) perspective.r = double.Parse(textBoxR.Text);
+            }
+            if (perspective.name == "Strongin method")
+            {
+                strongin = new PerspectiveInfo("Strongin method", style.colors["black.vs"], style.colors["yellow.king yna"], style.colors["black.argon"],
+                    style.colors["white.argon"], style.colors["yellow.king yna"], true, false, true, 0.001, 3, -2, 2, 2, 3, 3, 5, 100);
+                perspective = strongin;
+                if (double.TryParse(textBoxR.Text, out testD)) perspective.r = double.Parse(textBoxR.Text);
+            }
+
+            if (double.TryParse(textBoxA.Text, out testD)) perspective.a = double.Parse(textBoxA.Text);
+            if (double.TryParse(textBoxB.Text, out testD))perspective.b = double.Parse(textBoxB.Text);
+            if (double.TryParse(textBoxC.Text, out testD))perspective.c = double.Parse(textBoxC.Text);
+            if (double.TryParse(textBoxD.Text, out testD))perspective.d = double.Parse(textBoxD.Text);
+            if (double.TryParse(textBoxE.Text, out testD)) perspective.e = double.Parse(textBoxE.Text);
+            if (double.TryParse(textBoxXBegin.Text, out testD))perspective.xLeft = double.Parse(textBoxXBegin.Text);
+            if (double.TryParse(textBoxXEnd.Text, out testD))perspective.xRight = double.Parse(textBoxXEnd.Text);
+            if (double.TryParse(textBoxMaxStepCount.Text, out testD))perspective.maxStepCount = int.Parse(textBoxMaxStepCount.Text);
+
+            refreshActionPanel();
         }
 
         private void runMethod_DoWork(object sender, DoWorkEventArgs e)
@@ -402,8 +475,8 @@ namespace sppr
 
             FElem elem = new FElem();
             elem.function = func;
-            elem.xLeft = perspective.xLeft;
-            elem.xRight = perspective.xRight;
+            elem.xLeft = xLeft;
+            elem.xRight = xRight;
 
             if (!runMethod.CancellationPending)
             {
@@ -452,7 +525,7 @@ namespace sppr
                 var deposit = 1.0;
                 if (stage == "Solving" || stage == "Drawing") deposit = 0.4;
                 status = remainder + e.ProgressPercentage * deposit;
-                panelStatus.Width = (int)(panelButtom.Width * status * 0.01);
+                panelStatus.Width = (int)(panelBottom.Width * status * 0.01);
                 if (status > 99)
                 {
                     
@@ -468,20 +541,33 @@ namespace sppr
         private void runMethod_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             panelStatus.Width = 0;
-            panelButtomAnimation.CancelAsync();
+            panelBottomAnimation.CancelAsync();
             buttonRun.Text = "RUN";
             labelStage.Visible = false;
             if (!runMethod.CancellationPending)
             {
+                buttonRun.Text = "CLEAR";
                 tableLayoutPanel.Controls.Clear();
 
                 refreshActionPanel();
                 
                 zedGraphControlMain.Visible = true;
                 zedGraphControlMain.GraphPane = perspective.methodInfo.graphControl.GraphPane;
+                var minimum = perspective.methodInfo.report.minimum;
+                perspective.mainLineX = minimum.x;
+                perspective.withMainLine = true;
+                new GraphProcessing().drawVerticalLine(perspective, true);
                 zedGraphControlMain.AxisChange();
-                zedGraphControlMain.Dock = DockStyle.Fill;
+                zedGraphControlMain.Width = zedGraphControlMain.Width - 1;
+
+                var point = new ZedGraph.TextItem(string.Format("{0}({1}; {2})", minimum.i - 2, minimum.x, minimum.y), (float)minimum.x, (float)zedGraphControlMain.GraphPane.YAxis.Max);
+                point.FontSpec.FontColor = perspective.colorLine;
+                point.FontSpec.Border.Color = perspective.colorPoint;
+                point.FontSpec.Fill.Color = perspective.colorBack;
+                //point.FontSpec.Angle = 2;
+                zedGraphControlMain.GraphPane.GraphItemList.Add(point);
                 zedGraphControlMain.Refresh();
+                returnTablePanel(perspective);
             }
         }
 
@@ -543,59 +629,90 @@ namespace sppr
                 pane.YAxis.Max = newYMax;
             }
 
-            //if (rX < (perspective.curZoomBorder.xMax - perspective.curZoomBorder.xMin) * 0.33 || rY < (perspective.curZoomBorder.yMax - perspective.curZoomBorder.yMin) * 0.33)
-            //{
-            //    drawGraph.RunWorkerAsync();
-            //} else if (rX > (perspective.curZoomBorder.xMax - perspective.curZoomBorder.xMin) * 2 || rY > (perspective.curZoomBorder.yMax - perspective.curZoomBorder.yMin) * 2)
-            //{
-            //    drawGraph.RunWorkerAsync();
-            //} else zedGraphControlMain.AxisChange();
             zedGraphControlMain.AxisChange();
         }
 
-        //private void DrawGraph_DoWork(object sender, DoWorkEventArgs e)
-        //{
-        //    if (!panelButtomAnimation.IsBusy) panelButtomAnimation.RunWorkerAsync(new List<Color> { style.colors["red.king yna"], style.colors["yellow.king yna"],
-        //        style.colors["green.vs"], style.colors["blue.king yna"], style.colors["red.king yna"] });
-        //    GraphProcessing gp = new GraphProcessing();
-        //    gp.zoomFunction(perspective, drawGraph);
-        //}
-        //
-        //private void DrawGraph_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        //{
-        //    panelStatus.Width = (int)(panelButtom.Width * e.ProgressPercentage * 0.01);
-        //}
-        //
-        //private void DrawGraph_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        //{
-        //    panelStatus.Width = 0;
-        //    panelButtomAnimation.CancelAsync();
-        //    drawGraph.CancelAsync();
-        //    zedGraphControlMain.AxisChange();
-        //}
-
-        private void returnTablePanel(Func<double, double> func, SortedList<int, double> iterations)
+        private void returnTablePanel(PerspectiveInfo perspective)
         {
-            //tableLayoutPanel.ColumnCount = iterations.Count + 1;
+            tableLayoutPanel = new TableLayoutPanel();
 
-            tableLayoutPanel.Controls.Add(new Button() { Text = "Iteration", FlatStyle = FlatStyle.Flat }, 0, 0);
-            tableLayoutPanel.Controls.Add(new Button() { Text = "X", FlatStyle = FlatStyle.Flat }, 0, 1);
-            tableLayoutPanel.Controls.Add(new Button() { Text = "Y", FlatStyle = FlatStyle.Flat }, 0, 2);
+            this.tableLayoutPanel.AutoScroll = true;
+            this.tableLayoutPanel.BackColor = perspective.colorPanel;
+            this.tableLayoutPanel.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.tableLayoutPanel.Location = new System.Drawing.Point(200, 90);
+            this.tableLayoutPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel.Name = "tableLayoutPanel";
+            this.tableLayoutPanel.RowCount = 1;
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel.Size = new System.Drawing.Size(672, 134);
+            this.tableLayoutPanel.Visible = false;
 
-            int i = 1;
-            foreach (KeyValuePair<int, double> kv in iterations)
+            panelTable.Controls.Clear();
+            panelTable.Controls.Add(tableLayoutPanel);
+
+            var iterations = new List<Method.Trial>(perspective.methodInfo.report.iterations);
+            if (perspective.sortBy == "i" && perspective.sortDir == "BottomUp")
+                iterations.Sort(delegate (Method.Trial left, Method.Trial right)
+                {
+                    return left.i.CompareTo(right.i);
+
+                });
+
+            if (perspective.sortBy == "x" && perspective.sortDir == "BottomUp")
+                iterations.Sort(delegate (Method.Trial left, Method.Trial right)
+                {
+                    return left.x.CompareTo(right.x);
+
+                });
+
+            if (perspective.sortBy == "y" && perspective.sortDir == "BottomUp")
+                iterations.Sort(delegate (Method.Trial left, Method.Trial right)
+                {
+                    return left.y.CompareTo(right.y);
+
+                });
+
+            if (perspective.sortBy == "i" && perspective.sortDir == "TopDown")
+                iterations.Sort(delegate (Method.Trial left, Method.Trial right)
+                {
+                    return right.i.CompareTo(left.i);
+
+                });
+
+            if (perspective.sortBy == "x" && perspective.sortDir == "TopDown")
+                iterations.Sort(delegate (Method.Trial left, Method.Trial right)
+                {
+                    return right.x.CompareTo(left.x);
+
+                });
+
+            if (perspective.sortBy == "y" && perspective.sortDir == "TopDown")
+                iterations.Sort(delegate (Method.Trial left, Method.Trial right)
+                {
+                    return right.y.CompareTo(left.y);
+
+                });
+
+            int i = 0;
+
+            foreach (var kv in iterations)
             {
+                if (i++ >= perspective.sortTop) break;
                 tableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));
-                tableLayoutPanel.Controls.Add(new Button() { Text = kv.Key.ToString() }, i, 0);
-                tableLayoutPanel.Controls.Add(new Button() { Text = kv.Value.ToString() }, i, 1);
-                tableLayoutPanel.Controls.Add(new Button() { Text = func(kv.Value).ToString() }, i, 2);
-                i++;
+                tableLayoutPanel.Controls.Add(new Label() { Text = string.Format("{0}\n{1}\n{2}", (kv.i - 2).ToString(), kv.x.ToString("0.00000"), kv.y.ToString("0.00000")), TextAlign = System.Drawing.ContentAlignment.MiddleCenter, Dock = DockStyle.Left, 
+                    Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204))), BackColor = perspective.colorPanel}, i, 0);
             }
 
             foreach (System.Windows.Forms.Control c in this.tableLayoutPanel.Controls)
             {
                 c.MouseClick += new System.Windows.Forms.MouseEventHandler(ClickOnTableLayoutPanel);
+                c.MouseEnter += new EventHandler(EnterInTableLayoutPanel);
+                c.MouseLeave += new EventHandler(LeaveOfTableLayoutPanel);
             }
+            tableLayoutPanel.Visible = true;
         }
     }
 }

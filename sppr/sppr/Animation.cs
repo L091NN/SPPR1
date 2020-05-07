@@ -64,9 +64,9 @@ namespace sppr
 
         private void panelMove(BackgroundWorker worker, int over, int sleep = 5)
         {
-            while (panelActionButtom.Height != over)
+            while (panelActionBottom.Height != over)
             {
-                if (over > panelActionButtom.Height) worker.ReportProgress(1);
+                if (over > panelActionBottom.Height) worker.ReportProgress(1);
                 else worker.ReportProgress(-1);
                 System.Threading.Thread.Sleep(sleep);
             }
@@ -90,13 +90,13 @@ namespace sppr
 
         }
 
-        private void panelButtomAnimation_DoWork(object sender, DoWorkEventArgs e)
+        private void panelBottomAnimation_DoWork(object sender, DoWorkEventArgs e)
         {
-            while (!panelButtomAnimation.CancellationPending)
-                changeColor((List<Color>)e.Argument, panelButtomAnimation);
+            while (!panelBottomAnimation.CancellationPending)
+                changeColor((List<Color>)e.Argument, panelBottomAnimation);
         }
 
-        private void panelButtomAnimation_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        private void panelBottomAnimation_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             panelStatus.BackColor = Color.FromArgb(e.ProgressPercentage);
         }
@@ -131,16 +131,16 @@ namespace sppr
 
         }
 
-        private void panelActionButtomAnimation_DoWork(object sender, DoWorkEventArgs e)
+        private void panelActionBottomAnimation_DoWork(object sender, DoWorkEventArgs e)
         {
-            changeColor((List<Color>)e.Argument, panelActionButtomAnimation, 11);
+            changeColor((List<Color>)e.Argument, panelActionBottomAnimation, 11);
         }
 
-        private void panelActionButtomAnimation_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        private void panelActionBottomAnimation_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             var color = Color.FromArgb(e.ProgressPercentage);
-            panelActionButtom.BackColor = color;
-            buttonActionButtom.BackColor = color;
+            panelActionBottom.BackColor = color;
+            buttonActionBottom.BackColor = color;
             //textBoxA.BackColor = color;
             //textBoxB.BackColor = color;
             //textBoxC.BackColor = color;
@@ -151,7 +151,7 @@ namespace sppr
             //textBoxE.BackColor = color;
         }
 
-        private void panelActionButtomAnimation_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private void panelActionBottomAnimation_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
 
         }
@@ -178,14 +178,14 @@ namespace sppr
 
         private void panelCloser_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            panelActionButtom.Height += e.ProgressPercentage;
+            panelActionBottom.Height += e.ProgressPercentage;
         }
 
         private void panelCloser_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            if (panelButtom.Height == 0)
-                panelActionButtom.Visible = false;
-            else panelActionButtom.Visible = true;
+            if (panelBottom.Height == 0)
+                panelActionBottom.Visible = false;
+            else panelActionBottom.Visible = true;
         }
 
     }

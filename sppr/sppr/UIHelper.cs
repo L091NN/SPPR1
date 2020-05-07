@@ -112,7 +112,7 @@ namespace sppr
 
         protected int heightOfParam()
         {
-            var res = labelNameMethod.Height + panelActionButtomParamFunc.Height + panelActionButtomRegion.Height;
+            var res = labelNameMethod.Height + panelActionBottomParamFunc.Height + panelActionBottomRegion.Height;
             if (perspective.name != "Bruteforce") res += labelR.Height + labelE.Height;
             return (int)(panelAction.Height * 0.2) > res ? (int)(panelAction.Height * 0.2) : res;
         }
