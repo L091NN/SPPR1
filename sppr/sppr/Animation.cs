@@ -273,7 +273,7 @@ namespace sppr
             labelTheEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 0.05f * panelBottom.Width, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             labelTheEnd.Visible = true;
 
-            labelTheEnd.Text = "Develop by\nLugin Mikhail\n381703-3";
+            labelTheEnd.Text = "Developed by\nLugin Mikhail\n381703-3";
             labelTheEnd.Location = new Point(this.Size.Width / 2 - labelTheEnd.Width / 2, this.Size.Height / 2 - labelTheEnd.Height / 2);
             labelTheEnd.Refresh();
 
@@ -282,7 +282,7 @@ namespace sppr
             labelTheEnd.Refresh();
 
             System.Threading.Thread.Sleep(1000);
-            labelTheEnd.Text = "Develop by\nTrubina Anastasia\n381608-3";
+            labelTheEnd.Text = "Developed by\nTrubina Anastasia\n381606-3";
             labelTheEnd.Location = new Point(this.Size.Width / 2 - labelTheEnd.Width / 2, this.Size.Height / 2 - labelTheEnd.Height / 2);
             labelTheEnd.Refresh();
 

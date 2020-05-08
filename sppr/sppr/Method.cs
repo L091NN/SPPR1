@@ -92,7 +92,7 @@ namespace sppr
                 iterations.Add(new Trial() { i = point.Key, x = point.Value, y = _function(point.Value) });
             }
 
-            return new Report(minimum, iterations, _steps, _maxSteps);
+            return new Report(minimum, iterations, _steps > _maxSteps ? _maxSteps : _steps, _maxSteps);
         }
         public Report solve(BackgroundWorker worker)
         {

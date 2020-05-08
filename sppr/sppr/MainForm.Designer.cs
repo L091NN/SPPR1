@@ -414,6 +414,7 @@
             // 
             this.buttonTop45.Dock = System.Windows.Forms.DockStyle.Left;
             this.buttonTop45.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonTop45.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonTop45.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.buttonTop45.Location = new System.Drawing.Point(194, 0);
             this.buttonTop45.Name = "buttonTop45";
@@ -427,6 +428,7 @@
             // 
             this.buttonTop30.Dock = System.Windows.Forms.DockStyle.Left;
             this.buttonTop30.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonTop30.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonTop30.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.buttonTop30.Location = new System.Drawing.Point(119, 0);
             this.buttonTop30.Name = "buttonTop30";
@@ -440,6 +442,7 @@
             // 
             this.buttonTop15.Dock = System.Windows.Forms.DockStyle.Left;
             this.buttonTop15.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonTop15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonTop15.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.buttonTop15.Location = new System.Drawing.Point(44, 0);
             this.buttonTop15.Name = "buttonTop15";
@@ -477,6 +480,7 @@
             // 
             this.buttonTopDown.Dock = System.Windows.Forms.DockStyle.Left;
             this.buttonTopDown.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonTopDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonTopDown.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.buttonTopDown.Location = new System.Drawing.Point(221, 0);
             this.buttonTopDown.Name = "buttonTopDown";
@@ -490,6 +494,7 @@
             // 
             this.buttonBottomUp.Dock = System.Windows.Forms.DockStyle.Left;
             this.buttonBottomUp.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonBottomUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonBottomUp.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.buttonBottomUp.Location = new System.Drawing.Point(146, 0);
             this.buttonBottomUp.Name = "buttonBottomUp";
@@ -528,6 +533,7 @@
             // 
             this.buttonSortY.Dock = System.Windows.Forms.DockStyle.Left;
             this.buttonSortY.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonSortY.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonSortY.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.buttonSortY.Location = new System.Drawing.Point(240, 0);
             this.buttonSortY.Name = "buttonSortY";
@@ -541,6 +547,7 @@
             // 
             this.buttonSortX.Dock = System.Windows.Forms.DockStyle.Left;
             this.buttonSortX.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonSortX.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonSortX.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.buttonSortX.Location = new System.Drawing.Point(165, 0);
             this.buttonSortX.Name = "buttonSortX";
@@ -554,6 +561,7 @@
             // 
             this.buttonSortI.Dock = System.Windows.Forms.DockStyle.Left;
             this.buttonSortI.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonSortI.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonSortI.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.buttonSortI.Location = new System.Drawing.Point(90, 0);
             this.buttonSortI.Name = "buttonSortI";
