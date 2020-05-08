@@ -702,7 +702,7 @@ namespace sppr
                 if (i++ >= perspective.sortTop) break;
                 tableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));
                 tableLayoutPanel.Controls.Add(new Label() { Text = string.Format("{0}\n{1}\n{2}", (kv.i - 2).ToString(), kv.x.ToString("0.00000"), kv.y.ToString("0.00000")), TextAlign = System.Drawing.ContentAlignment.MiddleCenter, Dock = DockStyle.Left, 
-                    Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204))), BackColor = perspective.colorPanel}, i, 0);
+                    Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204))), BackColor = perspective.colorPanel, ForeColor = perspective.colorText}, i, 0);
             }
 
             foreach (System.Windows.Forms.Control c in this.tableLayoutPanel.Controls)
