@@ -6,15 +6,21 @@ namespace sppr
 {
     abstract class Method
     {
+        public class Trial
+        {
+            public int i;
+            public double x;
+            public double y;
+        }
         public class Report
         {
-            public SortedList<double, double> minimum;
-            public SortedList<int, double> iterations;
+            public Trial minimum;
+            public List<Trial> iterations;
             public int onStep;
             public int ofStep;
 
             public Report() { }
-            public Report(SortedList<double, double> _minimum, SortedList<int, double> _iterations, int _onStep, int _ofStep)
+            public Report(Trial _minimum, List<Trial> _iterations, int _onStep, int _ofStep)
             {
                 minimum = _minimum;
                 iterations = _iterations;
@@ -73,18 +79,24 @@ namespace sppr
         }
         private Report getReport()
         {
-            var minimum = new SortedList<double, double>();
+            Trial minimum = new Trial();
             for (var it = _curMinId.GetEnumerator(); ;)
             {
                 if (!it.MoveNext()) break;
-                minimum.Add(_xId[it.Current], _points[_xId[it.Current]]);
+                minimum = new Trial() { i = it.Current, x = _xId[it.Current] , y = _points[_xId[it.Current]] };
             }
 
-            return new Report(minimum, _xId, _steps, _maxSteps);
+            List<Trial> iterations = new List<Trial>();
+            foreach(var point in _xId)
+            {
+                iterations.Add(new Trial() { i = point.Key, x = point.Value, y = _function(point.Value) });
+            }
+
+            return new Report(minimum, iterations, _steps, _maxSteps);
         }
         public Report solve(BackgroundWorker worker)
         {
-            for (; _steps < _maxSteps; _steps++)
+            for (; _steps <= _maxSteps; _steps++)
             {
                 worker.ReportProgress((int)((double)_steps / _maxSteps * 100));
                 if (worker.CancellationPending) return null;

@@ -31,19 +31,36 @@
         {
             this.panelHeader = new System.Windows.Forms.Panel();
             this.labelMousePosition = new System.Windows.Forms.Label();
-            this.panelButtom = new System.Windows.Forms.Panel();
+            this.panelBottom = new System.Windows.Forms.Panel();
             this.panelStatus = new System.Windows.Forms.Panel();
             this.panelLeft = new System.Windows.Forms.Panel();
             this.buttonChangePerspectiveLeft = new System.Windows.Forms.Button();
             this.panelRight = new System.Windows.Forms.Panel();
             this.buttonChangePerspectiveRight = new System.Windows.Forms.Button();
             this.panelAction = new System.Windows.Forms.Panel();
+            this.labelErrorList = new System.Windows.Forms.Label();
             this.labelStage = new System.Windows.Forms.Label();
             this.zedGraphControlMain = new ZedGraph.ZedGraphControl();
-            this.panelActionHideButtom = new System.Windows.Forms.Panel();
-            this.buttonActionButtom = new System.Windows.Forms.Button();
-            this.panelActionButtom = new System.Windows.Forms.Panel();
+            this.panelActionHideBottom = new System.Windows.Forms.Panel();
+            this.buttonActionBottom = new System.Windows.Forms.Button();
+            this.panelActionBottom = new System.Windows.Forms.Panel();
             this.panelGraphConrtol = new System.Windows.Forms.Panel();
+            this.panelTable = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.panelSortTopCount = new System.Windows.Forms.Panel();
+            this.buttonTop45 = new System.Windows.Forms.Button();
+            this.buttonTop30 = new System.Windows.Forms.Button();
+            this.buttonTop15 = new System.Windows.Forms.Button();
+            this.labelTopCount = new System.Windows.Forms.Label();
+            this.panelSortGrade = new System.Windows.Forms.Panel();
+            this.buttonTopDown = new System.Windows.Forms.Button();
+            this.buttonBottomUp = new System.Windows.Forms.Button();
+            this.labelSortingDirection = new System.Windows.Forms.Label();
+            this.panelSortedBy = new System.Windows.Forms.Panel();
+            this.buttonSortY = new System.Windows.Forms.Button();
+            this.buttonSortX = new System.Windows.Forms.Button();
+            this.buttonSortI = new System.Windows.Forms.Button();
+            this.labelSortedBy = new System.Windows.Forms.Label();
             this.panelPostProcessing = new System.Windows.Forms.Panel();
             this.panelMinimum = new System.Windows.Forms.Panel();
             this.labelMinEnd = new System.Windows.Forms.Label();
@@ -73,25 +90,25 @@
             this.panelLinesAndPoints = new System.Windows.Forms.Panel();
             this.buttonWithLine = new System.Windows.Forms.Button();
             this.buttonWithPoints = new System.Windows.Forms.Button();
-            this.panelActionButtomParam = new System.Windows.Forms.Panel();
-            this.panelActionButtomE = new System.Windows.Forms.Panel();
+            this.panelActionBottomParam = new System.Windows.Forms.Panel();
+            this.panelActionBottomE = new System.Windows.Forms.Panel();
             this.labelGuidanceE = new System.Windows.Forms.Label();
             this.textBoxE = new System.Windows.Forms.TextBox();
             this.labelE = new System.Windows.Forms.Label();
-            this.panelActionButtomR = new System.Windows.Forms.Panel();
+            this.panelActionBottomR = new System.Windows.Forms.Panel();
             this.labelGuidanceR = new System.Windows.Forms.Label();
             this.textBoxR = new System.Windows.Forms.TextBox();
             this.labelR = new System.Windows.Forms.Label();
             this.panelMaxSteps = new System.Windows.Forms.Panel();
             this.textBoxMaxStepCount = new System.Windows.Forms.TextBox();
             this.labelMaxStepCount = new System.Windows.Forms.Label();
-            this.panelActionButtomRegion = new System.Windows.Forms.Panel();
+            this.panelActionBottomRegion = new System.Windows.Forms.Panel();
             this.labelRegionEnd = new System.Windows.Forms.Label();
             this.textBoxXEnd = new System.Windows.Forms.TextBox();
             this.labelZpt = new System.Windows.Forms.Label();
             this.textBoxXBegin = new System.Windows.Forms.TextBox();
             this.labelRegionBegin = new System.Windows.Forms.Label();
-            this.panelActionButtomParamFunc = new System.Windows.Forms.Panel();
+            this.panelActionBottomParamFunc = new System.Windows.Forms.Panel();
             this.labelSinEnd = new System.Windows.Forms.Label();
             this.textBoxD = new System.Windows.Forms.TextBox();
             this.labelSinBegin = new System.Windows.Forms.Label();
@@ -107,22 +124,29 @@
             this.labelNameMethod = new System.Windows.Forms.Label();
             this.labelRecomendation = new System.Windows.Forms.Label();
             this.labelNoData = new System.Windows.Forms.Label();
-            this.panelButtomAnimation = new System.ComponentModel.BackgroundWorker();
+            this.panelBottomAnimation = new System.ComponentModel.BackgroundWorker();
             this.panelLeftAnimation = new System.ComponentModel.BackgroundWorker();
             this.panelRightAnimation = new System.ComponentModel.BackgroundWorker();
-            this.panelActionButtomAnimation = new System.ComponentModel.BackgroundWorker();
+            this.panelActionBottomAnimation = new System.ComponentModel.BackgroundWorker();
             this.panelHeaderAnimation = new System.ComponentModel.BackgroundWorker();
             this.TextAnimation = new System.ComponentModel.BackgroundWorker();
             this.panelCloser = new System.ComponentModel.BackgroundWorker();
             this.runMethod = new System.ComponentModel.BackgroundWorker();
+            this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
+            this.Conami = new System.ComponentModel.BackgroundWorker();
+            this.labelTheEnd = new System.Windows.Forms.Label();
             this.panelHeader.SuspendLayout();
-            this.panelButtom.SuspendLayout();
+            this.panelBottom.SuspendLayout();
             this.panelLeft.SuspendLayout();
             this.panelRight.SuspendLayout();
             this.panelAction.SuspendLayout();
-            this.panelActionHideButtom.SuspendLayout();
-            this.panelActionButtom.SuspendLayout();
+            this.panelActionHideBottom.SuspendLayout();
+            this.panelActionBottom.SuspendLayout();
             this.panelGraphConrtol.SuspendLayout();
+            this.panelTable.SuspendLayout();
+            this.panelSortTopCount.SuspendLayout();
+            this.panelSortGrade.SuspendLayout();
+            this.panelSortedBy.SuspendLayout();
             this.panelPostProcessing.SuspendLayout();
             this.panelMinimum.SuspendLayout();
             this.panelStepCount.SuspendLayout();
@@ -130,13 +154,14 @@
             this.panel1.SuspendLayout();
             this.panelZoomX.SuspendLayout();
             this.panelLinesAndPoints.SuspendLayout();
-            this.panelActionButtomParam.SuspendLayout();
-            this.panelActionButtomE.SuspendLayout();
-            this.panelActionButtomR.SuspendLayout();
+            this.panelActionBottomParam.SuspendLayout();
+            this.panelActionBottomE.SuspendLayout();
+            this.panelActionBottomR.SuspendLayout();
             this.panelMaxSteps.SuspendLayout();
-            this.panelActionButtomRegion.SuspendLayout();
-            this.panelActionButtomParamFunc.SuspendLayout();
+            this.panelActionBottomRegion.SuspendLayout();
+            this.panelActionBottomParamFunc.SuspendLayout();
             this.panelActionRun.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelHeader
@@ -148,6 +173,7 @@
             this.panelHeader.Name = "panelHeader";
             this.panelHeader.Size = new System.Drawing.Size(1264, 50);
             this.panelHeader.TabIndex = 4;
+            this.panelHeader.Paint += new System.Windows.Forms.PaintEventHandler(this.panelHeader_Paint);
             // 
             // labelMousePosition
             // 
@@ -158,17 +184,19 @@
             this.labelMousePosition.Size = new System.Drawing.Size(16, 13);
             this.labelMousePosition.TabIndex = 0;
             this.labelMousePosition.Text = "M";
+            this.labelMousePosition.Visible = false;
             // 
-            // panelButtom
+            // panelBottom
             // 
-            this.panelButtom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(0)))), ((int)(((byte)(30)))));
-            this.panelButtom.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelButtom.Controls.Add(this.panelStatus);
-            this.panelButtom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelButtom.Location = new System.Drawing.Point(0, 651);
-            this.panelButtom.Name = "panelButtom";
-            this.panelButtom.Size = new System.Drawing.Size(1264, 30);
-            this.panelButtom.TabIndex = 3;
+            this.panelBottom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(0)))), ((int)(((byte)(30)))));
+            this.panelBottom.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelBottom.Controls.Add(this.labelTheEnd);
+            this.panelBottom.Controls.Add(this.panelStatus);
+            this.panelBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelBottom.Location = new System.Drawing.Point(0, 651);
+            this.panelBottom.Name = "panelBottom";
+            this.panelBottom.Size = new System.Drawing.Size(1264, 30);
+            this.panelBottom.TabIndex = 3;
             // 
             // panelStatus
             // 
@@ -236,10 +264,11 @@
             // panelAction
             // 
             this.panelAction.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            this.panelAction.Controls.Add(this.labelErrorList);
             this.panelAction.Controls.Add(this.labelStage);
             this.panelAction.Controls.Add(this.zedGraphControlMain);
-            this.panelAction.Controls.Add(this.panelActionHideButtom);
-            this.panelAction.Controls.Add(this.panelActionButtom);
+            this.panelAction.Controls.Add(this.panelActionHideBottom);
+            this.panelAction.Controls.Add(this.panelActionBottom);
             this.panelAction.Controls.Add(this.labelRecomendation);
             this.panelAction.Controls.Add(this.labelNoData);
             this.panelAction.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -247,6 +276,20 @@
             this.panelAction.Name = "panelAction";
             this.panelAction.Size = new System.Drawing.Size(1124, 601);
             this.panelAction.TabIndex = 0;
+            // 
+            // labelErrorList
+            // 
+            this.labelErrorList.AutoSize = true;
+            this.labelErrorList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelErrorList.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelErrorList.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.labelErrorList.Location = new System.Drawing.Point(0, 452);
+            this.labelErrorList.Name = "labelErrorList";
+            this.labelErrorList.Size = new System.Drawing.Size(60, 24);
+            this.labelErrorList.TabIndex = 2;
+            this.labelErrorList.Text = "label1";
+            this.labelErrorList.Visible = false;
+            this.labelErrorList.Click += new System.EventHandler(this.labelErrorList_Click);
             // 
             // labelStage
             // 
@@ -271,51 +314,57 @@
             this.zedGraphControlMain.Size = new System.Drawing.Size(1124, 10);
             this.zedGraphControlMain.TabIndex = 4;
             this.zedGraphControlMain.Visible = false;
+            this.zedGraphControlMain.DoubleClick += new System.EventHandler(this.zedGraphControlMain_DoubleClick);
             this.zedGraphControlMain.MouseDown += new System.Windows.Forms.MouseEventHandler(this.zedGraphControlMain_MouseDown);
+            this.zedGraphControlMain.MouseLeave += new System.EventHandler(this.zedGraphControlMain_MouseLeave);
             this.zedGraphControlMain.MouseMove += new System.Windows.Forms.MouseEventHandler(this.zedGraphControlMain_MouseMove);
             this.zedGraphControlMain.MouseUp += new System.Windows.Forms.MouseEventHandler(this.zedGraphControlMain_MouseUp);
             this.zedGraphControlMain.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.zedGraphControlMain_MouseWheel);
             // 
-            // panelActionHideButtom
+            // panelActionHideBottom
             // 
-            this.panelActionHideButtom.Controls.Add(this.buttonActionButtom);
-            this.panelActionHideButtom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelActionHideButtom.Location = new System.Drawing.Point(0, 349);
-            this.panelActionHideButtom.Name = "panelActionHideButtom";
-            this.panelActionHideButtom.Size = new System.Drawing.Size(1124, 26);
-            this.panelActionHideButtom.TabIndex = 0;
+            this.panelActionHideBottom.Controls.Add(this.buttonActionBottom);
+            this.panelActionHideBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelActionHideBottom.Location = new System.Drawing.Point(0, 349);
+            this.panelActionHideBottom.Name = "panelActionHideBottom";
+            this.panelActionHideBottom.Size = new System.Drawing.Size(1124, 26);
+            this.panelActionHideBottom.TabIndex = 0;
             // 
-            // buttonActionButtom
+            // buttonActionBottom
             // 
-            this.buttonActionButtom.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonActionButtom.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonActionButtom.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.buttonActionButtom.FlatAppearance.BorderSize = 0;
-            this.buttonActionButtom.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.buttonActionButtom.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            this.buttonActionButtom.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonActionButtom.Location = new System.Drawing.Point(0, 0);
-            this.buttonActionButtom.Name = "buttonActionButtom";
-            this.buttonActionButtom.Size = new System.Drawing.Size(1124, 26);
-            this.buttonActionButtom.TabIndex = 0;
-            this.buttonActionButtom.TabStop = false;
-            this.buttonActionButtom.Text = "▼";
-            this.buttonActionButtom.UseVisualStyleBackColor = true;
-            this.buttonActionButtom.Click += new System.EventHandler(this.buttonActionButtom_Click);
+            this.buttonActionBottom.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonActionBottom.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonActionBottom.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.buttonActionBottom.FlatAppearance.BorderSize = 0;
+            this.buttonActionBottom.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.buttonActionBottom.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.buttonActionBottom.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonActionBottom.Location = new System.Drawing.Point(0, 0);
+            this.buttonActionBottom.Name = "buttonActionBottom";
+            this.buttonActionBottom.Size = new System.Drawing.Size(1124, 26);
+            this.buttonActionBottom.TabIndex = 0;
+            this.buttonActionBottom.TabStop = false;
+            this.buttonActionBottom.Text = "▼";
+            this.buttonActionBottom.UseVisualStyleBackColor = true;
+            this.buttonActionBottom.Click += new System.EventHandler(this.buttonActionBottom_Click);
             // 
-            // panelActionButtom
+            // panelActionBottom
             // 
-            this.panelActionButtom.Controls.Add(this.panelGraphConrtol);
-            this.panelActionButtom.Controls.Add(this.panelActionButtomParam);
-            this.panelActionButtom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelActionButtom.Location = new System.Drawing.Point(0, 375);
-            this.panelActionButtom.Name = "panelActionButtom";
-            this.panelActionButtom.Size = new System.Drawing.Size(1124, 226);
-            this.panelActionButtom.TabIndex = 1;
+            this.panelActionBottom.Controls.Add(this.panelGraphConrtol);
+            this.panelActionBottom.Controls.Add(this.panelActionBottomParam);
+            this.panelActionBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelActionBottom.Location = new System.Drawing.Point(0, 375);
+            this.panelActionBottom.Name = "panelActionBottom";
+            this.panelActionBottom.Size = new System.Drawing.Size(1124, 226);
+            this.panelActionBottom.TabIndex = 1;
             // 
             // panelGraphConrtol
             // 
             this.panelGraphConrtol.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelGraphConrtol.Controls.Add(this.panelTable);
+            this.panelGraphConrtol.Controls.Add(this.panelSortTopCount);
+            this.panelGraphConrtol.Controls.Add(this.panelSortGrade);
+            this.panelGraphConrtol.Controls.Add(this.panelSortedBy);
             this.panelGraphConrtol.Controls.Add(this.panelPostProcessing);
             this.panelGraphConrtol.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelGraphConrtol.Location = new System.Drawing.Point(250, 0);
@@ -323,6 +372,209 @@
             this.panelGraphConrtol.Size = new System.Drawing.Size(874, 226);
             this.panelGraphConrtol.TabIndex = 1;
             this.panelGraphConrtol.Visible = false;
+            // 
+            // panelTable
+            // 
+            this.panelTable.Controls.Add(this.tableLayoutPanel);
+            this.panelTable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelTable.Location = new System.Drawing.Point(200, 90);
+            this.panelTable.Name = "panelTable";
+            this.panelTable.Size = new System.Drawing.Size(672, 134);
+            this.panelTable.TabIndex = 5;
+            // 
+            // tableLayoutPanel
+            // 
+            this.tableLayoutPanel.AutoScroll = true;
+            this.tableLayoutPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            this.tableLayoutPanel.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.tableLayoutPanel.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel.Name = "tableLayoutPanel";
+            this.tableLayoutPanel.RowCount = 1;
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel.Size = new System.Drawing.Size(672, 134);
+            this.tableLayoutPanel.TabIndex = 1;
+            // 
+            // panelSortTopCount
+            // 
+            this.panelSortTopCount.Controls.Add(this.buttonTop45);
+            this.panelSortTopCount.Controls.Add(this.buttonTop30);
+            this.panelSortTopCount.Controls.Add(this.buttonTop15);
+            this.panelSortTopCount.Controls.Add(this.labelTopCount);
+            this.panelSortTopCount.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelSortTopCount.Location = new System.Drawing.Point(200, 60);
+            this.panelSortTopCount.Name = "panelSortTopCount";
+            this.panelSortTopCount.Size = new System.Drawing.Size(672, 30);
+            this.panelSortTopCount.TabIndex = 4;
+            // 
+            // buttonTop45
+            // 
+            this.buttonTop45.Dock = System.Windows.Forms.DockStyle.Left;
+            this.buttonTop45.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonTop45.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonTop45.Location = new System.Drawing.Point(194, 0);
+            this.buttonTop45.Name = "buttonTop45";
+            this.buttonTop45.Size = new System.Drawing.Size(75, 30);
+            this.buttonTop45.TabIndex = 3;
+            this.buttonTop45.Text = "45";
+            this.buttonTop45.UseVisualStyleBackColor = true;
+            this.buttonTop45.Click += new System.EventHandler(this.buttonTop45_Click);
+            // 
+            // buttonTop30
+            // 
+            this.buttonTop30.Dock = System.Windows.Forms.DockStyle.Left;
+            this.buttonTop30.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonTop30.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonTop30.Location = new System.Drawing.Point(119, 0);
+            this.buttonTop30.Name = "buttonTop30";
+            this.buttonTop30.Size = new System.Drawing.Size(75, 30);
+            this.buttonTop30.TabIndex = 2;
+            this.buttonTop30.Text = "30";
+            this.buttonTop30.UseVisualStyleBackColor = true;
+            this.buttonTop30.Click += new System.EventHandler(this.buttonTop30_Click);
+            // 
+            // buttonTop15
+            // 
+            this.buttonTop15.Dock = System.Windows.Forms.DockStyle.Left;
+            this.buttonTop15.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonTop15.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonTop15.Location = new System.Drawing.Point(44, 0);
+            this.buttonTop15.Name = "buttonTop15";
+            this.buttonTop15.Size = new System.Drawing.Size(75, 30);
+            this.buttonTop15.TabIndex = 1;
+            this.buttonTop15.Text = "15";
+            this.buttonTop15.UseVisualStyleBackColor = true;
+            this.buttonTop15.Click += new System.EventHandler(this.buttonTop15_Click);
+            // 
+            // labelTopCount
+            // 
+            this.labelTopCount.AutoSize = true;
+            this.labelTopCount.Dock = System.Windows.Forms.DockStyle.Left;
+            this.labelTopCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelTopCount.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.labelTopCount.Location = new System.Drawing.Point(0, 0);
+            this.labelTopCount.Name = "labelTopCount";
+            this.labelTopCount.Size = new System.Drawing.Size(44, 24);
+            this.labelTopCount.TabIndex = 0;
+            this.labelTopCount.Text = "Top";
+            this.labelTopCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panelSortGrade
+            // 
+            this.panelSortGrade.Controls.Add(this.buttonTopDown);
+            this.panelSortGrade.Controls.Add(this.buttonBottomUp);
+            this.panelSortGrade.Controls.Add(this.labelSortingDirection);
+            this.panelSortGrade.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelSortGrade.Location = new System.Drawing.Point(200, 30);
+            this.panelSortGrade.Name = "panelSortGrade";
+            this.panelSortGrade.Size = new System.Drawing.Size(672, 30);
+            this.panelSortGrade.TabIndex = 3;
+            // 
+            // buttonTopDown
+            // 
+            this.buttonTopDown.Dock = System.Windows.Forms.DockStyle.Left;
+            this.buttonTopDown.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonTopDown.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonTopDown.Location = new System.Drawing.Point(221, 0);
+            this.buttonTopDown.Name = "buttonTopDown";
+            this.buttonTopDown.Size = new System.Drawing.Size(75, 30);
+            this.buttonTopDown.TabIndex = 2;
+            this.buttonTopDown.Text = "TopDown";
+            this.buttonTopDown.UseVisualStyleBackColor = true;
+            this.buttonTopDown.Click += new System.EventHandler(this.buttonTopDown_Click);
+            // 
+            // buttonBottomUp
+            // 
+            this.buttonBottomUp.Dock = System.Windows.Forms.DockStyle.Left;
+            this.buttonBottomUp.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonBottomUp.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonBottomUp.Location = new System.Drawing.Point(146, 0);
+            this.buttonBottomUp.Name = "buttonBottomUp";
+            this.buttonBottomUp.Size = new System.Drawing.Size(75, 30);
+            this.buttonBottomUp.TabIndex = 1;
+            this.buttonBottomUp.Text = "BottomUp";
+            this.buttonBottomUp.UseVisualStyleBackColor = true;
+            this.buttonBottomUp.Click += new System.EventHandler(this.buttonBottomUp_Click);
+            // 
+            // labelSortingDirection
+            // 
+            this.labelSortingDirection.AutoSize = true;
+            this.labelSortingDirection.Dock = System.Windows.Forms.DockStyle.Left;
+            this.labelSortingDirection.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelSortingDirection.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.labelSortingDirection.Location = new System.Drawing.Point(0, 0);
+            this.labelSortingDirection.Name = "labelSortingDirection";
+            this.labelSortingDirection.Size = new System.Drawing.Size(146, 24);
+            this.labelSortingDirection.TabIndex = 0;
+            this.labelSortingDirection.Text = "Sorting direction";
+            this.labelSortingDirection.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panelSortedBy
+            // 
+            this.panelSortedBy.Controls.Add(this.buttonSortY);
+            this.panelSortedBy.Controls.Add(this.buttonSortX);
+            this.panelSortedBy.Controls.Add(this.buttonSortI);
+            this.panelSortedBy.Controls.Add(this.labelSortedBy);
+            this.panelSortedBy.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelSortedBy.Location = new System.Drawing.Point(200, 0);
+            this.panelSortedBy.Name = "panelSortedBy";
+            this.panelSortedBy.Size = new System.Drawing.Size(672, 30);
+            this.panelSortedBy.TabIndex = 2;
+            // 
+            // buttonSortY
+            // 
+            this.buttonSortY.Dock = System.Windows.Forms.DockStyle.Left;
+            this.buttonSortY.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonSortY.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonSortY.Location = new System.Drawing.Point(240, 0);
+            this.buttonSortY.Name = "buttonSortY";
+            this.buttonSortY.Size = new System.Drawing.Size(75, 30);
+            this.buttonSortY.TabIndex = 3;
+            this.buttonSortY.Text = "Y";
+            this.buttonSortY.UseVisualStyleBackColor = true;
+            this.buttonSortY.Click += new System.EventHandler(this.buttonSortY_Click);
+            // 
+            // buttonSortX
+            // 
+            this.buttonSortX.Dock = System.Windows.Forms.DockStyle.Left;
+            this.buttonSortX.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonSortX.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonSortX.Location = new System.Drawing.Point(165, 0);
+            this.buttonSortX.Name = "buttonSortX";
+            this.buttonSortX.Size = new System.Drawing.Size(75, 30);
+            this.buttonSortX.TabIndex = 2;
+            this.buttonSortX.Text = "X";
+            this.buttonSortX.UseVisualStyleBackColor = true;
+            this.buttonSortX.Click += new System.EventHandler(this.buttonSortX_Click);
+            // 
+            // buttonSortI
+            // 
+            this.buttonSortI.Dock = System.Windows.Forms.DockStyle.Left;
+            this.buttonSortI.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonSortI.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonSortI.Location = new System.Drawing.Point(90, 0);
+            this.buttonSortI.Name = "buttonSortI";
+            this.buttonSortI.Size = new System.Drawing.Size(75, 30);
+            this.buttonSortI.TabIndex = 1;
+            this.buttonSortI.Text = "iterations";
+            this.buttonSortI.UseVisualStyleBackColor = true;
+            this.buttonSortI.Click += new System.EventHandler(this.buttonSortI_Click);
+            // 
+            // labelSortedBy
+            // 
+            this.labelSortedBy.AutoSize = true;
+            this.labelSortedBy.Dock = System.Windows.Forms.DockStyle.Left;
+            this.labelSortedBy.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelSortedBy.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.labelSortedBy.Location = new System.Drawing.Point(0, 0);
+            this.labelSortedBy.Name = "labelSortedBy";
+            this.labelSortedBy.Size = new System.Drawing.Size(90, 24);
+            this.labelSortedBy.TabIndex = 0;
+            this.labelSortedBy.Text = "Sorted by";
+            this.labelSortedBy.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panelPostProcessing
             // 
@@ -421,6 +673,7 @@
             this.labelMinBegin.Size = new System.Drawing.Size(68, 24);
             this.labelMinBegin.TabIndex = 0;
             this.labelMinBegin.Text = "Min = (";
+            this.labelMinBegin.Click += new System.EventHandler(this.labelMinBegin_Click);
             // 
             // panelStepCount
             // 
@@ -493,6 +746,7 @@
             this.buttonZoomApply.TabIndex = 1;
             this.buttonZoomApply.Text = "Apply";
             this.buttonZoomApply.UseVisualStyleBackColor = true;
+            this.buttonZoomApply.Click += new System.EventHandler(this.buttonZoomApply_Click);
             // 
             // buttonDefaultZoom
             // 
@@ -506,6 +760,7 @@
             this.buttonDefaultZoom.TabIndex = 0;
             this.buttonDefaultZoom.Text = "Default Zoom";
             this.buttonDefaultZoom.UseVisualStyleBackColor = true;
+            this.buttonDefaultZoom.Click += new System.EventHandler(this.buttonDefaultZoom_Click);
             // 
             // panel1
             // 
@@ -705,33 +960,33 @@
             this.buttonWithPoints.UseVisualStyleBackColor = true;
             this.buttonWithPoints.Click += new System.EventHandler(this.buttonWithPoints_Click);
             // 
-            // panelActionButtomParam
+            // panelActionBottomParam
             // 
-            this.panelActionButtomParam.Controls.Add(this.panelActionButtomE);
-            this.panelActionButtomParam.Controls.Add(this.panelActionButtomR);
-            this.panelActionButtomParam.Controls.Add(this.panelMaxSteps);
-            this.panelActionButtomParam.Controls.Add(this.panelActionButtomRegion);
-            this.panelActionButtomParam.Controls.Add(this.panelActionButtomParamFunc);
-            this.panelActionButtomParam.Controls.Add(this.panelActionRun);
-            this.panelActionButtomParam.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelActionButtomParam.Location = new System.Drawing.Point(0, 0);
-            this.panelActionButtomParam.Name = "panelActionButtomParam";
-            this.panelActionButtomParam.Size = new System.Drawing.Size(250, 226);
-            this.panelActionButtomParam.TabIndex = 0;
+            this.panelActionBottomParam.Controls.Add(this.panelActionBottomE);
+            this.panelActionBottomParam.Controls.Add(this.panelActionBottomR);
+            this.panelActionBottomParam.Controls.Add(this.panelMaxSteps);
+            this.panelActionBottomParam.Controls.Add(this.panelActionBottomRegion);
+            this.panelActionBottomParam.Controls.Add(this.panelActionBottomParamFunc);
+            this.panelActionBottomParam.Controls.Add(this.panelActionRun);
+            this.panelActionBottomParam.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelActionBottomParam.Location = new System.Drawing.Point(0, 0);
+            this.panelActionBottomParam.Name = "panelActionBottomParam";
+            this.panelActionBottomParam.Size = new System.Drawing.Size(250, 226);
+            this.panelActionBottomParam.TabIndex = 0;
             // 
-            // panelActionButtomE
+            // panelActionBottomE
             // 
-            this.panelActionButtomE.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelActionButtomE.Controls.Add(this.labelGuidanceE);
-            this.panelActionButtomE.Controls.Add(this.textBoxE);
-            this.panelActionButtomE.Controls.Add(this.labelE);
-            this.panelActionButtomE.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelActionButtomE.Location = new System.Drawing.Point(0, 150);
-            this.panelActionButtomE.Name = "panelActionButtomE";
-            this.panelActionButtomE.Size = new System.Drawing.Size(250, 30);
-            this.panelActionButtomE.TabIndex = 4;
-            this.panelActionButtomE.MouseLeave += new System.EventHandler(this.panelActionButtomE_MouseLeave);
-            this.panelActionButtomE.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelActionButtomE_MouseMove);
+            this.panelActionBottomE.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelActionBottomE.Controls.Add(this.labelGuidanceE);
+            this.panelActionBottomE.Controls.Add(this.textBoxE);
+            this.panelActionBottomE.Controls.Add(this.labelE);
+            this.panelActionBottomE.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelActionBottomE.Location = new System.Drawing.Point(0, 150);
+            this.panelActionBottomE.Name = "panelActionBottomE";
+            this.panelActionBottomE.Size = new System.Drawing.Size(250, 30);
+            this.panelActionBottomE.TabIndex = 4;
+            this.panelActionBottomE.MouseLeave += new System.EventHandler(this.panelActionBottomE_MouseLeave);
+            this.panelActionBottomE.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelActionBottomE_MouseMove);
             // 
             // labelGuidanceE
             // 
@@ -772,19 +1027,19 @@
             this.labelE.TabIndex = 1;
             this.labelE.Text = "e = ";
             // 
-            // panelActionButtomR
+            // panelActionBottomR
             // 
-            this.panelActionButtomR.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelActionButtomR.Controls.Add(this.labelGuidanceR);
-            this.panelActionButtomR.Controls.Add(this.textBoxR);
-            this.panelActionButtomR.Controls.Add(this.labelR);
-            this.panelActionButtomR.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelActionButtomR.Location = new System.Drawing.Point(0, 120);
-            this.panelActionButtomR.Name = "panelActionButtomR";
-            this.panelActionButtomR.Size = new System.Drawing.Size(250, 30);
-            this.panelActionButtomR.TabIndex = 0;
-            this.panelActionButtomR.MouseLeave += new System.EventHandler(this.panelActionButtomR_MouseLeave);
-            this.panelActionButtomR.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelActionButtomR_MouseMove);
+            this.panelActionBottomR.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelActionBottomR.Controls.Add(this.labelGuidanceR);
+            this.panelActionBottomR.Controls.Add(this.textBoxR);
+            this.panelActionBottomR.Controls.Add(this.labelR);
+            this.panelActionBottomR.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelActionBottomR.Location = new System.Drawing.Point(0, 120);
+            this.panelActionBottomR.Name = "panelActionBottomR";
+            this.panelActionBottomR.Size = new System.Drawing.Size(250, 30);
+            this.panelActionBottomR.TabIndex = 0;
+            this.panelActionBottomR.MouseLeave += new System.EventHandler(this.panelActionBottomR_MouseLeave);
+            this.panelActionBottomR.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelActionBottomR_MouseMove);
             // 
             // labelGuidanceR
             // 
@@ -863,19 +1118,19 @@
             this.labelMaxStepCount.TabIndex = 1;
             this.labelMaxStepCount.Text = "Max step count = ";
             // 
-            // panelActionButtomRegion
+            // panelActionBottomRegion
             // 
-            this.panelActionButtomRegion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelActionButtomRegion.Controls.Add(this.labelRegionEnd);
-            this.panelActionButtomRegion.Controls.Add(this.textBoxXEnd);
-            this.panelActionButtomRegion.Controls.Add(this.labelZpt);
-            this.panelActionButtomRegion.Controls.Add(this.textBoxXBegin);
-            this.panelActionButtomRegion.Controls.Add(this.labelRegionBegin);
-            this.panelActionButtomRegion.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelActionButtomRegion.Location = new System.Drawing.Point(0, 60);
-            this.panelActionButtomRegion.Name = "panelActionButtomRegion";
-            this.panelActionButtomRegion.Size = new System.Drawing.Size(250, 30);
-            this.panelActionButtomRegion.TabIndex = 1;
+            this.panelActionBottomRegion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelActionBottomRegion.Controls.Add(this.labelRegionEnd);
+            this.panelActionBottomRegion.Controls.Add(this.textBoxXEnd);
+            this.panelActionBottomRegion.Controls.Add(this.labelZpt);
+            this.panelActionBottomRegion.Controls.Add(this.textBoxXBegin);
+            this.panelActionBottomRegion.Controls.Add(this.labelRegionBegin);
+            this.panelActionBottomRegion.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelActionBottomRegion.Location = new System.Drawing.Point(0, 60);
+            this.panelActionBottomRegion.Name = "panelActionBottomRegion";
+            this.panelActionBottomRegion.Size = new System.Drawing.Size(250, 30);
+            this.panelActionBottomRegion.TabIndex = 1;
             // 
             // labelRegionEnd
             // 
@@ -943,24 +1198,24 @@
             this.labelRegionBegin.TabIndex = 4;
             this.labelRegionBegin.Text = "x ∈ [";
             // 
-            // panelActionButtomParamFunc
+            // panelActionBottomParamFunc
             // 
-            this.panelActionButtomParamFunc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelActionButtomParamFunc.Controls.Add(this.labelSinEnd);
-            this.panelActionButtomParamFunc.Controls.Add(this.textBoxD);
-            this.panelActionButtomParamFunc.Controls.Add(this.labelSinBegin);
-            this.panelActionButtomParamFunc.Controls.Add(this.textBoxC);
-            this.panelActionButtomParamFunc.Controls.Add(this.labelCosEnd);
-            this.panelActionButtomParamFunc.Controls.Add(this.textBoxB);
-            this.panelActionButtomParamFunc.Controls.Add(this.labelCosBegin);
-            this.panelActionButtomParamFunc.Controls.Add(this.textBoxA);
-            this.panelActionButtomParamFunc.Controls.Add(this.labelFunc);
-            this.panelActionButtomParamFunc.Controls.Add(this.panelFuncBegin);
-            this.panelActionButtomParamFunc.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelActionButtomParamFunc.Location = new System.Drawing.Point(0, 30);
-            this.panelActionButtomParamFunc.Name = "panelActionButtomParamFunc";
-            this.panelActionButtomParamFunc.Size = new System.Drawing.Size(250, 30);
-            this.panelActionButtomParamFunc.TabIndex = 2;
+            this.panelActionBottomParamFunc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelActionBottomParamFunc.Controls.Add(this.labelSinEnd);
+            this.panelActionBottomParamFunc.Controls.Add(this.textBoxD);
+            this.panelActionBottomParamFunc.Controls.Add(this.labelSinBegin);
+            this.panelActionBottomParamFunc.Controls.Add(this.textBoxC);
+            this.panelActionBottomParamFunc.Controls.Add(this.labelCosEnd);
+            this.panelActionBottomParamFunc.Controls.Add(this.textBoxB);
+            this.panelActionBottomParamFunc.Controls.Add(this.labelCosBegin);
+            this.panelActionBottomParamFunc.Controls.Add(this.textBoxA);
+            this.panelActionBottomParamFunc.Controls.Add(this.labelFunc);
+            this.panelActionBottomParamFunc.Controls.Add(this.panelFuncBegin);
+            this.panelActionBottomParamFunc.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelActionBottomParamFunc.Location = new System.Drawing.Point(0, 30);
+            this.panelActionBottomParamFunc.Name = "panelActionBottomParamFunc";
+            this.panelActionBottomParamFunc.Size = new System.Drawing.Size(250, 30);
+            this.panelActionBottomParamFunc.TabIndex = 2;
             // 
             // labelSinEnd
             // 
@@ -1152,11 +1407,12 @@
             this.labelNoData.TabIndex = 3;
             this.labelNoData.Text = "No Data";
             // 
-            // panelButtomAnimation
+            // panelBottomAnimation
             // 
-            this.panelButtomAnimation.WorkerReportsProgress = true;
-            this.panelButtomAnimation.DoWork += new System.ComponentModel.DoWorkEventHandler(this.panelButtomAnimation_DoWork);
-            this.panelButtomAnimation.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.panelButtomAnimation_ProgressChanged);
+            this.panelBottomAnimation.WorkerReportsProgress = true;
+            this.panelBottomAnimation.WorkerSupportsCancellation = true;
+            this.panelBottomAnimation.DoWork += new System.ComponentModel.DoWorkEventHandler(this.panelBottomAnimation_DoWork);
+            this.panelBottomAnimation.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.panelBottomAnimation_ProgressChanged);
             // 
             // panelLeftAnimation
             // 
@@ -1172,12 +1428,12 @@
             this.panelRightAnimation.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.panelRightAnimation_ProgressChanged);
             this.panelRightAnimation.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.panelRightAnimation_RunWorkerCompleted);
             // 
-            // panelActionButtomAnimation
+            // panelActionBottomAnimation
             // 
-            this.panelActionButtomAnimation.WorkerReportsProgress = true;
-            this.panelActionButtomAnimation.DoWork += new System.ComponentModel.DoWorkEventHandler(this.panelActionButtomAnimation_DoWork);
-            this.panelActionButtomAnimation.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.panelActionButtomAnimation_ProgressChanged);
-            this.panelActionButtomAnimation.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.panelActionButtomAnimation_RunWorkerCompleted);
+            this.panelActionBottomAnimation.WorkerReportsProgress = true;
+            this.panelActionBottomAnimation.DoWork += new System.ComponentModel.DoWorkEventHandler(this.panelActionBottomAnimation_DoWork);
+            this.panelActionBottomAnimation.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.panelActionBottomAnimation_ProgressChanged);
+            this.panelActionBottomAnimation.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.panelActionBottomAnimation_RunWorkerCompleted);
             // 
             // panelHeaderAnimation
             // 
@@ -1208,6 +1464,32 @@
             this.runMethod.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.runMethod_ProgressChanged);
             this.runMethod.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.runMethod_RunWorkerCompleted);
             // 
+            // fileSystemWatcher1
+            // 
+            this.fileSystemWatcher1.EnableRaisingEvents = true;
+            this.fileSystemWatcher1.SynchronizingObject = this;
+            // 
+            // Conami
+            // 
+            this.Conami.WorkerReportsProgress = true;
+            this.Conami.WorkerSupportsCancellation = true;
+            this.Conami.DoWork += new System.ComponentModel.DoWorkEventHandler(this.Conami_DoWork);
+            this.Conami.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.Conami_ProgressChanged);
+            this.Conami.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.Conami_RunWorkerCompleted);
+            // 
+            // labelTheEnd
+            // 
+            this.labelTheEnd.AutoSize = true;
+            this.labelTheEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelTheEnd.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.labelTheEnd.Location = new System.Drawing.Point(639, 4);
+            this.labelTheEnd.Name = "labelTheEnd";
+            this.labelTheEnd.Size = new System.Drawing.Size(16, 17);
+            this.labelTheEnd.TabIndex = 1;
+            this.labelTheEnd.Text = "1";
+            this.labelTheEnd.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelTheEnd.Visible = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1216,22 +1498,29 @@
             this.Controls.Add(this.panelAction);
             this.Controls.Add(this.panelRight);
             this.Controls.Add(this.panelLeft);
-            this.Controls.Add(this.panelButtom);
+            this.Controls.Add(this.panelBottom);
             this.Controls.Add(this.panelHeader);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "MainForm";
             this.Text = "Decision making system";
             this.Resize += new System.EventHandler(this.MainForm_Resize);
             this.panelHeader.ResumeLayout(false);
             this.panelHeader.PerformLayout();
-            this.panelButtom.ResumeLayout(false);
+            this.panelBottom.ResumeLayout(false);
+            this.panelBottom.PerformLayout();
             this.panelLeft.ResumeLayout(false);
             this.panelRight.ResumeLayout(false);
             this.panelAction.ResumeLayout(false);
             this.panelAction.PerformLayout();
-            this.panelActionHideButtom.ResumeLayout(false);
-            this.panelActionButtom.ResumeLayout(false);
+            this.panelActionHideBottom.ResumeLayout(false);
+            this.panelActionBottom.ResumeLayout(false);
             this.panelGraphConrtol.ResumeLayout(false);
+            this.panelTable.ResumeLayout(false);
+            this.panelSortTopCount.ResumeLayout(false);
+            this.panelSortTopCount.PerformLayout();
+            this.panelSortGrade.ResumeLayout(false);
+            this.panelSortGrade.PerformLayout();
+            this.panelSortedBy.ResumeLayout(false);
+            this.panelSortedBy.PerformLayout();
             this.panelPostProcessing.ResumeLayout(false);
             this.panelMinimum.ResumeLayout(false);
             this.panelMinimum.PerformLayout();
@@ -1243,19 +1532,20 @@
             this.panelZoomX.ResumeLayout(false);
             this.panelZoomX.PerformLayout();
             this.panelLinesAndPoints.ResumeLayout(false);
-            this.panelActionButtomParam.ResumeLayout(false);
-            this.panelActionButtomE.ResumeLayout(false);
-            this.panelActionButtomE.PerformLayout();
-            this.panelActionButtomR.ResumeLayout(false);
-            this.panelActionButtomR.PerformLayout();
+            this.panelActionBottomParam.ResumeLayout(false);
+            this.panelActionBottomE.ResumeLayout(false);
+            this.panelActionBottomE.PerformLayout();
+            this.panelActionBottomR.ResumeLayout(false);
+            this.panelActionBottomR.PerformLayout();
             this.panelMaxSteps.ResumeLayout(false);
             this.panelMaxSteps.PerformLayout();
-            this.panelActionButtomRegion.ResumeLayout(false);
-            this.panelActionButtomRegion.PerformLayout();
-            this.panelActionButtomParamFunc.ResumeLayout(false);
-            this.panelActionButtomParamFunc.PerformLayout();
+            this.panelActionBottomRegion.ResumeLayout(false);
+            this.panelActionBottomRegion.PerformLayout();
+            this.panelActionBottomParamFunc.ResumeLayout(false);
+            this.panelActionBottomParamFunc.PerformLayout();
             this.panelActionRun.ResumeLayout(false);
             this.panelActionRun.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1263,22 +1553,22 @@
         #endregion
 
         private System.Windows.Forms.Panel panelHeader;
-        private System.Windows.Forms.Panel panelButtom;
+        private System.Windows.Forms.Panel panelBottom;
         private System.Windows.Forms.Panel panelLeft;
         private System.Windows.Forms.Panel panelRight;
         private System.Windows.Forms.Panel panelAction;
-        private System.ComponentModel.BackgroundWorker panelButtomAnimation;
+        private System.ComponentModel.BackgroundWorker panelBottomAnimation;
         private System.ComponentModel.BackgroundWorker panelLeftAnimation;
         private System.ComponentModel.BackgroundWorker panelRightAnimation;
-        private System.ComponentModel.BackgroundWorker panelActionButtomAnimation;
+        private System.ComponentModel.BackgroundWorker panelActionBottomAnimation;
         private System.ComponentModel.BackgroundWorker panelHeaderAnimation;
         private System.Windows.Forms.Label labelRecomendation;
         private System.Windows.Forms.Label labelNoData;
-        private System.Windows.Forms.Panel panelActionButtom;
-        private System.Windows.Forms.Panel panelActionHideButtom;
-        private System.Windows.Forms.Panel panelActionButtomParam;
+        private System.Windows.Forms.Panel panelActionBottom;
+        private System.Windows.Forms.Panel panelActionHideBottom;
+        private System.Windows.Forms.Panel panelActionBottomParam;
         private System.Windows.Forms.Label labelNameMethod;
-        private System.Windows.Forms.Panel panelActionButtomParamFunc;
+        private System.Windows.Forms.Panel panelActionBottomParamFunc;
         private System.Windows.Forms.Label labelCosBegin;
         private System.Windows.Forms.TextBox textBoxA;
         private System.Windows.Forms.Panel panelFuncBegin;
@@ -1288,21 +1578,21 @@
         private System.Windows.Forms.Label labelSinBegin;
         private System.Windows.Forms.TextBox textBoxC;
         private System.Windows.Forms.Label labelCosEnd;
-        private System.Windows.Forms.Panel panelActionButtomRegion;
+        private System.Windows.Forms.Panel panelActionBottomRegion;
         private System.Windows.Forms.Label labelRegionEnd;
         private System.Windows.Forms.TextBox textBoxXEnd;
         private System.Windows.Forms.Label labelZpt;
         private System.Windows.Forms.TextBox textBoxXBegin;
         private System.Windows.Forms.Label labelRegionBegin;
-        private System.Windows.Forms.Panel panelActionButtomR;
+        private System.Windows.Forms.Panel panelActionBottomR;
         private System.Windows.Forms.TextBox textBoxR;
         private System.Windows.Forms.Label labelR;
-        private System.Windows.Forms.Panel panelActionButtomE;
+        private System.Windows.Forms.Panel panelActionBottomE;
         private System.Windows.Forms.TextBox textBoxE;
         private System.Windows.Forms.Label labelE;
         private System.Windows.Forms.Label labelGuidanceR;
         private System.Windows.Forms.Label labelGuidanceE;
-        private System.Windows.Forms.Button buttonActionButtom;
+        private System.Windows.Forms.Button buttonActionBottom;
         private System.Windows.Forms.Panel panelActionRun;
         private System.Windows.Forms.Button buttonRun;
         private System.Windows.Forms.Button buttonChangePerspectiveLeft;
@@ -1348,5 +1638,25 @@
         private System.Windows.Forms.Label labelMinMid;
         private System.Windows.Forms.TextBox textBoxXMin;
         private System.Windows.Forms.Label labelMinBegin;
+        private System.IO.FileSystemWatcher fileSystemWatcher1;
+        private System.Windows.Forms.Panel panelSortedBy;
+        private System.Windows.Forms.Label labelSortedBy;
+        private System.Windows.Forms.Label labelErrorList;
+        private System.Windows.Forms.Button buttonSortY;
+        private System.Windows.Forms.Button buttonSortX;
+        private System.Windows.Forms.Button buttonSortI;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel;
+        private System.Windows.Forms.Panel panelSortTopCount;
+        private System.Windows.Forms.Button buttonTop45;
+        private System.Windows.Forms.Button buttonTop30;
+        private System.Windows.Forms.Button buttonTop15;
+        private System.Windows.Forms.Label labelTopCount;
+        private System.Windows.Forms.Panel panelSortGrade;
+        private System.Windows.Forms.Button buttonTopDown;
+        private System.Windows.Forms.Button buttonBottomUp;
+        private System.Windows.Forms.Label labelSortingDirection;
+        private System.Windows.Forms.Panel panelTable;
+        private System.ComponentModel.BackgroundWorker Conami;
+        private System.Windows.Forms.Label labelTheEnd;
     }
 }
