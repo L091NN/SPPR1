@@ -372,14 +372,14 @@ namespace sppr
             buttonTopDown.ForeColor = perspective.sortDir == "TopDown" ? invert(perspective.colorText) : perspective.colorText;
             buttonTopDown.BackColor = perspective.sortDir == "TopDown" ? invert(perspective.colorPanel) : perspective.colorPanel;
 
-            buttonTop5.ForeColor = perspective.sortTop == 5 ? invert(perspective.colorText) : perspective.colorText;
-            buttonTop5.BackColor = perspective.sortTop == 5 ? invert(perspective.colorPanel) : perspective.colorPanel;
-
-            buttonTop10.ForeColor = perspective.sortTop == 10 ? invert(perspective.colorText) : perspective.colorText;
-            buttonTop10.BackColor = perspective.sortTop == 10 ? invert(perspective.colorPanel) : perspective.colorPanel;
-
             buttonTop15.ForeColor = perspective.sortTop == 15 ? invert(perspective.colorText) : perspective.colorText;
             buttonTop15.BackColor = perspective.sortTop == 15 ? invert(perspective.colorPanel) : perspective.colorPanel;
+
+            buttonTop30.ForeColor = perspective.sortTop == 30 ? invert(perspective.colorText) : perspective.colorText;
+            buttonTop30.BackColor = perspective.sortTop == 30 ? invert(perspective.colorPanel) : perspective.colorPanel;
+
+            buttonTop45.ForeColor = perspective.sortTop == 45 ? invert(perspective.colorText) : perspective.colorText;
+            buttonTop45.BackColor = perspective.sortTop == 45 ? invert(perspective.colorPanel) : perspective.colorPanel;
         }
 
         protected void runCurMethod()
@@ -471,7 +471,6 @@ namespace sppr
 
             var report = method.solve(runMethod);
             status = 60;
-            //System.Threading.Thread.Sleep(2000);
 
             FElem elem = new FElem();
             elem.function = func;

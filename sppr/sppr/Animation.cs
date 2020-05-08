@@ -79,9 +79,6 @@ namespace sppr
 
         private void panelHeaderAnimation_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            //var red = (e.ProgressPercentage >> 16) & 255;
-            //var green = (e.ProgressPercentage >> 8) & 255;
-            //var blue = (e.ProgressPercentage >> 0) & 255;
             panelHeader.BackColor = Color.FromArgb(e.ProgressPercentage);
         }
 
@@ -186,6 +183,124 @@ namespace sppr
             if (panelBottom.Height == 0)
                 panelActionBottom.Visible = false;
             else panelActionBottom.Visible = true;
+        }
+
+        int conStage;
+        List<string> conLog;
+        bool isCon;
+        
+        private void Conami_DoWork(object sender, DoWorkEventArgs e)
+        {
+            while (!Conami.CancellationPending)
+            {
+                System.Threading.Thread.Sleep(500);
+                Conami.ReportProgress(1);
+            }
+        }
+
+        private void Conami_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            List<string> scenar10 = new List<string>() { "Up&Down", "Up&Down", "Up&Down", "Up&Down", "Left", "Right", "Left", "Right", "SortX", "SortY", "Strat" };
+            if (conStage == 10) buttonRun.Text = "START";
+            if (conStage == 11) Conami.CancelAsync();
+            foreach (var click in conLog)
+            {
+                conStage = click == scenar10[conStage] ? conStage + 1 : 0; 
+            }
+            conLog.Clear();
+        }
+
+        private void Conami_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            isCon = true;
+            closeDoors();
+            fallRoof();
+            ButtomUp();
+
+            captions();
+            System.Windows.Forms.Application.Exit();
+        }
+
+        private void closeDoors()
+        {
+            panelAction.Visible = false;
+            var step = this.Size.Width / 64;
+            while (panelLeft.Location.X + panelLeft.Size.Width < panelRight.Location.X)
+            {
+                panelRight.Width += step;
+                buttonChangePerspectiveLeft.Width += step;
+                panelLeft.Width += step;
+                buttonChangePerspectiveRight.Width += step;
+                panelActionHideBottom.Height += step;
+                panelLeft.Refresh();
+                panelRight.Refresh();
+                panelAction.Refresh();
+            }
+
+        }
+
+        private void fallRoof()
+        {
+            var step = this.Size.Height / 64;
+            while (panelHeader.Height < panelBottom.Location.Y)
+            {
+                panelHeader.Height += step;
+                panelHeader.Refresh();
+            }
+
+        }
+
+        private void ButtomUp()
+        {
+            panelBottom.BackColor = style.colors["black.vs"];
+            var step = this.Size.Height / 64;
+            while (panelBottom.Height < this.Size.Height)
+            {
+                panelBottom.Height += step;
+                panelBottom.Refresh();
+            }
+            panelHeader.Visible = false;
+            panelLeft.Visible = false;
+            panelRight.Visible = false;
+            panelBottom.Dock = System.Windows.Forms.DockStyle.Fill;
+        }
+
+        private void captions()
+        {
+            System.Threading.Thread.Sleep(1000);
+
+            labelTheEnd.Location = new Point(this.Size.Width / 2, this.Size.Height / 2);
+            labelTheEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 0.05f * panelBottom.Width, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            labelTheEnd.Visible = true;
+
+            labelTheEnd.Text = "Develop by\nLugin Mikhail\n381703-3";
+            labelTheEnd.Location = new Point(this.Size.Width / 2 - labelTheEnd.Width / 2, this.Size.Height / 2 - labelTheEnd.Height / 2);
+            labelTheEnd.Refresh();
+
+            System.Threading.Thread.Sleep(5000);
+            labelTheEnd.Text = "";
+            labelTheEnd.Refresh();
+
+            System.Threading.Thread.Sleep(1000);
+            labelTheEnd.Text = "Develop by\nTrubina Anastasia\n381608-3";
+            labelTheEnd.Location = new Point(this.Size.Width / 2 - labelTheEnd.Width / 2, this.Size.Height / 2 - labelTheEnd.Height / 2);
+            labelTheEnd.Refresh();
+
+            System.Threading.Thread.Sleep(5000);
+            labelTheEnd.Text = "";
+            labelTheEnd.Refresh();
+
+            System.Threading.Thread.Sleep(1000);
+            labelTheEnd.Text = "Lobachevsky\nApril-May 2020";
+            labelTheEnd.Location = new Point(this.Size.Width / 2 - labelTheEnd.Width / 2, this.Size.Height / 2 - labelTheEnd.Height / 2);
+            labelTheEnd.Refresh();
+
+            System.Threading.Thread.Sleep(5000);
+            labelTheEnd.Text = "Thanks";
+            labelTheEnd.Location = new Point(this.Size.Width / 2 - labelTheEnd.Width / 2, this.Size.Height / 2 - labelTheEnd.Height / 2);
+            labelTheEnd.Refresh();
+
+            System.Threading.Thread.Sleep(1000);
         }
 
     }

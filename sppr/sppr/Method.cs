@@ -96,7 +96,7 @@ namespace sppr
         }
         public Report solve(BackgroundWorker worker)
         {
-            for (; _steps < _maxSteps; _steps++)
+            for (; _steps <= _maxSteps; _steps++)
             {
                 worker.ReportProgress((int)((double)_steps / _maxSteps * 100));
                 if (worker.CancellationPending) return null;

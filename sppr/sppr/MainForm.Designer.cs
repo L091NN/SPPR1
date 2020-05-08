@@ -45,11 +45,12 @@
             this.buttonActionBottom = new System.Windows.Forms.Button();
             this.panelActionBottom = new System.Windows.Forms.Panel();
             this.panelGraphConrtol = new System.Windows.Forms.Panel();
+            this.panelTable = new System.Windows.Forms.Panel();
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.panelSortTopCount = new System.Windows.Forms.Panel();
+            this.buttonTop45 = new System.Windows.Forms.Button();
+            this.buttonTop30 = new System.Windows.Forms.Button();
             this.buttonTop15 = new System.Windows.Forms.Button();
-            this.buttonTop10 = new System.Windows.Forms.Button();
-            this.buttonTop5 = new System.Windows.Forms.Button();
             this.labelTopCount = new System.Windows.Forms.Label();
             this.panelSortGrade = new System.Windows.Forms.Panel();
             this.buttonTopDown = new System.Windows.Forms.Button();
@@ -132,7 +133,8 @@
             this.panelCloser = new System.ComponentModel.BackgroundWorker();
             this.runMethod = new System.ComponentModel.BackgroundWorker();
             this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
-            this.panelTable = new System.Windows.Forms.Panel();
+            this.Conami = new System.ComponentModel.BackgroundWorker();
+            this.labelTheEnd = new System.Windows.Forms.Label();
             this.panelHeader.SuspendLayout();
             this.panelBottom.SuspendLayout();
             this.panelLeft.SuspendLayout();
@@ -141,6 +143,7 @@
             this.panelActionHideBottom.SuspendLayout();
             this.panelActionBottom.SuspendLayout();
             this.panelGraphConrtol.SuspendLayout();
+            this.panelTable.SuspendLayout();
             this.panelSortTopCount.SuspendLayout();
             this.panelSortGrade.SuspendLayout();
             this.panelSortedBy.SuspendLayout();
@@ -159,7 +162,6 @@
             this.panelActionBottomParamFunc.SuspendLayout();
             this.panelActionRun.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
-            this.panelTable.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelHeader
@@ -171,6 +173,7 @@
             this.panelHeader.Name = "panelHeader";
             this.panelHeader.Size = new System.Drawing.Size(1264, 50);
             this.panelHeader.TabIndex = 4;
+            this.panelHeader.Paint += new System.Windows.Forms.PaintEventHandler(this.panelHeader_Paint);
             // 
             // labelMousePosition
             // 
@@ -187,6 +190,7 @@
             // 
             this.panelBottom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(0)))), ((int)(((byte)(30)))));
             this.panelBottom.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelBottom.Controls.Add(this.labelTheEnd);
             this.panelBottom.Controls.Add(this.panelStatus);
             this.panelBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelBottom.Location = new System.Drawing.Point(0, 651);
@@ -369,6 +373,15 @@
             this.panelGraphConrtol.TabIndex = 1;
             this.panelGraphConrtol.Visible = false;
             // 
+            // panelTable
+            // 
+            this.panelTable.Controls.Add(this.tableLayoutPanel);
+            this.panelTable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelTable.Location = new System.Drawing.Point(200, 90);
+            this.panelTable.Name = "panelTable";
+            this.panelTable.Size = new System.Drawing.Size(672, 134);
+            this.panelTable.TabIndex = 5;
+            // 
             // tableLayoutPanel
             // 
             this.tableLayoutPanel.AutoScroll = true;
@@ -387,9 +400,9 @@
             // 
             // panelSortTopCount
             // 
+            this.panelSortTopCount.Controls.Add(this.buttonTop45);
+            this.panelSortTopCount.Controls.Add(this.buttonTop30);
             this.panelSortTopCount.Controls.Add(this.buttonTop15);
-            this.panelSortTopCount.Controls.Add(this.buttonTop10);
-            this.panelSortTopCount.Controls.Add(this.buttonTop5);
             this.panelSortTopCount.Controls.Add(this.labelTopCount);
             this.panelSortTopCount.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelSortTopCount.Location = new System.Drawing.Point(200, 60);
@@ -397,44 +410,44 @@
             this.panelSortTopCount.Size = new System.Drawing.Size(672, 30);
             this.panelSortTopCount.TabIndex = 4;
             // 
+            // buttonTop45
+            // 
+            this.buttonTop45.Dock = System.Windows.Forms.DockStyle.Left;
+            this.buttonTop45.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonTop45.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonTop45.Location = new System.Drawing.Point(194, 0);
+            this.buttonTop45.Name = "buttonTop45";
+            this.buttonTop45.Size = new System.Drawing.Size(75, 30);
+            this.buttonTop45.TabIndex = 3;
+            this.buttonTop45.Text = "45";
+            this.buttonTop45.UseVisualStyleBackColor = true;
+            this.buttonTop45.Click += new System.EventHandler(this.buttonTop45_Click);
+            // 
+            // buttonTop30
+            // 
+            this.buttonTop30.Dock = System.Windows.Forms.DockStyle.Left;
+            this.buttonTop30.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonTop30.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonTop30.Location = new System.Drawing.Point(119, 0);
+            this.buttonTop30.Name = "buttonTop30";
+            this.buttonTop30.Size = new System.Drawing.Size(75, 30);
+            this.buttonTop30.TabIndex = 2;
+            this.buttonTop30.Text = "30";
+            this.buttonTop30.UseVisualStyleBackColor = true;
+            this.buttonTop30.Click += new System.EventHandler(this.buttonTop30_Click);
+            // 
             // buttonTop15
             // 
             this.buttonTop15.Dock = System.Windows.Forms.DockStyle.Left;
             this.buttonTop15.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonTop15.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonTop15.Location = new System.Drawing.Point(194, 0);
+            this.buttonTop15.Location = new System.Drawing.Point(44, 0);
             this.buttonTop15.Name = "buttonTop15";
             this.buttonTop15.Size = new System.Drawing.Size(75, 30);
-            this.buttonTop15.TabIndex = 3;
+            this.buttonTop15.TabIndex = 1;
             this.buttonTop15.Text = "15";
             this.buttonTop15.UseVisualStyleBackColor = true;
             this.buttonTop15.Click += new System.EventHandler(this.buttonTop15_Click);
-            // 
-            // buttonTop10
-            // 
-            this.buttonTop10.Dock = System.Windows.Forms.DockStyle.Left;
-            this.buttonTop10.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonTop10.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonTop10.Location = new System.Drawing.Point(119, 0);
-            this.buttonTop10.Name = "buttonTop10";
-            this.buttonTop10.Size = new System.Drawing.Size(75, 30);
-            this.buttonTop10.TabIndex = 2;
-            this.buttonTop10.Text = "10";
-            this.buttonTop10.UseVisualStyleBackColor = true;
-            this.buttonTop10.Click += new System.EventHandler(this.buttonTop10_Click);
-            // 
-            // buttonTop5
-            // 
-            this.buttonTop5.Dock = System.Windows.Forms.DockStyle.Left;
-            this.buttonTop5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonTop5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonTop5.Location = new System.Drawing.Point(44, 0);
-            this.buttonTop5.Name = "buttonTop5";
-            this.buttonTop5.Size = new System.Drawing.Size(75, 30);
-            this.buttonTop5.TabIndex = 1;
-            this.buttonTop5.Text = "5";
-            this.buttonTop5.UseVisualStyleBackColor = true;
-            this.buttonTop5.Click += new System.EventHandler(this.buttonTop5_Click);
             // 
             // labelTopCount
             // 
@@ -1456,14 +1469,26 @@
             this.fileSystemWatcher1.EnableRaisingEvents = true;
             this.fileSystemWatcher1.SynchronizingObject = this;
             // 
-            // panelTable
+            // Conami
             // 
-            this.panelTable.Controls.Add(this.tableLayoutPanel);
-            this.panelTable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelTable.Location = new System.Drawing.Point(200, 90);
-            this.panelTable.Name = "panelTable";
-            this.panelTable.Size = new System.Drawing.Size(672, 134);
-            this.panelTable.TabIndex = 5;
+            this.Conami.WorkerReportsProgress = true;
+            this.Conami.WorkerSupportsCancellation = true;
+            this.Conami.DoWork += new System.ComponentModel.DoWorkEventHandler(this.Conami_DoWork);
+            this.Conami.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.Conami_ProgressChanged);
+            this.Conami.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.Conami_RunWorkerCompleted);
+            // 
+            // labelTheEnd
+            // 
+            this.labelTheEnd.AutoSize = true;
+            this.labelTheEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelTheEnd.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.labelTheEnd.Location = new System.Drawing.Point(639, 4);
+            this.labelTheEnd.Name = "labelTheEnd";
+            this.labelTheEnd.Size = new System.Drawing.Size(16, 17);
+            this.labelTheEnd.TabIndex = 1;
+            this.labelTheEnd.Text = "1";
+            this.labelTheEnd.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelTheEnd.Visible = false;
             // 
             // MainForm
             // 
@@ -1481,6 +1506,7 @@
             this.panelHeader.ResumeLayout(false);
             this.panelHeader.PerformLayout();
             this.panelBottom.ResumeLayout(false);
+            this.panelBottom.PerformLayout();
             this.panelLeft.ResumeLayout(false);
             this.panelRight.ResumeLayout(false);
             this.panelAction.ResumeLayout(false);
@@ -1488,6 +1514,7 @@
             this.panelActionHideBottom.ResumeLayout(false);
             this.panelActionBottom.ResumeLayout(false);
             this.panelGraphConrtol.ResumeLayout(false);
+            this.panelTable.ResumeLayout(false);
             this.panelSortTopCount.ResumeLayout(false);
             this.panelSortTopCount.PerformLayout();
             this.panelSortGrade.ResumeLayout(false);
@@ -1519,7 +1546,6 @@
             this.panelActionRun.ResumeLayout(false);
             this.panelActionRun.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
-            this.panelTable.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1621,14 +1647,16 @@
         private System.Windows.Forms.Button buttonSortI;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel;
         private System.Windows.Forms.Panel panelSortTopCount;
+        private System.Windows.Forms.Button buttonTop45;
+        private System.Windows.Forms.Button buttonTop30;
         private System.Windows.Forms.Button buttonTop15;
-        private System.Windows.Forms.Button buttonTop10;
-        private System.Windows.Forms.Button buttonTop5;
         private System.Windows.Forms.Label labelTopCount;
         private System.Windows.Forms.Panel panelSortGrade;
         private System.Windows.Forms.Button buttonTopDown;
         private System.Windows.Forms.Button buttonBottomUp;
         private System.Windows.Forms.Label labelSortingDirection;
         private System.Windows.Forms.Panel panelTable;
+        private System.ComponentModel.BackgroundWorker Conami;
+        private System.Windows.Forms.Label labelTheEnd;
     }
 }

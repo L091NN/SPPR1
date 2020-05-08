@@ -18,24 +18,32 @@ namespace sppr
             style = new Style();
             labelGuidanceR.Visible = false;
             labelGuidanceE.Visible = false;
-            tableLayoutPanel.Visible = false;
+
             initPerspectives();
             refreshActionPanel();
-            //panelBottom.BackColor = style.colors["red.king yna"];
-            //panelBottomAnimation.RunWorkerAsync(new List<Color> { style.colors["red.king yna"], style.colors["yellow.king yna"], 
-                //style.colors["green.vs"], style.colors["blue.king yna"], style.colors["red.king yna"] });
+
+            conStage = 1;
+            conLog = new List<string>();
+            Conami.RunWorkerAsync();
         }
 
         private void MainForm_Resize(object sender, EventArgs e)
         {
-            labelNoData.Font = new System.Drawing.Font("Yu Gothic UI Semibold", (float)(Math.Sqrt(panelAction.Height * panelAction.Height + panelAction.Width * panelAction.Width) / 10), System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            labelRecomendation.Font = new System.Drawing.Font("Yu Gothic UI Semibold", (float)(Math.Sqrt(panelAction.Height * panelAction.Height + panelAction.Width * panelAction.Width) / 20), System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            if (panelAction.Height != 0 && panelAction.Width != 0) labelNoData.Font = new System.Drawing.Font("Yu Gothic UI Semibold", (float)(Math.Sqrt(panelAction.Height * panelAction.Height + panelAction.Width * panelAction.Width) / 10), System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            if (panelAction.Height != 0 && panelAction.Width != 0) labelRecomendation.Font = new System.Drawing.Font("Yu Gothic UI Semibold", (float)(Math.Sqrt(panelAction.Height * panelAction.Height + panelAction.Width * panelAction.Width) / 20), System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 
             this.panelActionBottom.Size = new System.Drawing.Size(panelAction.Width, widthOfFunc());
+
+            if (isCon)
+            {
+                panelLeft.Width = this.Size.Width / 2;
+                panelRight.Width = this.Size.Width / 2;
+            }
         }
 
         private void buttonActionBottom_Click(object sender, EventArgs e)
         {
+            conLog.Add("Up&Down");
             showHideActionBottomPanel();
         }
 
@@ -61,6 +69,8 @@ namespace sppr
 
         private void buttonRun_Click(object sender, EventArgs e)
         {
+            conLog.Add("Strat");
+
             if (buttonRun.Text == "RUN")
             {
                 var errorString = tryFillParam();
@@ -93,6 +103,8 @@ namespace sppr
 
         private void buttonChangePerspectiveLeft_Click(object sender, EventArgs e)
         {
+            conLog.Add("Left");
+
             if (!panelRightAnimation.IsBusy && !panelActionBottomAnimation.IsBusy && !panelLeftAnimation.IsBusy && !panelHeaderAnimation.IsBusy && !runMethod.IsBusy)
             {
                 perspective = perspective == bruteForce ? strongin : perspective == piacovsky ? bruteForce : piacovsky;
@@ -107,6 +119,8 @@ namespace sppr
 
         private void buttonChangePerspectiveRight_Click(object sender, EventArgs e)
         {
+            conLog.Add("Right");
+
             if (!panelRightAnimation.IsBusy && !panelActionBottomAnimation.IsBusy && !panelLeftAnimation.IsBusy && !panelHeaderAnimation.IsBusy && !runMethod.IsBusy)
             {
                 perspective = perspective == bruteForce ? piacovsky : perspective == piacovsky ? strongin : bruteForce;
@@ -132,17 +146,24 @@ namespace sppr
 
         private void buttonChangePerspectiveRight_MouseMove(object sender, MouseEventArgs e)
         {
-            if (perspective.name == "Bruteforce")
+            if (!isCon)
             {
-                buttonChangePerspectiveRight.Text = "P\ni\ny\na\n▶\ns\nk\ny";
+                if (perspective.name == "Bruteforce")
+                {
+                    buttonChangePerspectiveRight.Text = "P\ni\ny\na\n▶\ns\nk\ny";
+                }
+                if (perspective.name == "Piyavsky method")
+                {
+                    buttonChangePerspectiveRight.Text = "S\nt\nr\no\n▶\ng\ni\nn";
+                }
+                if (perspective.name == "Strongin method")
+                {
+                    buttonChangePerspectiveRight.Text = "B\nr\nu\nt\ne\n▶\nf\no\nr\nc\ne\n";
+                }
             }
-            if (perspective.name == "Piyavsky method")
+            else
             {
-                buttonChangePerspectiveRight.Text = "S\nt\nr\no\n▶\ng\ni\nn";
-            }
-            if (perspective.name == "Strongin method")
-            {
-                buttonChangePerspectiveRight.Text = "B\nr\nu\nt\ne\n▶\nf\no\nr\nc\ne\n";
+                buttonChangePerspectiveRight.Text = "Developed by\nTrubina Anastasia";
             }
         }
 
@@ -153,17 +174,24 @@ namespace sppr
 
         private void buttonChangePerspectiveLeft_MouseMove(object sender, MouseEventArgs e)
         {
-            if (perspective.name == "Bruteforce")
+            if (!isCon)
             {
-                buttonChangePerspectiveLeft.Text = "S\nt\nr\no\n◀\ng\ni\nn\n";
+                if (perspective.name == "Bruteforce")
+                {
+                    buttonChangePerspectiveLeft.Text = "S\nt\nr\no\n◀\ng\ni\nn\n";
+                }
+                if (perspective.name == "Piyavsky method")
+                {
+                    buttonChangePerspectiveLeft.Text = "B\nr\nu\nt\ne\n◀\nf\no\nr\nc\ne\n";
+                }
+                if (perspective.name == "Strongin method")
+                {
+                    buttonChangePerspectiveLeft.Text = "P\ni\ny\na\n◀\ns\nk\ny";
+                }
             }
-            if (perspective.name == "Piyavsky method")
+            else
             {
-                buttonChangePerspectiveLeft.Text = "B\nr\nu\nt\ne\n◀\nf\no\nr\nc\ne\n";
-            }
-            if (perspective.name == "Strongin method")
-            {
-                buttonChangePerspectiveLeft.Text = "P\ni\ny\na\n◀\ns\nk\ny";
+                buttonChangePerspectiveLeft.Text = "Developed by\nLugin Mikhail";
             }
         }
 
@@ -303,6 +331,8 @@ namespace sppr
 
         private void buttonWithPoints_Click(object sender, EventArgs e)
         {
+            conLog.Add("Points");
+
             perspective.withPoint = perspective.withPoint ? false : true;
             new GraphProcessing().refreshGraph(perspective);
 
@@ -313,6 +343,8 @@ namespace sppr
 
         private void buttonWithLine_Click(object sender, EventArgs e)
         {
+            conLog.Add("Line");
+
             perspective.withLine = perspective.withLine ? false : true;
             var pane = zedGraphControlMain.GraphPane;
             if (perspective.withCurLine)
@@ -335,6 +367,8 @@ namespace sppr
 
         private void zedGraphControlMain_DoubleClick(object sender, EventArgs e)
         {
+            conLog.Add("Graph");
+
             if (perspective.withLine)
             {
                 var pane = zedGraphControlMain.GraphPane;
@@ -403,6 +437,8 @@ namespace sppr
 
         private void buttonDefaultZoom_Click(object sender, EventArgs e)
         {
+            conLog.Add("DefaultZoom");
+
             var pane = zedGraphControlMain.GraphPane;
             var elem = perspective.funcInfo;
 
@@ -420,6 +456,8 @@ namespace sppr
 
         private void buttonZoomApply_Click(object sender, EventArgs e)
         {
+            conLog.Add("ApplyZoom");
+
             var errorString = tryZoom();
             if (errorString == "")
             {
@@ -454,6 +492,8 @@ namespace sppr
 
         private void labelErrorList_Click(object sender, EventArgs e)
         {
+            conLog.Add("ErrorList");
+
             labelErrorList.Visible = false;
             if (perspective.methodInfo.report == null)
             {
@@ -463,6 +503,8 @@ namespace sppr
 
         private void labelMinBegin_Click(object sender, EventArgs e)
         {
+            conLog.Add("Minimum");
+
             if (perspective.withLine)
             {
                 var pane = zedGraphControlMain.GraphPane;
@@ -508,6 +550,8 @@ namespace sppr
 
         private void buttonSortI_Click(object sender, EventArgs e)
         {
+            conLog.Add("SortIterations");
+
             perspective.sortBy = "i";
             tableProcessing();
             returnTablePanel(perspective);
@@ -515,6 +559,8 @@ namespace sppr
 
         private void buttonSortX_Click(object sender, EventArgs e)
         {
+            conLog.Add("SortX");
+
             perspective.sortBy = "x";
             tableProcessing();
             returnTablePanel(perspective);
@@ -522,6 +568,8 @@ namespace sppr
 
         private void buttonSortY_Click(object sender, EventArgs e)
         {
+            conLog.Add("SortY");
+
             perspective.sortBy = "y";
             tableProcessing();
             returnTablePanel(perspective);
@@ -529,6 +577,7 @@ namespace sppr
 
         private void buttonBottomUp_Click(object sender, EventArgs e)
         {
+            conLog.Add("BottomUp");
             perspective.sortDir = "BottomUp";
             tableProcessing();
             returnTablePanel(perspective);
@@ -536,28 +585,31 @@ namespace sppr
 
         private void buttonTopDown_Click(object sender, EventArgs e)
         {
+            conLog.Add("TopDown");
             perspective.sortDir = "TopDown";
-            tableProcessing();
-            returnTablePanel(perspective);
-        }
-
-        private void buttonTop5_Click(object sender, EventArgs e)
-        {
-            perspective.sortTop = 45;
-            tableProcessing();
-            returnTablePanel(perspective);
-        }
-
-        private void buttonTop10_Click(object sender, EventArgs e)
-        {
-            perspective.sortTop = 30;
             tableProcessing();
             returnTablePanel(perspective);
         }
 
         private void buttonTop15_Click(object sender, EventArgs e)
         {
+            conLog.Add("SortX");
+
             perspective.sortTop = 15;
+            tableProcessing();
+            returnTablePanel(perspective);
+        }
+
+        private void buttonTop30_Click(object sender, EventArgs e)
+        {
+            perspective.sortTop = 30;
+            tableProcessing();
+            returnTablePanel(perspective);
+        }
+
+        private void buttonTop45_Click(object sender, EventArgs e)
+        {
+            perspective.sortTop = 45;
             tableProcessing();
             returnTablePanel(perspective);
         }
@@ -661,6 +713,14 @@ namespace sppr
 
                 zedGraphControlMain.AxisChange();
                 zedGraphControlMain.Invalidate();
+            }
+        }
+
+        private void panelHeader_Paint(object sender, PaintEventArgs e)
+        {
+            if (isCon)
+            {
+                
             }
         }
     }
